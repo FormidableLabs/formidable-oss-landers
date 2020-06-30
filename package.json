@@ -1,0 +1,20 @@
+{
+  "name": "formidable-oss-landers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx servor --browse --reload --editor"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FormidableLabs/formidable-oss-landers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FormidableLabs/formidable-oss-landers/issues"
+  },
+  "homepage": "https://github.com/FormidableLabs/formidable-oss-landers#readme"
+}
