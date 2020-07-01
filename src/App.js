@@ -12,7 +12,7 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const data = {
+const config = {
   header: {
     title: "Renature",
     description:
@@ -43,12 +43,12 @@ const data = {
 function App() {
   return (
     <Container>
-      <Header content={data.header} />
+      <Header content={config.header} />
       {/* 
-      <Features content={content.features} />
+      <Features content={config.features} />
       <Preview />
-      <GetStarted content={content.getStarted} />
-      <MoreOSS content={content.oss} />
+      <GetStarted content={config.getStarted} />
+      <MoreOSS content={config.oss} />
       <Footer /> */}
     </Container>
   );
