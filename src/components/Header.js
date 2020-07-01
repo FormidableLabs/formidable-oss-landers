@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+
 import Text from "./Text";
 import Title from "./Title";
 import background from "../assets/renature/background.svg";
@@ -14,6 +15,29 @@ const Wrapper = styled.div`
   background-size: cover;
   color: ${(props) => props.theme.colors.white};
 `;
+
+/* TODO: Make responsive */
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  margin: 0 auto;
+  max-width: 1000px;
+`;
+
+const Cell = styled.div`
+  flex: 1 1 auto;
+`;
+
+/* TODO: Replace placeholder */
+const Badge = styled.div`
+  background-color: ${(props) => props.theme.colors.lightNeutral};
+  width: 350px;
+  height: 350px;
+  margin-right: 100px;
+`;
+
 const Ribbon = styled.div`
   position: absolute;
   top: 0;
@@ -42,36 +66,55 @@ const RibbonText = styled(Text)`
   padding: 43px 0 0 53px;
 `;
 
-const Nav = styled.ul``;
+const Nav = styled.ul`
+  margin-top: 24px;
+
+  display: flex;
+  flex-direction: row;
+
+  > * + * {
+    margin-left: 24px;
+  }
+
+  a,
+  a:link {
+    color: ${(props) => props.theme.colors.white};
+  }
+`;
 
 const Header = ({ content }) => (
   <Wrapper>
-    <Title size="xlarge" as="h1">
-      {content.title}
-    </Title>
-    <Text size="xlarge" as="h2">
-      {content.description}
-    </Text>
-    <Ribbon>
-      <Triangle aria-hidden="true" />
-      <RibbonText size="xxsmall">
-        Another OSS
-        <br /> project by
-        <br /> Formidable
-      </RibbonText>
-    </Ribbon>
-    <Nav>
-      {content.nav.map((navItem) => {
-        // TODO: Create a smart Link component
-        return (
-          <li>
-            <Text size="large" as="span">
-              {navItem.label}
-            </Text>
-          </li>
-        );
-      })}
-    </Nav>
+    <Row>
+      <Cell>
+        <Badge>Badge Placeholder</Badge>
+      </Cell>
+      <Cell>
+        <Title size="xlarge" as="h1">
+          {content.title}
+        </Title>
+        <Text size="xlarge" as="h2">
+          {content.description}
+        </Text>
+        <Ribbon>
+          <Triangle aria-hidden="true" />
+          <RibbonText size="xxsmall">
+            Another OSS
+            <br /> project by
+            <br /> Formidable
+          </RibbonText>
+        </Ribbon>
+        <Nav>
+          {content.nav.map((navItem) => {
+            // TODO: Create a smart Link component
+            return (
+              <Text size="large" as="li">
+                <a href={navItem.href}>{navItem.label}</a>
+              </Text>
+            );
+          })}
+        </Nav>
+      </Cell>
+    </Row>
   </Wrapper>
 );
 

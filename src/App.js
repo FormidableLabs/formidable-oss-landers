@@ -17,9 +17,14 @@ const data = {
     title: "Renature",
     description:
       "A physics-based animation library for React inspired by the natural world.",
+    install: "npm install renature",
+    heroButton: {
+      label: "Documentation",
+      href: "docs/",
+    },
     nav: [
-      { label: "Docs", href: "/docs" },
-      { label: "Gallery", href: "/gallery" },
+      { label: "Docs", href: "docs/" },
+      { label: "Gallery", href: "gallery/" },
       {
         label: "Issues",
         href: "https://www.github.com/FormidableLabs/renature/issues",
