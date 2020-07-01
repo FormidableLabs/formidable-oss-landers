@@ -1,25 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled from "styled-components";
+
+import Header from "./components/Header";
+// import Features from "./components/Features";
+// import Preview from "./components/Preview";
+// import GetStarted from "./components/GetStarted";
+// import MoreOSS from "./components/MoreOSS";
+// import Footer from "./components/Footer";
+
+const Container = styled.div`
+  width: 100%;
+`;
+
+const data = {
+  header: {
+    title: "Renature",
+    description:
+      "A physics-based animation library for React inspired by the natural world.",
+    nav: [
+      { label: "Docs", href: "/docs" },
+      { label: "Gallery", href: "/gallery" },
+      {
+        label: "Issues",
+        href: "https://www.github.com/FormidableLabs/renature/issues",
+      },
+      {
+        label: "Github",
+        href: "https://github.com/FormidableLabs/renature",
+      },
+    ],
+  },
+  features: [],
+  getStarted: {},
+  oss: {},
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Header content={data.header} />
+      {/* 
+      <Features content={content.features} />
+      <Preview />
+      <GetStarted content={content.getStarted} />
+      <MoreOSS content={content.oss} />
+      <Footer /> */}
+    </Container>
   );
 }
 
