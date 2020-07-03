@@ -4,14 +4,13 @@ import styled from "styled-components";
 
 import Text from "./Text";
 import Title from "./Title";
-import background from "../assets/renature/background.svg";
 
 const Wrapper = styled.div`
   position: relative;
   padding: 237px 0 123px;
 
-  background-color: ${(props) => props.theme.colors.darkPrimary};
-  background-image: url(${background});
+  background-color: ${(props) => props.theme.gradients.darkGradient};
+  ${(props) => props.bg && `background-image: url(${props.bg});`}
   background-size: cover;
   color: ${(props) => props.theme.colors.white};
 `;
@@ -82,46 +81,61 @@ const Nav = styled.ul`
   }
 `;
 
-const Header = ({ content }) => (
-  <Wrapper>
-    <Row>
-      <Cell>
-        <Badge>Badge Placeholder</Badge>
-      </Cell>
-      <Cell>
-        <Title size="xlarge" as="h1">
-          {content.title}
-        </Title>
-        <Text size="xlarge" as="h2">
-          {content.description}
-        </Text>
-        <Ribbon>
-          <Triangle aria-hidden="true" />
-          <RibbonText size="xxsmall">
-            Another OSS
-            <br /> project by
-            <br /> Formidable
-          </RibbonText>
-        </Ribbon>
-        <Nav>
-          {content.nav.map((navItem) => {
-            // TODO: Create a smart Link component
-            return (
-              <Text size="large" as="li">
-                <a href={navItem.href}>{navItem.label}</a>
-              </Text>
-            );
-          })}
-        </Nav>
-      </Cell>
-    </Row>
-  </Wrapper>
-);
+const Header = ({ content, linkComponent }) => {
+  const Link = linkComponent;
+  return (
+    <Wrapper bg={content.background}>
+      <Row>
+        <Cell>
+          <Badge>Badge Placeholder</Badge>
+        </Cell>
+        <Cell>
+          <Title size="xlarge" as="h1">
+            {content.title}
+          </Title>
+          <Text size="xlarge" as="h2">
+            {content.description}
+          </Text>
+          <Ribbon>
+            <Triangle aria-hidden="true" />
+            <RibbonText size="xxsmall">
+              Another OSS
+              <br /> project by
+              <br /> Formidable
+            </RibbonText>
+          </Ribbon>
+          <Nav>
+            {content.nav.map((navItem) => {
+              return (
+                <Text size="large" as="li">
+                  <Link href={navItem.href}>{navItem.label}</Link>
+                </Text>
+              );
+            })}
+          </Nav>
+        </Cell>
+      </Row>
+    </Wrapper>
+  );
+};
 
 Header.propTypes = {
+  linkComponent: PropTypes.element,
   content: PropTypes.shape({
+    /* Optional background image for entire header */
+    background: PropTypes.string,
+    /* Name of OSS project */
     title: PropTypes.string,
+    /* Short description of OSS Project */
     description: PropTypes.string,
+    /* Quick instructions for installation, e.g. `npm install renature` */
+    install: PropTypes.string,
+    /* Button that appears next to install instructions */
+    heroButton: PropTypes.shape({
+      label: PropTypes.string,
+      href: PropTypes.string,
+    }),
+    /* Nav menu for OSS project site (typically Docs, Gallery, Issues, Github) */
     nav: PropTypes.arrayOf({
       label: PropTypes.string,
       href: PropTypes.string,

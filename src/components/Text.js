@@ -51,7 +51,7 @@ const getStyles = (styleType) => {
 const StyledText = styled.p`
   ${(props) => props.size && getStyles(props.size)};
 
-  font-family: ${(props) => props.theme.fonts.body};
+  font-family: ${(props) => props.theme.fonts.text};
   text-align: ${(props) => props.align};
 `;
 

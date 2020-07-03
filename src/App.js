@@ -8,42 +8,16 @@ import Header from "./components/Header";
 // import MoreOSS from "./components/MoreOSS";
 // import Footer from "./components/Footer";
 
+import config from "./example/config";
+
 const Container = styled.div`
   width: 100%;
 `;
 
-const config = {
-  header: {
-    title: "Renature",
-    description:
-      "A physics-based animation library for React inspired by the natural world.",
-    install: "npm install renature",
-    heroButton: {
-      label: "Documentation",
-      href: "docs/",
-    },
-    nav: [
-      { label: "Docs", href: "docs/" },
-      { label: "Gallery", href: "gallery/" },
-      {
-        label: "Issues",
-        href: "https://www.github.com/FormidableLabs/renature/issues",
-      },
-      {
-        label: "Github",
-        href: "https://github.com/FormidableLabs/renature",
-      },
-    ],
-  },
-  features: [],
-  getStarted: {},
-  oss: {},
-};
-
 function App() {
   return (
     <Container>
-      <Header content={config.header} />
+      <Header content={config.header} linkComponent={config.linkComponent} />
       {/* 
       <Features content={config.features} />
       <Preview />

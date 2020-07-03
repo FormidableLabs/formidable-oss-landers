@@ -34,7 +34,7 @@ const getStyles = (styleType) => {
 const StyledTitle = styled.p`
   ${(props) => props.size && getStyles(props.size)};
 
-  font-family: ${(props) => props.theme.fonts.heading};
+  font-family: ${(props) => props.theme.fonts.title};
   text-align: ${(props) => props.align};
 `;
 
