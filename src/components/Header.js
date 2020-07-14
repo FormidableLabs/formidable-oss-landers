@@ -4,6 +4,9 @@ import styled from "styled-components";
 
 import Text from "./Text";
 import Title from "./Title";
+import { linkStyles } from "../styles";
+
+import { ReactComponent as Logo } from "../assets/formidable.svg";
 
 const Wrapper = styled.div`
   position: relative;
@@ -65,6 +68,12 @@ const RibbonText = styled(Text)`
   padding: 43px 0 0 53px;
 `;
 
+const StyledLogo = styled(Logo)`
+  margin-top: ${(props) => props.theme.spacing(1)};
+  display: block;
+  width: 48px;
+`;
+
 const Nav = styled.ul`
   margin-top: 24px;
 
@@ -75,10 +84,7 @@ const Nav = styled.ul`
     margin-left: 24px;
   }
 
-  a,
-  a:link {
-    color: ${(props) => props.theme.colors.white};
-  }
+  ${linkStyles({ color: "white" })};
 `;
 
 const Header = ({ content, linkComponent }) => {
@@ -101,7 +107,7 @@ const Header = ({ content, linkComponent }) => {
             <RibbonText size="xxsmall">
               Another OSS
               <br /> project by
-              <br /> Formidable
+              <StyledLogo />
             </RibbonText>
           </Ribbon>
           <Nav>

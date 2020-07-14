@@ -46,6 +46,11 @@ const normalize = css`
     padding: 0;
     font-weight: inherit;
   }
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export default createGlobalStyle`

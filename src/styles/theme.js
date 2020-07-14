@@ -23,14 +23,14 @@ const BASE_UNIT = 8;
 
 const spacing = (multiplier) => `${parseInt(multiplier, 10) * BASE_UNIT}px`;
 
+const breakpoints = {
+  mobile: 375,
+  tablet: 768,
+  desktop: 1280,
+};
+
 export const theme = {
-  breakpoints: {
-    small: 0,
-    medium: 414,
-    large: 768,
-    xlarge: 1024,
-    xxlarge: 1440,
-  },
+  breakpoints,
   colors: { ...universalColors, ...colors },
   fonts,
   gradients,
