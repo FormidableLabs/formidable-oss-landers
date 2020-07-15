@@ -1,6 +1,7 @@
 /* Example config for Renature OSS Lander */
+import React from "react";
 import Link from "../components/Link";
-import background from "./background.svg";
+import { FeaturedBadge } from "formidable-oss-badges";
 
 const config = {
   colors: {
@@ -15,7 +16,7 @@ const config = {
   },
   linkComponent: Link,
   header: {
-    background: background,
+    badge: <FeaturedBadge name="renature" />,
     title: "Renature",
     description:
       "A physics-based animation library for React inspired by the natural world.",

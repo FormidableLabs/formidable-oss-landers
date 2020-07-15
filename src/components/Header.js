@@ -4,40 +4,55 @@ import styled from "styled-components";
 
 import Text from "./Text";
 import Title from "./Title";
-import { linkStyles } from "../styles";
+import { tablet, desktop, linkStyles } from "../styles";
 
 import { ReactComponent as Logo } from "../assets/formidable.svg";
 
 const Wrapper = styled.div`
   position: relative;
-  padding: 237px 0 123px;
 
-  background-color: ${(props) => props.theme.gradients.darkGradient};
+  background: ${(props) => props.theme.gradients.darkGradient};
   ${(props) => props.bg && `background-image: url(${props.bg});`}
   background-size: cover;
   color: ${(props) => props.theme.colors.white};
+
+  ${tablet`  
+    padding-top: ${(props) => props.theme.spacing(14)};
+    padding-bottom: ${(props) => props.theme.spacing(15)};
+  `};
+
+  ${desktop`  
+    padding-top: ${(props) => props.theme.spacing(30)};
+    padding-bottom: ${(props) => props.theme.spacing(15)};
+  `};
 `;
 
 /* TODO: Make responsive */
 const Row = styled.div`
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 
   margin: 0 auto;
   max-width: 1000px;
+
+  ${desktop`
+    flex-wrap: nowrap;
+  `};
 `;
 
 const Cell = styled.div`
   flex: 1 1 auto;
 `;
 
-/* TODO: Replace placeholder */
 const Badge = styled.div`
-  background-color: ${(props) => props.theme.colors.lightNeutral};
   width: 350px;
   height: 350px;
-  margin-right: 100px;
+  margin: 0 auto;
+
+  ${desktop`
+    margin-right: ${(props) => props.theme.spacing(12)};
+  `};
 `;
 
 const Ribbon = styled.div`
@@ -55,33 +70,35 @@ const Triangle = styled.div`
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 292px 283px 0 0;
+  border-top-width: ${(props) => props.theme.spacing(36)};
+  border-right-width: ${(props) => props.theme.spacing(35)};
+  border-bottom-width: 0;
+  border-left-width: 0;
   border-color: ${(props) => props.theme.colors.primary} transparent transparent
     transparent;
-
-  transform: skew(0deg);
 `;
 
 const RibbonText = styled(Text)`
   position: relative;
 
-  padding: 43px 0 0 53px;
+  padding-top: ${(props) => props.theme.spacing(5)};
+  padding-left: ${(props) => props.theme.spacing(6)};
 `;
 
 const StyledLogo = styled(Logo)`
-  margin-top: ${(props) => props.theme.spacing(1)};
   display: block;
-  width: 48px;
+  margin-top: ${(props) => props.theme.spacing(1)};
+  width: ${(props) => props.theme.spacing(6)};
 `;
 
 const Nav = styled.ul`
-  margin-top: 24px;
+  margin-top: ${(props) => props.theme.spacing(3)};
 
   display: flex;
   flex-direction: row;
 
   > * + * {
-    margin-left: 24px;
+    margin-left: ${(props) => props.theme.spacing(3)};
   }
 
   ${linkStyles({ color: "white" })};
@@ -93,7 +110,7 @@ const Header = ({ content, linkComponent }) => {
     <Wrapper bg={content.background}>
       <Row>
         <Cell>
-          <Badge>Badge Placeholder</Badge>
+          <Badge>{content.badge}</Badge>
         </Cell>
         <Cell>
           <Title size="xlarge" as="h1">
