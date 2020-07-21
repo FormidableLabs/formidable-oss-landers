@@ -4,6 +4,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import Button from "./Button";
 import Text from "./Text";
+import { tablet } from "../styles";
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,16 +13,24 @@ const Wrapper = styled.div`
   justify-content: space-between;
 
   margin-top: ${(props) => props.theme.spacing(9)};
-  margin-bottom: ${(props) => props.theme.spacing(2)};
+  margin-bottom: ${(props) => props.theme.spacing(1)};
+
+  ${tablet`
+    margin-top: ${(props) => props.theme.spacing(5)};
+  `};
 `;
 
-const InstallWrapper = styled.div`
+const StyledText = styled(Text)`
   display: inline-flex;
   align-items: center;
   flex: 1 1 auto;
 
   background-color: #d5d5d5;
   padding-left: ${(props) => props.theme.spacing(2)};
+`;
+
+const StyledButton = styled(Button)`
+  flex: 0 1 ${(props) => props.theme.spacing(11)};
 `;
 
 const AnimatedSpan = styled.span`
@@ -52,16 +61,14 @@ const CopyText = ({ text }) => {
   return (
     <CopyToClipboard text={text}>
       <Wrapper>
-        <InstallWrapper>
-          <Text size="xsmall" color="darkNeutral" as="span">
-            {text}
-          </Text>
-        </InstallWrapper>
-        <Button color="light" onClick={handleCopy} disabled={copied}>
+        <StyledText size="xsmall" color="darkNeutral" as="div">
+          {text}
+        </StyledText>
+        <StyledButton color="light" onClick={handleCopy} disabled={copied}>
           <AnimatedSpan animating={animating}>
             {copied ? "Copied" : "Copy"}
           </AnimatedSpan>
-        </Button>
+        </StyledButton>
       </Wrapper>
     </CopyToClipboard>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Text from "./Text";
-import { tablet } from "../styles";
+import { tablet, desktop } from "../styles";
 
 import { ReactComponent as Logo } from "../assets/formidable.svg";
 
@@ -29,6 +29,11 @@ const Triangle = styled.div`
     transparent;
 
   ${tablet`
+    border-top-width: ${(props) => props.theme.spacing(29)};
+    border-right-width: ${(props) => props.theme.spacing(28)};
+  `};
+
+  ${desktop`
     border-top-width: ${(props) => props.theme.spacing(36)};
     border-right-width: ${(props) => props.theme.spacing(35)};
   `};
@@ -39,7 +44,13 @@ const Content = styled.div`
 
   padding-top: ${(props) => props.theme.spacing(3)};
   padding-left: ${(props) => props.theme.spacing(3)};
+
   ${tablet`
+    padding-top: ${(props) => props.theme.spacing(4)};
+    padding-left: ${(props) => props.theme.spacing(4)};
+  `};
+
+  ${desktop`
     padding-top: ${(props) => props.theme.spacing(5)};
     padding-left: ${(props) => props.theme.spacing(6)};
   `};

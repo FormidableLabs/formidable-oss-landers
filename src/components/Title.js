@@ -14,9 +14,12 @@ const getStyles = (styleType) => {
         text-transform: uppercase;
         ${tablet`
           font-size: 60px;
+          line-height: 1.5;
+        `};
+        ${desktop`
+          font-size: 90px;
           line-height: 1;
         `};
-        ${desktop`font-size: 90px;`};
       `;
     case "large":
       // Section title

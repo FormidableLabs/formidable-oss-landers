@@ -20,22 +20,53 @@ const Wrapper = styled.div`
   ${(props) => props.bg && `background-image: url(${props.bg});`}
   background-size: cover;
   color: ${(props) => props.theme.colors.white};
+
+  ${tablet`
+    padding-top: ${(props) => props.theme.spacing(19)};
+    padding-right: ${(props) => props.theme.spacing(8)};
+    padding-left: ${(props) => props.theme.spacing(8)};
+  `};
+`;
+
+const Grid = styled.div`
+  margin: 0 auto;
+
+  ${tablet`
+    display: grid;
+    grid-gap: ${(props) => props.theme.spacing(8)};
+    grid-template-columns: 220px auto;
+    grid-template-areas:
+      "badge content"
+      "nav nav";
+    
+    max-width: ${(props) => props.theme.spacing(85)};
+  `};
 `;
 
 const Badge = styled.div`
+  grid-area: badge;
+
   min-width: 130px;
   width: 40%;
   height: auto;
   margin: 0 auto;
+
+  ${tablet`
+    width: auto;
+  `};
 `;
 
 const Content = styled.div`
+  grid-area: content;
+
   margin-top: ${(props) => props.theme.spacing(3)};
   text-align: center;
   ${tablet`text-align: left;`};
 `;
 
 const Nav = styled(Text)`
+  grid-area: nav;
+
   margin-top: 1.6em;
   padding-top: 1.6em;
   border-top: 2px solid ${(props) => props.theme.colors.white};
@@ -45,6 +76,14 @@ const Nav = styled(Text)`
   justify-content: space-between;
 
   ${linkStyles({ color: "white" })};
+
+  ${tablet`
+    justify-content: center;
+
+    > * + * {
+      margin-left: ${(props) => props.theme.spacing(2)};
+    }
+  `};
 `;
 
 const ButtonLink = styled.span`
@@ -66,27 +105,29 @@ const Header = ({ content, linkComponent }) => {
     ) : null;
   return (
     <Wrapper bg={content.background}>
-      <Badge>{content.badge}</Badge>
-      <Content>
-        <Title size="xlarge" as="h1">
-          {content.title}
-        </Title>
-        <Text size="xlarge" as="h2">
-          {content.description}
-        </Text>
-      </Content>
-      <Ribbon />
-      <CopyText text={content.install} />
-      {renderHeroButton}
-      <Nav size="large" as="ul">
-        {content.nav.map((navItem, index) => {
-          return (
-            <Text size="large" as="li" key={`navItem-${index}`}>
-              <Link href={navItem.href}>{navItem.label}</Link>
-            </Text>
-          );
-        })}
-      </Nav>
+      <Grid>
+        <Badge>{content.badge}</Badge>
+        <Content>
+          <Title size="xlarge" as="h1">
+            {content.title}
+          </Title>
+          <Text size="xlarge" as="h2">
+            {content.description}
+          </Text>
+          <Ribbon />
+          <CopyText text={content.install} />
+          {renderHeroButton}
+        </Content>
+        <Nav size="large" as="ul">
+          {content.nav.map((navItem, index) => {
+            return (
+              <Text size="large" as="li" key={`navItem-${index}`}>
+                <Link href={navItem.href}>{navItem.label}</Link>
+              </Text>
+            );
+          })}
+        </Nav>
+      </Grid>
     </Wrapper>
   );
 };
