@@ -37,6 +37,34 @@ export function desktop(...args) {
   `;
 }
 
+/*
+Set color by theme
+Usage: ${color("darkNeutral")};
+*/
+export function color(name) {
+  return css`
+    ${(props) => {
+      if (name) {
+        if (props.theme.colors[name]) {
+          return `color: ${props.theme.colors[name]};`;
+        } else {
+          console.warn(
+            "Could not find '",
+            name,
+            "' in available list of theme colors: ",
+            Object.keys(props.theme.colors)
+          );
+        }
+      }
+    }}
+  `;
+}
+
+/*
+TODO: Revisit this.
+Since the <Link> component will be set by config, then the anchor tags need to be styled since that component cannot be styled directly. 
+Usage: ${linkStyles({ color: "white "})} 
+*/
 export function linkStyles({ color }) {
   switch (color) {
     case "white":

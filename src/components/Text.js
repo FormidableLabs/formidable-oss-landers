@@ -1,22 +1,31 @@
-import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
+import { color, tablet, desktop } from "../styles";
 
-const getStyles = (styleType) => {
+function getStyles(styleType) {
   switch (styleType) {
     case "xlarge":
       // Subtitle
       return css`
-        font-size: 24px;
-        line-height: ${30 / 24};
+        font-size: 15px;
+        line-height: ${22 / 15};
+        ${tablet`
+          font-size: 18px;
+          line-height: ${25 / 18};
+        `};
+        ${desktop`
+          font-size: 24px; 
+          line-height: ${30 / 24};
+        `};
       `;
     case "large":
-      // Large Button Label
+      // Nav Item Label
       return css`
-        font-size: 18px;
+        font-size: 14px;
         line-height: ${24 / 18};
-        letter-spacing: 1.29px;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
+        ${desktop`font-size: 18px;`};
       `;
     case "small":
       // Button label
@@ -28,8 +37,9 @@ const getStyles = (styleType) => {
     case "xsmall":
       // Textfield Input
       return css`
-        font-size: 14px;
+        font-size: 12px;
         letter-spacing: 0.2px;
+        ${desktop`font-size: 14px;`};
       `;
     case "xxsmall":
       // Ribbon text
@@ -46,26 +56,28 @@ const getStyles = (styleType) => {
         line-height: ${24 / 15};
       `;
   }
-};
+}
 
-const StyledText = styled.p`
+const Text = styled.p.withConfig({
+  // do not pass 'color' to DOM
+  shouldForwardProp: (prop) => !["color"].includes(prop),
+})`
   ${(props) => props.size && getStyles(props.size)};
+  ${(props) => props.color && color(props.color)};
 
   font-family: ${(props) => props.theme.fonts.text};
+  font-weight: normal;
   text-align: ${(props) => props.align};
 `;
 
-const Text = ({ children, ...props }) => {
-  return <StyledText {...props}>{children}</StyledText>;
-};
-
-Text.defaulProps = {
+Text.defaultProps = {
   align: "inherit",
 };
 
 Text.propTypes = {
   align: PropTypes.string,
   children: PropTypes.node.isRequired,
+  color: PropTypes.string,
   size: PropTypes.oneOf([
     "xxsmall",
     "xsmall",

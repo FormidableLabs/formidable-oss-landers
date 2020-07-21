@@ -1,4 +1,4 @@
-import { css, createGlobalStyle } from "styled-components/macro";
+import { css, createGlobalStyle } from "styled-components";
 
 const normalize = css`
   * {
