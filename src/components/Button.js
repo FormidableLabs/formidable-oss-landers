@@ -2,12 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
+import { desktop } from "../styles";
+
 export const defaultButtonStyles = css`
   padding: 0.75em 1.4em;
   font-size: 12px;
   letter-spacing: 0.1em;
   line-height: 1.2;
   text-transform: uppercase;
+
+  ${desktop`font-size: 14px;`};
 `;
 
 export const lightButtonStyles = css`

@@ -18,7 +18,6 @@ const getStyles = (styleType) => {
         `};
         ${desktop`
           font-size: 90px;
-          line-height: 1;
         `};
       `;
     case "large":

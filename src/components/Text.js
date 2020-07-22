@@ -30,9 +30,10 @@ function getStyles(styleType) {
     case "small":
       // Button label
       return css`
-        font-size: 14px;
-        letter-spacing: 1px;
+        font-size: 12px;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
+        ${desktop`font-size: 14px;`};
       `;
     case "xsmall":
       // Textfield Input

@@ -7,14 +7,12 @@ import CopyText from "./CopyText";
 import Ribbon from "./Ribbon";
 import Text from "./Text";
 import Title from "./Title";
-import { tablet, linkStyles } from "../styles";
+import { linkStyles, tablet, desktop } from "../styles";
 
 const Wrapper = styled.div`
   position: relative;
-  padding-top: ${(props) => props.theme.spacing(14)};
-  padding-right: ${(props) => props.theme.spacing(3)};
-  padding-bottom: ${(props) => props.theme.spacing(4)};
-  padding-left: ${(props) => props.theme.spacing(3)};
+  padding: ${(props) => props.theme.spacing(14)}
+    ${(props) => props.theme.spacing(3)} ${(props) => props.theme.spacing(4)};
 
   background: ${(props) => props.theme.gradients.darkGradient};
   ${(props) => props.bg && `background-image: url(${props.bg});`}
@@ -26,6 +24,10 @@ const Wrapper = styled.div`
     padding-right: ${(props) => props.theme.spacing(8)};
     padding-left: ${(props) => props.theme.spacing(8)};
   `};
+
+  ${desktop`
+    padding-bottom: ${(props) => props.theme.spacing(15)};
+  `};
 `;
 
 const Grid = styled.div`
@@ -33,14 +35,26 @@ const Grid = styled.div`
 
   ${tablet`
     display: grid;
-    grid-gap: ${(props) => props.theme.spacing(8)};
-    grid-template-columns: 220px auto;
+    grid-column-gap: ${(props) => props.theme.spacing(8)};
+    grid-row-gap: ${(props) => props.theme.spacing(8)};
+    grid-template-columns: ${(props) => props.theme.spacing(27)} auto;
     grid-template-areas:
       "badge content"
       "nav nav";
     
     max-width: ${(props) => props.theme.spacing(85)};
   `};
+
+  ${desktop`
+    grid-column-gap: ${(props) => props.theme.spacing(12)};
+    grid-row-gap: 0;
+    grid-template-columns: ${(props) => props.theme.spacing(44)} auto;
+    grid-template-areas: 
+      "badge content"
+      "badge nav";
+    
+    max-width: ${(props) => props.theme.spacing(125)};
+  `}
 `;
 
 const Badge = styled.div`
@@ -84,6 +98,10 @@ const Nav = styled(Text)`
       margin-left: ${(props) => props.theme.spacing(2)};
     }
   `};
+
+  ${desktop`
+    justify-content: space-between;
+  `};
 `;
 
 const ButtonLink = styled.span`
@@ -99,8 +117,8 @@ const Header = ({ content, linkComponent }) => {
   const { heroButton } = content;
   const renderHeroButton =
     heroButton && heroButton.label && heroButton.href ? (
-      <Link href={content.heroButton.href}>
-        <ButtonLink>{content.heroButton.label}</ButtonLink>
+      <Link href={heroButton.href}>
+        <ButtonLink>{heroButton.label}</ButtonLink>
       </Link>
     ) : null;
   return (
