@@ -47,7 +47,8 @@ const normalize = css`
     font-weight: inherit;
   }
 
-  svg {
+  svg,
+  img {
     width: 100%;
     height: auto;
   }

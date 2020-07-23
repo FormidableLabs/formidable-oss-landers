@@ -53,8 +53,16 @@ function getStyles(styleType) {
     case "medium":
     default:
       return css`
-        font-size: 15px;
-        line-height: ${24 / 15};
+        font-size: 12px;
+        line-height: ${18 / 12};
+        ${tablet`
+          font-size: 14px;
+          line-height: ${18 / 14};
+        `};
+        ${desktop`
+          font-size: 15px;
+          line-height: ${24 / 15};
+        `};
       `;
   }
 }
@@ -63,7 +71,7 @@ const Text = styled.p.withConfig({
   // do not pass 'color' to DOM
   shouldForwardProp: (prop) => !["color"].includes(prop),
 })`
-  ${(props) => props.size && getStyles(props.size)};
+  ${(props) => getStyles(props.size)};
   ${(props) => props.color && color(props.color)};
 
   font-family: ${(props) => props.theme.fonts.text};

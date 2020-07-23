@@ -23,18 +23,26 @@ const getStyles = (styleType) => {
     case "large":
       // Section title
       return css`
-        font-size: 30px;
+        font-size: 24px;
         font-weight: 500;
-        line-height: ${38 / 30};
-        letter-spacing: 0.05em;
+        line-height: 1.2;
+        letter-spacing: 0.02em;
+        ${desktop`
+          font-size: 30px;
+          line-height: ${38 / 30};
+        `};
       `;
     case "medium":
     default:
       // Section subtitle
       return css`
-        font-size: 22px;
+        font-size: 18px;
         font-weight: 500;
-        line-height: ${26 / 22};
+        line-height: 1.3;
+        ${desktop`
+          font-size: 22px;
+          line-height: ${26 / 22};
+        `};
       `;
   }
 };

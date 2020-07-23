@@ -3,11 +3,13 @@ import { css } from "styled-components";
 
 /* 
 Media query template
-Usage: ${mobile`border: 1px solid black;`}
+Usage: ${mobileOnly`border: 1px solid black;`}
 */
-export function mobile(...args) {
+export function mobileOnly(...args) {
   return css`
-    @media (min-width: ${(props) => props.theme.breakpoints.mobile}px) {
+    @media (min-width: ${(props) =>
+        props.theme.breakpoints.mobile}px) and (max-width: ${(props) =>
+        props.theme.breakpoints.tablet - 1}px) {
       ${css(...args)};
     }
   `;
