@@ -38,7 +38,19 @@ const config = {
       },
     ],
   },
-  features: [],
+  features: [
+    { 
+      image: "",
+      title: "Declarative React hooks for animating with ease",
+      description: "Tweak your physics parameters, set from and to values for your CSS properties, and let renature do the rest."
+    }, {
+      title: "Gravity, Friction, Fluid Resistance, and more",
+      description: "Renature explores forces that other physics-based animation libraries typically leave out, giving your animations unique feeling and intuitive motion."
+    }, {
+      title: "An animation library for physics nerds",
+      description: "Renature emphasizes mathematical precision and correctness, all backed by the type safety and speed of ReasonML."
+    }
+  ],
   getStarted: {},
   oss: {},
 };
