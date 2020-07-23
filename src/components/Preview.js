@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   padding-top: ${(props) => props.theme.spacing(5)};
   padding-bottom: ${(props) => props.theme.spacing(5)};
 
-  background: ${(props) => props.theme.gradients.darkGradient};
+  background: ${(props) => props.theme.gradients.reverseDarkGradient};
   color: ${(props) => props.theme.colors.white};
   text-align: center;
 `;
@@ -21,13 +21,24 @@ const StyledGrid = styled(Grid)`
   grid-template-columns: 1fr;
 
   ${desktop`
-    grid-template-columns: 1fr 3fr;
-    grid-gap: ${(props) => props.theme.spacing(3)};
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: ${(props) => props.theme.spacing(4)};
+    grid-row-gap: ${(props) => props.theme.spacing(14)};
   `};
 `;
 
 const Copy = styled.div`
   margin-top: ${(props) => props.theme.spacing(3)};
+  ${desktop`
+    grid-column: span 1;
+    text-align: left;
+    ${(props) =>
+      props.isOdd &&
+      `
+        border: 1px solid black;
+        grid-column: 4 / span 1;
+      `};
+  `};
 `;
 
 const StyledTitle = styled(Title)`
@@ -45,6 +56,9 @@ const StyledCodeWrapper = styled.div`
 
   ${tablet`
     box-shadow: -5px 5px 0px 0px rgba(0, 0, 0, 0.5);
+  `};
+  ${desktop`
+    grid-column: span 3;
   `};
 `;
 
@@ -89,9 +103,10 @@ const Preview = ({ content }) => {
       <Title size="large">{title}</Title>
       <StyledGrid>
         {examples.map((example, index) => {
+          const isOdd = index % 2 > 0;
           return (
             <React.Fragment key={`example-${index}`}>
-              <Copy>
+              <Copy isOdd={isOdd}>
                 <StyledTitle size="medium">{example.title}</StyledTitle>
                 <StyledText>{example.description}</StyledText>
               </Copy>

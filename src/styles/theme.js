@@ -12,6 +12,7 @@ const universalColors = {
 
 const gradients = {
   darkGradient: `linear-gradient(208deg, ${colors.darkPrimary} 0%, ${colors.darkerPrimary} 100%)`,
+  reverseDarkGradient: `linear-gradient(-161deg, ${colors.darkPrimary} 0%, ${colors.darkerPrimary} 100%)`,
 };
 
 const fonts = {
