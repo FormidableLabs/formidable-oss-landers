@@ -108,9 +108,17 @@ const Nav = styled(Text)`
   `};
 `;
 
-const Header = ({ content, linkComponent }) => {
+const Header = ({
+  background,
+  badge,
+  button,
+  description,
+  install,
+  nav,
+  title,
+  linkComponent,
+}) => {
   const Link = linkComponent;
-  const { button } = content;
   const renderButton =
     button && button.label && button.href ? (
       <Button full as={Link} href={button.href} color="light">
@@ -120,22 +128,22 @@ const Header = ({ content, linkComponent }) => {
 
   // TODO: Mobile nav switches to "Learn More"
   return (
-    <Wrapper bg={content.background}>
+    <Wrapper bg={background}>
       <StyledGrid>
-        <Badge>{content.badge}</Badge>
+        <Badge>{badge}</Badge>
         <Content>
           <Title size="xlarge" as="h1">
-            {content.title}
+            {title}
           </Title>
           <Text size="xlarge" as="h2">
-            {content.description}
+            {description}
           </Text>
           <Ribbon />
-          <CopyText text={content.install} />
+          <CopyText text={install} />
           {renderButton}
         </Content>
         <Nav size="large" as="ul">
-          {content.nav.map((navItem, index) => {
+          {nav.map((navItem, index) => {
             return (
               <Text size="large" as="li" key={`navItem-${index}`}>
                 <Link href={navItem.href}>{navItem.label}</Link>
@@ -149,29 +157,30 @@ const Header = ({ content, linkComponent }) => {
 };
 
 Header.propTypes = {
+  /* React-router <Link> component? */
   linkComponent: PropTypes.any.isRequired,
-  content: PropTypes.shape({
-    /* Optional background image for entire header */
-    background: PropTypes.string,
-    /* Name of OSS project */
-    title: PropTypes.string,
-    /* Short description of OSS Project */
-    description: PropTypes.string,
-    /* Quick instructions for installation, e.g. `npm install renature` */
-    install: PropTypes.string,
-    /* Button that appears next to install instructions */
-    button: PropTypes.shape({
+  /* Optional background image for entire header */
+  background: PropTypes.string,
+  /* See: `formidable-oss-badges` repo */
+  badge: PropTypes.node,
+  /* Name of OSS project */
+  title: PropTypes.string,
+  /* Short description of OSS Project */
+  description: PropTypes.string,
+  /* Quick instructions for installation, e.g. `npm install renature` */
+  install: PropTypes.string,
+  /* Button that appears next to install instructions */
+  button: PropTypes.shape({
+    label: PropTypes.string,
+    href: PropTypes.string,
+  }),
+  /* Nav menu for OSS project site (typically Docs, Gallery, Issues, Github) */
+  nav: PropTypes.arrayOf(
+    PropTypes.shape({
       label: PropTypes.string,
       href: PropTypes.string,
-    }),
-    /* Nav menu for OSS project site (typically Docs, Gallery, Issues, Github) */
-    nav: PropTypes.arrayOf(
-      PropTypes.shape({
-        label: PropTypes.string,
-        href: PropTypes.string,
-      })
-    ),
-  }),
+    })
+  ),
 };
 
 export default Header;

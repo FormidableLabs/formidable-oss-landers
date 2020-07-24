@@ -18,6 +18,7 @@ export const defaultButtonStyles = css`
 export const lightButtonStyles = css`
   background-color: ${(props) => props.theme.colors.lighterNeutral};
   color: ${(props) => props.theme.colors.darkNeutral};
+
   &:not([disabled]):focus,
   &:not([disabled]):hover {
     background-color: ${(props) => props.theme.colors.lightPrimary};

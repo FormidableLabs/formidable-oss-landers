@@ -14,9 +14,8 @@ const ButtonWrapper = styled.div`
   margin-top: ${(props) => props.theme.spacing(4)};
 `;
 
-const GetStarted = ({ content, linkComponent }) => {
+const GetStarted = ({ title, description, button, linkComponent }) => {
   const Link = linkComponent;
-  const { button } = content;
   const renderButton =
     button && button.label && button.href ? (
       <Button as={Link} href={button.href}>
@@ -26,9 +25,9 @@ const GetStarted = ({ content, linkComponent }) => {
 
   return (
     <Wrapper>
-      <Section.Title>{content.title}</Section.Title>
+      <Section.Title>{title}</Section.Title>
       <Grid>
-        <Section.Text>{content.description}</Section.Text>
+        <Section.Text>{description}</Section.Text>
         <ButtonWrapper>{renderButton}</ButtonWrapper>
       </Grid>
     </Wrapper>
@@ -36,17 +35,15 @@ const GetStarted = ({ content, linkComponent }) => {
 };
 
 GetStarted.propTypes = {
-  linkComponent: PropTypes.any.isRequired,
-  content: PropTypes.shape({
-    /* Section title that defaults to "Get Started" */
-    title: PropTypes.string,
-    /* One sentence about how to get started using this thing.  */
-    description: PropTypes.string,
-    button: PropTypes.shape({
-      label: PropTypes.string,
-      href: PropTypes.string,
-    }),
-  }).isRequired,
+  linkComponent: PropTypes.any,
+  /* Section title that defaults to "Get Started" */
+  title: PropTypes.string,
+  /* One sentence about how to get started using this thing.  */
+  description: PropTypes.string,
+  button: PropTypes.shape({
+    label: PropTypes.string,
+    href: PropTypes.string,
+  }),
 };
 
 GetStarted.defaultProps = {

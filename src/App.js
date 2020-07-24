@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import Features from "./components/Features";
 import Preview from "./components/Preview";
 import GetStarted from "./components/GetStarted";
-// import MoreOSS from "./components/MoreOSS";
+import FeaturedOSS from "./components/FeaturedOSS";
 import Footer from "./components/Footer";
 
 import config from "./example/config";
@@ -17,16 +17,11 @@ const Container = styled.div`
 function App() {
   return (
     <Container>
-      <Header content={config.header} linkComponent={config.linkComponent} />
-      <Features content={config.features} />
-      <Preview content={config.preview} />
-      <GetStarted
-        content={config.getStarted}
-        linkComponent={config.linkComponent}
-      />
-      {/* 
-      <MoreOSS content={config.oss} />
-      */}
+      <Header {...config.header} linkComponent={config.linkComponent} />
+      <Features {...config.features} />
+      <Preview {...config.preview} />
+      <GetStarted {...config.getStarted} linkComponent={config.linkComponent} />
+      <FeaturedOSS {...config.featuredOss} />
       <Footer />
     </Container>
   );

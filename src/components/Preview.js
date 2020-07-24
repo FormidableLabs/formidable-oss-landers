@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
+import nightOwl from "prism-react-renderer/themes/nightOwl";
 
 import Grid, { breakGrid } from "./Grid";
 import Section from "./Section";
@@ -91,26 +92,28 @@ function removeImportFromPreview(code) {
   return code.replace(importRegex, "");
 }
 
-const Preview = ({ content }) => {
-  const { title, examples } = content;
-
+const Preview = ({ title, list, theme }) => {
   return (
     <Wrapper>
       <Section.Title>{title}</Section.Title>
       <StyledGrid>
-        {examples.map((example, index) => {
+        {list.map((example, index) => {
           const isOdd = index % 2 > 0;
+
           return (
             <React.Fragment key={`example-${index}`}>
               <TextWrapper isOdd={isOdd}>
                 <Title size="medium" color="lightPrimary">
                   {example.title}
                 </Title>
-                <Section.Text>{example.description}</Section.Text>
+                {example.description ? (
+                  <Section.Text>{example.description}</Section.Text>
+                ) : null}
               </TextWrapper>
               <LiveProvider
-                {...example.props}
+                theme={theme}
                 transformCode={removeImportFromPreview}
+                {...example.props}
               >
                 <CodeWrapper gridRow={isOdd ? index + 1 : ""}>
                   <StyledPreview />
@@ -127,16 +130,25 @@ const Preview = ({ content }) => {
 };
 
 Preview.propTypes = {
-  content: PropTypes.shape({
-    title: PropTypes.string,
-    examples: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string,
-        description: PropTypes.string,
-        props: LiveProvider.PropTypes,
-      })
-    ),
-  }),
+  /* Main benefit of using this software */
+  title: PropTypes.string,
+  /* Syntax highlighting theme for the Live Code Editor */
+  theme: PropTypes.object,
+  /* An array of code examples */
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      /* Title for code example */
+      title: PropTypes.string,
+      /* Description for code example */
+      description: PropTypes.string,
+      /* Props to pass to LiveProvider */
+      props: LiveProvider.PropTypes,
+    })
+  ),
+};
+
+Preview.defaultProps = {
+  theme: nightOwl,
 };
 
 export default Preview;

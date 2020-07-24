@@ -32,14 +32,12 @@ const StyledSubtitle = styled(Title)`
   margin-top: ${(props) => props.theme.spacing(3)};
 `;
 
-const Features = ({ content }) => {
-  const { items } = content;
-
+const Features = ({ title, list }) => {
   return (
     <Wrapper>
-      <Section.Title>{content.title}</Section.Title>
+      <Section.Title>{title}</Section.Title>
       <StyledGrid>
-        {items.map((feature, index) => {
+        {list.map((feature, index) => {
           return (
             <Feature key={`feature-${index}`}>
               {feature.image ? <Image src={feature.image} alt="" /> : null}
@@ -54,21 +52,19 @@ const Features = ({ content }) => {
 };
 
 Features.propTypes = {
-  content: PropTypes.shape({
-    /* Section title defaults to "Features" */
-    title: PropTypes.string,
-    /* An array of each feature */
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        /* Illustration/Visual: value for `src` of an <img> element */
-        image: PropTypes.string,
-        /* Feature heading */
-        title: PropTypes.string,
-        /* Feature short paragraph */
-        description: PropTypes.string,
-      })
-    ),
-  }),
+  /* Section title defaults to "Features" */
+  title: PropTypes.string,
+  /* An array of each feature */
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      /* Illustration/Visual: value for `src` of an <img> element */
+      image: PropTypes.string,
+      /* Feature heading */
+      title: PropTypes.string,
+      /* Feature short paragraph */
+      description: PropTypes.string,
+    })
+  ),
 };
 
 Features.defaultProps = {

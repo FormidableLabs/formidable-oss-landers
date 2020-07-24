@@ -1,7 +1,7 @@
 /* Example config for Renature OSS Lander */
 import React from "react";
 import Link from "../components/Link";
-import { FeaturedBadge } from "formidable-oss-badges";
+import { FeaturedBadge, ProjectBadge } from "formidable-oss-badges";
 import nightOwl from "prism-react-renderer/themes/nightOwl";
 
 import featureSvg from "./assets/feature-1.svg";
@@ -42,8 +42,7 @@ const config = {
     ],
   },
   features: {
-    title: "Features",
-    items: [
+    list: [
       {
         image: featureSvg,
         title: "Declarative React hooks for animating with ease",
@@ -66,7 +65,8 @@ const config = {
   },
   preview: {
     title: "Beautiful, Simple Animations",
-    examples: [
+    theme: nightOwl,
+    list: [
       {
         title: "Animate Intuitively, Animate With Joy",
         description:
@@ -101,7 +101,7 @@ class Counter extends React.Component {
   }
 }
 `,
-          theme: nightOwl,
+          scope: ``,
         },
       },
       {
@@ -138,7 +138,6 @@ class Counter extends React.Component {
   }
 }
 `,
-          theme: nightOwl,
         },
       },
       {
@@ -175,13 +174,11 @@ class Counter extends React.Component {
   }
 }
 `,
-          theme: nightOwl,
         },
       },
     ],
   },
   getStarted: {
-    title: "Get Started",
     description:
       "Renature comes equipped with a lightweight set of production ready React hooks. Dig into the documentation to start animating!",
     button: {
@@ -189,7 +186,46 @@ class Counter extends React.Component {
       href: "docs/",
     },
   },
-  oss: {},
+  featuredOss: {
+    title: "More Open Source from Formidable",
+    list: [
+      {
+        badge: <FeaturedBadge name="victory" />,
+        href: "https://formidable.com/open-source/victory",
+        title: "Victory",
+        description:
+          "An ecosystem of modular data visualization components for React. Friendly and flexible.",
+      },
+      {
+        badge: <FeaturedBadge name="urql" />,
+        href: "https://formidable.com/open-source/urql",
+        title: "urql",
+        description:
+          "Universal React Query Library is a blazing-fast GraphQL client, exposed as a set of ReactJS components.",
+      },
+      {
+        badge: <FeaturedBadge name="spectacle" />,
+        href: "https://formidable.com/open-source/spectacle",
+        title: "Spectacle",
+        description:
+          "A React.js based library for creating sleek presentations using JSX syntax that gives you the ability to live demo your code.",
+      },
+      {
+        badge: (
+          <ProjectBadge
+            isHoverable={false}
+            color="#80EAC7"
+            abbreviation="Rp"
+            description="Runpkg"
+          />
+        ),
+        href: "https://formidable.com/open-source/runpkg",
+        title: "Runpkg",
+        description:
+          "The online package explorer. Runpkg turns any npm package into an interactive and informative browsing experience.",
+      },
+    ],
+  },
 };
 
 export default config;

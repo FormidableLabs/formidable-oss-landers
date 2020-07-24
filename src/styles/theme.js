@@ -8,6 +8,7 @@ const universalColors = {
   neutral: "#717171",
   darkNeutral: "#3B3B3B",
   darkerNeutral: "#1F1F1F",
+  black: "#000",
 };
 
 const gradients = {
