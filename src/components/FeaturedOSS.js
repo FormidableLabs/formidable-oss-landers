@@ -17,10 +17,9 @@ const StyledGrid = styled(Grid)`
   grid-template-columns: 1fr;
 
   ${tablet`
+    grid-gap: ${(props) => props.theme.spacing(8)};
+    grid-template-columns: 1fr 1fr;
     margin-top: ${(props) => props.theme.spacing(8)};
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: ${(props) => props.theme.spacing(4)};
-    grid-row-gap: ${(props) => props.theme.spacing(8)};
     
     text-align: left;
   `}
@@ -28,27 +27,28 @@ const StyledGrid = styled(Grid)`
 
 const Project = styled.div`
   display: flex;
+  flex-direction: column;
 
   ${tablet`
+    flex-direction: row;
     grid-column: span 1;
   `};
 `;
 
 const BadgeWrapper = styled.div`
-  margin: ${(props) => props.theme.spacing(8)} auto 0;
-  width: 100%;
   max-width: 90px;
+  margin: ${(props) => props.theme.spacing(8)} auto 0;
 
   ${tablet`
     margin-top: 0;
+    margin-right: ${(props) => props.theme.spacing(3)};
+    max-width: none;
+    flex: 1;
   `};
-
-  ${desktop`
-    max-width: 150px;
-  `}
 `;
 
 const TextWrapper = styled.div`
+  flex: 2;
   ${linkStyles({ color: "white" })};
 `;
 
@@ -62,7 +62,7 @@ const ButtonWrapper = styled.div`
 
   ${tablet`
     margin-top: 0;
-    grid-column: span 4;
+    grid-column: span 2;
     text-align: center;
   `};
 `;
