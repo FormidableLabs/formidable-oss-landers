@@ -39,7 +39,7 @@ function getStyles(styleType) {
       // Textfield Input
       return css`
         font-size: 12px;
-        letter-spacing: 0.2px;
+        letter-spacing: 0.02em;
         ${desktop`font-size: 14px;`};
       `;
     case "xxsmall":
@@ -47,7 +47,7 @@ function getStyles(styleType) {
       return css`
         font-size: 12px;
         line-height: ${18 / 12};
-        letter-spacing: 0.86px;
+        letter-spacing: 0.07em;
         text-transform: uppercase;
       `;
     case "medium":

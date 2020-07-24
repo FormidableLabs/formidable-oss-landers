@@ -41,8 +41,8 @@ const StyledButton = styled.button
     type: props.as ? undefined : "button",
   }))
   .withConfig({
-    // do not pass 'color' to DOM
-    shouldForwardProp: (prop) => !["color"].includes(prop),
+    // do not pass 'color' or 'full' to DOM
+    shouldForwardProp: (prop) => !["color", "full"].includes(prop),
   })`
   ${defaultButtonStyles};
   ${(props) => props.color === "light" && lightButtonStyles};

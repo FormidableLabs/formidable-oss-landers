@@ -78,11 +78,11 @@ export function linkStyles({ color }) {
 
         a:hover,
         a:focus {
-          color: ${(props) => props.theme.colors.lighterPrimary};
+          color: ${(props) => props.theme.colors.lightPrimary};
         }
 
         a:active {
-          color: ${(props) => props.theme.colors.lightPrimary};
+          color: ${(props) => props.theme.colors.lighterPrimary};
         }
       `;
     default:
