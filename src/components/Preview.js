@@ -9,8 +9,8 @@ import Text from "./Text";
 import { mobileOnly, tablet, desktop } from "../styles";
 
 const Wrapper = styled.div`
-  padding-top: ${(props) => props.theme.spacing(5)};
-  padding-bottom: ${(props) => props.theme.spacing(5)};
+  padding-top: ${(props) => props.theme.spacing(8)};
+  padding-bottom: ${(props) => props.theme.spacing(8)};
 
   background: ${(props) => props.theme.gradients.reverseDarkGradient};
   color: ${(props) => props.theme.colors.white};
@@ -23,26 +23,30 @@ const StyledGrid = styled(Grid)`
   ${desktop`
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: ${(props) => props.theme.spacing(4)};
-    grid-row-gap: ${(props) => props.theme.spacing(14)};
+    grid-row-gap: ${(props) => props.theme.spacing(20)};
+    margin-top: ${(props) => props.theme.spacing(8)};
   `};
 `;
 
-const Copy = styled.div`
-  margin-top: ${(props) => props.theme.spacing(3)};
+const TextWrapper = styled.div`
+  margin-top: ${(props) => props.theme.spacing(12)};
+
+  &:nth-child(1) {
+    margin-top: ${(props) => props.theme.spacing(6)};
+  }
+
   ${desktop`
-    grid-column: span 1;
+    grid-column: ${(props) => (props.isOdd ? 4 : 1)};
+    margin-top: 0;
     text-align: left;
-    ${(props) =>
-      props.isOdd &&
-      `
-        border: 1px solid black;
-        grid-column: 4 / span 1;
-      `};
+
+    &:nth-child(1) {
+      margin-top: 0;
+    }
   `};
 `;
 
 const StyledTitle = styled(Title)`
-  margin-top: ${(props) => props.theme.spacing(4)};
   color: ${(props) => props.theme.colors.lightPrimary};
 `;
 
@@ -51,14 +55,17 @@ const StyledText = styled(Text)`
   max-width: 60ch;
 `;
 
-const StyledCodeWrapper = styled.div`
+const CodeWrapper = styled.div`
   margin-top: ${(props) => props.theme.spacing(4)};
 
   ${tablet`
     box-shadow: -5px 5px 0px 0px rgba(0, 0, 0, 0.5);
   `};
+
   ${desktop`
     grid-column: span 3;
+    ${(props) => props.gridRow && `grid-row: ${props.gridRow};`};
+    margin-top: 0;
   `};
 `;
 
@@ -86,6 +93,7 @@ const StyledEditor = styled(LiveEditor)`
 
     box-shadow: -5px 5px 0px 0px rgba(0, 0, 0, 0.5);
   `};
+
   max-height: ${(props) => props.theme.spacing(40)};
   overflow: auto !important;
 `;
@@ -106,19 +114,19 @@ const Preview = ({ content }) => {
           const isOdd = index % 2 > 0;
           return (
             <React.Fragment key={`example-${index}`}>
-              <Copy isOdd={isOdd}>
+              <TextWrapper isOdd={isOdd}>
                 <StyledTitle size="medium">{example.title}</StyledTitle>
                 <StyledText>{example.description}</StyledText>
-              </Copy>
+              </TextWrapper>
               <LiveProvider
                 {...example.props}
                 transformCode={removeImportFromPreview}
               >
-                <StyledCodeWrapper>
+                <CodeWrapper gridRow={isOdd ? index + 1 : ""}>
                   <StyledPreview />
                   <StyledError />
                   <StyledEditor />
-                </StyledCodeWrapper>
+                </CodeWrapper>
               </LiveProvider>
             </React.Fragment>
           );
