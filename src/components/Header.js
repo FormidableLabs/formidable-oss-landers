@@ -113,11 +113,9 @@ const Header = ({ content, linkComponent }) => {
   const { button } = content;
   const renderButton =
     button && button.label && button.href ? (
-      <Link href={button.href}>
-        <Button full as="span" color="light">
-          {button.label}
-        </Button>
-      </Link>
+      <Button full as={Link} href={button.href} color="light">
+        {button.label}
+      </Button>
     ) : null;
 
   // TODO: Mobile nav switches to "Learn More"

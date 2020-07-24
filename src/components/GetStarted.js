@@ -16,9 +16,9 @@ const GetStarted = ({ content, linkComponent }) => {
   const { button } = content;
   const renderButton =
     button && button.label && button.href ? (
-      <Link href={button.href}>
-        <Button as="span">{button.label}</Button>
-      </Link>
+      <Button as={Link} href={button.href}>
+        {button.label}
+      </Button>
     ) : null;
   return (
     <Wrapper>
