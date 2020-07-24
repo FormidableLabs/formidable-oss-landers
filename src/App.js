@@ -10,20 +10,20 @@ import Footer from "./components/Footer";
 
 import config from "./example/config";
 
-const Container = styled.div`
+const Wrapper = styled.div`
   width: 100%;
 `;
 
 function App() {
   return (
-    <Container>
+    <Wrapper>
       <Header {...config.header} linkComponent={config.linkComponent} />
       <Features {...config.features} />
       <Preview {...config.preview} />
       <GetStarted {...config.getStarted} linkComponent={config.linkComponent} />
       <FeaturedOSS {...config.featuredOss} />
       <Footer />
-    </Container>
+    </Wrapper>
   );
 }
 
