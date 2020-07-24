@@ -8,7 +8,10 @@ import Button from "./Button";
 
 const Wrapper = styled(Section)`
   background-color: ${(props) => props.theme.colors.lighterNeutral};
-  text-align: center;
+`;
+
+const ButtonWrapper = styled.div`
+  margin-top: ${(props) => props.theme.spacing(4)};
 `;
 
 const GetStarted = ({ content, linkComponent }) => {
@@ -20,12 +23,13 @@ const GetStarted = ({ content, linkComponent }) => {
         {button.label}
       </Button>
     ) : null;
+
   return (
     <Wrapper>
       <Section.Title>{content.title}</Section.Title>
       <Grid>
         <Section.Text>{content.description}</Section.Text>
-        {renderButton}
+        <ButtonWrapper>{renderButton}</ButtonWrapper>
       </Grid>
     </Wrapper>
   );

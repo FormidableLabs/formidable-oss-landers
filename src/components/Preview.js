@@ -4,9 +4,8 @@ import styled from "styled-components";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 
 import Grid, { breakGrid } from "./Grid";
-import Title from "./Title";
-import Text from "./Text";
 import Section from "./Section";
+import Title from "./Title";
 import { mobileOnly, tablet, desktop } from "../styles";
 
 const Wrapper = styled(Section)`
@@ -94,6 +93,7 @@ function removeImportFromPreview(code) {
 
 const Preview = ({ content }) => {
   const { title, examples } = content;
+
   return (
     <Wrapper>
       <Section.Title>{title}</Section.Title>

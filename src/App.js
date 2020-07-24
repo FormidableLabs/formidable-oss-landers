@@ -6,7 +6,7 @@ import Features from "./components/Features";
 import Preview from "./components/Preview";
 import GetStarted from "./components/GetStarted";
 // import MoreOSS from "./components/MoreOSS";
-// import Footer from "./components/Footer";
+import Footer from "./components/Footer";
 
 import config from "./example/config";
 
@@ -26,7 +26,8 @@ function App() {
       />
       {/* 
       <MoreOSS content={config.oss} />
-      <Footer /> */}
+      */}
+      <Footer />
     </Container>
   );
 }

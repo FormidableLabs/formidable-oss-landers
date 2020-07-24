@@ -10,7 +10,6 @@ import { tablet } from "../styles";
 const Wrapper = styled(Section).attrs({ padding: 5 })`
   background-color: ${(props) => props.theme.colors.lighterNeutral};
   color: ${(props) => props.theme.colors.darkNeutral};
-  text-align: center;
 `;
 
 const StyledGrid = styled(Grid)`
@@ -35,6 +34,7 @@ const StyledSubtitle = styled(Title)`
 
 const Features = ({ content }) => {
   const { items } = content;
+
   return (
     <Wrapper>
       <Section.Title>{content.title}</Section.Title>

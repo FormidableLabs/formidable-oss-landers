@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import CopyText from "./CopyText";
 import Button from "./Button";
+import CopyText from "./CopyText";
 import Grid from "./Grid";
 import Ribbon from "./Ribbon";
 import Text from "./Text";

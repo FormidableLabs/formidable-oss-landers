@@ -47,11 +47,8 @@ const StyledButton = styled.button
   ${defaultButtonStyles};
   ${(props) => props.color === "light" && lightButtonStyles};
   ${(props) => props.color === "dark" && darkButtonStyles};
-  ${(props) =>
-    props.full &&
-    css`
-      display: block;
-    `};
+
+  display: ${(props) => (props.full ? `block` : `inline-block`)};
 `;
 
 const Button = ({ children, className, ...props }) => {
