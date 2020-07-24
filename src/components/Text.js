@@ -68,8 +68,8 @@ function getStyles(styleType) {
 }
 
 const Text = styled.p.withConfig({
-  // do not pass 'color' to DOM
-  shouldForwardProp: (prop) => !["color"].includes(prop),
+  // do not pass 'color' or 'align' to DOM
+  shouldForwardProp: (prop) => !["color", "align"].includes(prop),
 })`
   ${(props) => getStyles(props.size)};
   ${(props) => props.color && color(props.color)};

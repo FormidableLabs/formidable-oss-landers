@@ -3,14 +3,11 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import Grid from "./Grid";
+import Section from "./Section";
 import Title from "./Title";
-import Text from "./Text";
 import { tablet } from "../styles";
 
-const Wrapper = styled.div`
-  padding-top: ${(props) => props.theme.spacing(5)};
-  padding-bottom: ${(props) => props.theme.spacing(5)};
-
+const Wrapper = styled(Section).attrs({ padding: 5 })`
   background-color: ${(props) => props.theme.colors.lighterNeutral};
   color: ${(props) => props.theme.colors.darkNeutral};
   text-align: center;
@@ -32,26 +29,22 @@ const Image = styled.img`
   max-width: ${(props) => props.theme.spacing(20)};
 `;
 
-const StyledTitle = styled(Title)`
+const StyledSubtitle = styled(Title)`
   margin-top: ${(props) => props.theme.spacing(3)};
 `;
 
-const StyledText = styled(Text)`
-  margin: ${(props) => props.theme.spacing(2)} auto 0;
-  max-width: 60ch;
-`;
-
 const Features = ({ content }) => {
+  const { items } = content;
   return (
     <Wrapper>
-      <Title size="large">Features</Title>
+      <Section.Title>{content.title}</Section.Title>
       <StyledGrid>
-        {content.map((feature, index) => {
+        {items.map((feature, index) => {
           return (
             <Feature key={`feature-${index}`}>
               {feature.image ? <Image src={feature.image} alt="" /> : null}
-              <StyledTitle size="medium">{feature.title}</StyledTitle>
-              <StyledText>{feature.description}</StyledText>
+              <StyledSubtitle size="medium">{feature.title}</StyledSubtitle>
+              <Section.Text>{feature.description}</Section.Text>
             </Feature>
           );
         })}
@@ -61,15 +54,25 @@ const Features = ({ content }) => {
 };
 
 Features.propTypes = {
-  content: PropTypes.arrayOf(
-    PropTypes.shape({
-      /* Illustration/Visual: value for `src` of an <img> element */
-      image: PropTypes.string,
-      /* Feature heading */
-      title: PropTypes.string,
-      /* Feature short paragraph */
-      description: PropTypes.string,
-    })
-  ),
+  content: PropTypes.shape({
+    /* Section title defaults to "Features" */
+    title: PropTypes.string,
+    /* An array of each feature */
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        /* Illustration/Visual: value for `src` of an <img> element */
+        image: PropTypes.string,
+        /* Feature heading */
+        title: PropTypes.string,
+        /* Feature short paragraph */
+        description: PropTypes.string,
+      })
+    ),
+  }),
 };
+
+Features.defaultProps = {
+  title: "Features",
+};
+
 export default Features;

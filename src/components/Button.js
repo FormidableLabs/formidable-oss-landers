@@ -9,6 +9,7 @@ export const defaultButtonStyles = css`
   font-size: 12px;
   letter-spacing: 0.1em;
   line-height: 1.2;
+  text-align: center;
   text-transform: uppercase;
 
   ${desktop`font-size: 14px;`};
@@ -35,18 +36,27 @@ export const darkButtonStyles = css`
   }
 `;
 
-const StyledButton = styled.button.withConfig({
-  // do not pass 'color' to DOM
-  shouldForwardProp: (prop) => !["color"].includes(prop),
-})`
+const StyledButton = styled.button
+  .attrs((props) => ({
+    type: props.as ? undefined : "button",
+  }))
+  .withConfig({
+    // do not pass 'color' to DOM
+    shouldForwardProp: (prop) => !["color"].includes(prop),
+  })`
   ${defaultButtonStyles};
   ${(props) => props.color === "light" && lightButtonStyles};
   ${(props) => props.color === "dark" && darkButtonStyles};
+  ${(props) =>
+    props.full &&
+    css`
+      display: block;
+    `};
 `;
 
-const Button = ({ children, ...props }) => {
+const Button = ({ children, className, ...props }) => {
   return (
-    <StyledButton type="button" {...props}>
+    <StyledButton className={className} {...props}>
       {children}
     </StyledButton>
   );
@@ -54,10 +64,12 @@ const Button = ({ children, ...props }) => {
 
 Button.defaultProps = {
   color: "dark",
+  full: false,
 };
 
 Button.propTypes = {
   color: PropTypes.oneOf(["light", "dark"]),
+  full: PropTypes.bool,
 };
 
 export default Button;

@@ -24,7 +24,7 @@ const config = {
     description:
       "A physics-based animation library for React inspired by the natural world.",
     install: "npm install renature",
-    heroButton: {
+    button: {
       label: "Documentation",
       href: "docs/",
     },
@@ -41,26 +41,29 @@ const config = {
       },
     ],
   },
-  features: [
-    {
-      image: featureSvg,
-      title: "Declarative React hooks for animating with ease",
-      description:
-        "Tweak your physics parameters, set from and to values for your CSS properties, and let renature do the rest.",
-    },
-    {
-      image: featureSvg,
-      title: "Gravity, Friction, Fluid Resistance, and more",
-      description:
-        "Renature explores forces that other physics-based animation libraries typically leave out, giving your animations unique feeling and intuitive motion.",
-    },
-    {
-      image: featureSvg,
-      title: "An animation library for physics nerds",
-      description:
-        "Renature emphasizes mathematical precision and correctness, all backed by the type safety and speed of ReasonML.",
-    },
-  ],
+  features: {
+    title: "Features",
+    items: [
+      {
+        image: featureSvg,
+        title: "Declarative React hooks for animating with ease",
+        description:
+          "Tweak your physics parameters, set from and to values for your CSS properties, and let renature do the rest.",
+      },
+      {
+        image: featureSvg,
+        title: "Gravity, Friction, Fluid Resistance, and more",
+        description:
+          "Renature explores forces that other physics-based animation libraries typically leave out, giving your animations unique feeling and intuitive motion.",
+      },
+      {
+        image: featureSvg,
+        title: "An animation library for physics nerds",
+        description:
+          "Renature emphasizes mathematical precision and correctness, all backed by the type safety and speed of ReasonML.",
+      },
+    ],
+  },
   preview: {
     title: "Beautiful, Simple Animations",
     examples: [
@@ -177,7 +180,15 @@ class Counter extends React.Component {
       },
     ],
   },
-  getStarted: {},
+  getStarted: {
+    title: "Get Started",
+    description:
+      "Renature comes equipped with a lightweight set of production ready React hooks. Dig into the documentation to start animating!",
+    button: {
+      label: "Documentation",
+      href: "docs/",
+    },
+  },
   oss: {},
 };
 

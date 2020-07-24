@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import { defaultButtonStyles, lightButtonStyles } from "./Button";
 import CopyText from "./CopyText";
+import Button from "./Button";
 import Grid from "./Grid";
 import Ribbon from "./Ribbon";
 import Text from "./Text";
@@ -16,7 +16,9 @@ const Wrapper = styled.div`
   padding-bottom: ${(props) => props.theme.spacing(4)};
 
   background: ${(props) => props.theme.gradients.darkGradient};
-  ${(props) => props.bg && `
+  ${(props) =>
+    props.bg &&
+    `
     background-image: url(${props.bg}); 
     background-size: cover;
   `};
@@ -32,7 +34,7 @@ const Wrapper = styled.div`
 `;
 
 const StyledGrid = styled(Grid)`
-  grid-template-areas: 
+  grid-template-areas:
     "badge"
     "content"
     "nav";
@@ -106,24 +108,18 @@ const Nav = styled(Text)`
   `};
 `;
 
-const ButtonStyle = styled.span`
-  ${defaultButtonStyles};
-  ${lightButtonStyles};
-
-  display: block;
-  text-align: center;
-`;
-
 const Header = ({ content, linkComponent }) => {
   const Link = linkComponent;
-  const { heroButton } = content;
-  const renderHeroButton =
-    heroButton && heroButton.label && heroButton.href ? (
-      <Link href={heroButton.href}>
-        <ButtonStyle>{heroButton.label}</ButtonStyle>
+  const { button } = content;
+  const renderButton =
+    button && button.label && button.href ? (
+      <Link href={button.href}>
+        <Button full as="span" color="light">
+          {button.label}
+        </Button>
       </Link>
     ) : null;
-  
+
   // TODO: Mobile nav switches to "Learn More"
   return (
     <Wrapper bg={content.background}>
@@ -138,7 +134,7 @@ const Header = ({ content, linkComponent }) => {
           </Text>
           <Ribbon />
           <CopyText text={content.install} />
-          {renderHeroButton}
+          {renderButton}
         </Content>
         <Nav size="large" as="ul">
           {content.nav.map((navItem, index) => {
@@ -155,7 +151,7 @@ const Header = ({ content, linkComponent }) => {
 };
 
 Header.propTypes = {
-  linkComponent: PropTypes.any,
+  linkComponent: PropTypes.any.isRequired,
   content: PropTypes.shape({
     /* Optional background image for entire header */
     background: PropTypes.string,
@@ -166,7 +162,7 @@ Header.propTypes = {
     /* Quick instructions for installation, e.g. `npm install renature` */
     install: PropTypes.string,
     /* Button that appears next to install instructions */
-    heroButton: PropTypes.shape({
+    button: PropTypes.shape({
       label: PropTypes.string,
       href: PropTypes.string,
     }),

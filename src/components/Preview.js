@@ -6,15 +6,12 @@ import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import Grid, { breakGrid } from "./Grid";
 import Title from "./Title";
 import Text from "./Text";
+import Section from "./Section";
 import { mobileOnly, tablet, desktop } from "../styles";
 
-const Wrapper = styled.div`
-  padding-top: ${(props) => props.theme.spacing(8)};
-  padding-bottom: ${(props) => props.theme.spacing(8)};
-
+const Wrapper = styled(Section)`
   background: ${(props) => props.theme.gradients.reverseDarkGradient};
   color: ${(props) => props.theme.colors.white};
-  text-align: center;
 `;
 
 const StyledGrid = styled(Grid)`
@@ -44,15 +41,6 @@ const TextWrapper = styled.div`
       margin-top: 0;
     }
   `};
-`;
-
-const StyledTitle = styled(Title)`
-  color: ${(props) => props.theme.colors.lightPrimary};
-`;
-
-const StyledText = styled(Text)`
-  margin: ${(props) => props.theme.spacing(2)} auto 0;
-  max-width: 60ch;
 `;
 
 const CodeWrapper = styled.div`
@@ -108,15 +96,17 @@ const Preview = ({ content }) => {
   const { title, examples } = content;
   return (
     <Wrapper>
-      <Title size="large">{title}</Title>
+      <Section.Title>{title}</Section.Title>
       <StyledGrid>
         {examples.map((example, index) => {
           const isOdd = index % 2 > 0;
           return (
             <React.Fragment key={`example-${index}`}>
               <TextWrapper isOdd={isOdd}>
-                <StyledTitle size="medium">{example.title}</StyledTitle>
-                <StyledText>{example.description}</StyledText>
+                <Title size="medium" color="lightPrimary">
+                  {example.title}
+                </Title>
+                <Section.Text>{example.description}</Section.Text>
               </TextWrapper>
               <LiveProvider
                 {...example.props}

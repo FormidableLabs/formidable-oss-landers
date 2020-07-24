@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Header from "./components/Header";
 import Features from "./components/Features";
 import Preview from "./components/Preview";
-// import GetStarted from "./components/GetStarted";
+import GetStarted from "./components/GetStarted";
 // import MoreOSS from "./components/MoreOSS";
 // import Footer from "./components/Footer";
 
@@ -20,8 +20,11 @@ function App() {
       <Header content={config.header} linkComponent={config.linkComponent} />
       <Features content={config.features} />
       <Preview content={config.preview} />
+      <GetStarted
+        content={config.getStarted}
+        linkComponent={config.linkComponent}
+      />
       {/* 
-      <GetStarted content={config.getStarted} />
       <MoreOSS content={config.oss} />
       <Footer /> */}
     </Container>
