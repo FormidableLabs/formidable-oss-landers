@@ -7,10 +7,7 @@ import Section from "./Section";
 import Title from "./Title";
 import { tablet } from "../styles";
 
-const Wrapper = styled(Section).attrs({ padding: 5 })`
-  background-color: ${(props) => props.theme.colors.lighterNeutral};
-  color: ${(props) => props.theme.colors.darkNeutral};
-`;
+const Wrapper = styled(Section).attrs({ color: "light", padding: 5 })``;
 
 const StyledGrid = styled(Grid)`
   grid-template-columns: 1fr;

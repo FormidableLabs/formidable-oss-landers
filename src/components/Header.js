@@ -82,11 +82,24 @@ const Content = styled.div`
   `};
 `;
 
+const ButtonsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  margin-top: ${(props) => props.theme.spacing(9)};
+  margin-bottom: ${(props) => props.theme.spacing(1)};
+
+  ${tablet`
+    margin-top: ${(props) => props.theme.spacing(5)};
+  `};
+`;
+
 const Nav = styled(Text)`
   grid-area: nav;
 
-  margin-top: 1.6em;
-  padding-top: 1.6em;
+  margin-top: ${(props) => props.theme.spacing(3)};
+  padding-top: ${(props) => props.theme.spacing(2)};
   border-top: 2px solid ${(props) => props.theme.colors.white};
 
   display: flex;
@@ -139,8 +152,10 @@ const Header = ({
             {description}
           </Text>
           <Ribbon />
-          <CopyText text={install} />
-          {renderButton}
+          <ButtonsWrapper>
+            <CopyText text={install} />
+            {renderButton}
+          </ButtonsWrapper>
         </Content>
         <Nav size="large" as="ul">
           {nav.map((navItem, index) => {

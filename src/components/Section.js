@@ -1,14 +1,34 @@
 import React from "react";
-import styled from "styled-components";
+import PropTypes from "prop-types";
+import styled, { css } from "styled-components";
 
 import Title from "./Title";
 import Text from "./Text";
+
+const primaryStyles = css`
+  background: ${(props) => props.theme.gradients.reverseDarkGradient};
+  color: ${(props) => props.theme.colors.white};
+`;
+
+const lightStyles = css`
+  background-color: ${(props) => props.theme.colors.lighterNeutral};
+  color: ${(props) => props.theme.colors.darkNeutral};
+`;
+
+const darkStyles = css`
+  background: ${(props) => props.theme.colors.black};
+  color: ${(props) => props.theme.colors.white};
+`;
 
 const StyledSection = styled.div`
   padding-top: ${(props) => props.theme.spacing(props.padding)};
   padding-bottom: ${(props) => props.theme.spacing(props.padding)};
 
   text-align: center;
+
+  ${(props) => props.color === "primary" && primaryStyles};
+  ${(props) => props.color === "light" && lightStyles};
+  ${(props) => props.color === "dark" && darkStyles};
 `;
 
 const SectionTitle = styled(Title).attrs((props) => ({
@@ -21,16 +41,21 @@ const SectionText = styled(Text)`
   max-width: 60ch;
 `;
 
-const Section = ({ children, className, padding }) => {
+const Section = ({ children, className, color, padding }) => {
   return (
-    <StyledSection className={className} padding={padding}>
+    <StyledSection className={className} padding={padding} color={color}>
       {children}
     </StyledSection>
   );
 };
 
-Section.defaultProps = {
+Section.propTypes = {
+  color: PropTypes.oneOf(["primary", "light", "dark"]),
   /* Top and bottom padding for Section (as Grid controls side padding) */
+  padding: PropTypes.number,
+};
+
+Section.defaultProps = {
   padding: 8,
 };
 

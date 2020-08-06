@@ -4,29 +4,24 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import Button from "./Button";
 import Text from "./Text";
-import { tablet } from "../styles";
 
 const Wrapper = styled.div`
+  flex: 1 0 auto;
+
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
-
-  margin-top: ${(props) => props.theme.spacing(9)};
-  margin-bottom: ${(props) => props.theme.spacing(1)};
-
-  ${tablet`
-    margin-top: ${(props) => props.theme.spacing(5)};
-  `};
 `;
 
 const StyledText = styled(Text)`
   display: inline-flex;
   align-items: center;
-  flex: 1 1 auto;
+  flex: 1 0 auto;
 
   background-color: #d5d5d5;
   padding-left: ${(props) => props.theme.spacing(2)};
+  padding-right: ${(props) => props.theme.spacing(2)};
 `;
 
 const StyledButton = styled(Button)`

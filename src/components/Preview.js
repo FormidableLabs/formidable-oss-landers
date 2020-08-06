@@ -9,10 +9,7 @@ import Section from "./Section";
 import Title from "./Title";
 import { mobileOnly, tablet, desktop } from "../styles";
 
-const Wrapper = styled(Section)`
-  background: ${(props) => props.theme.gradients.reverseDarkGradient};
-  color: ${(props) => props.theme.colors.white};
-`;
+const Wrapper = styled(Section).attrs({ color: "primary" })``;
 
 const StyledGrid = styled(Grid)`
   grid-template-columns: 1fr;

@@ -178,6 +178,17 @@ class Counter extends React.Component {
       },
     ],
   },
+  customSection: {
+    color: "dark",
+    title: "My custom section",
+    description: "I love custom sections!!",
+    components: [],
+    button: {
+      color: "dark",
+      label: "Learn more",
+      href: "docs/",
+    },
+  },
   getStarted: {
     description:
       "Renature comes equipped with a lightweight set of production ready React hooks. Dig into the documentation to start animating!",

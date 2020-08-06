@@ -6,46 +6,52 @@ import Button from "./Button";
 import Grid from "./Grid";
 import Section from "./Section";
 
-const Wrapper = styled(Section).attrs({ color: "light" })``;
-
 const ButtonWrapper = styled.div`
   margin-top: ${(props) => props.theme.spacing(4)};
 `;
 
-const GetStarted = ({ title, description, button, linkComponent }) => {
+const CustomSection = ({
+  button,
+  color,
+  components,
+  description,
+  linkComponent,
+  title,
+}) => {
   const Link = linkComponent;
   const renderButton =
     button && button.label && button.href ? (
-      <Button as={Link} href={button.href}>
+      <Button as={Link} href={button.href} color={button.color || "light"}>
         {button.label}
       </Button>
     ) : null;
 
   return (
-    <Wrapper>
+    <Section color={color}>
       <Section.Title>{title}</Section.Title>
       <Grid>
         <Section.Text>{description}</Section.Text>
+        {components}
         <ButtonWrapper>{renderButton}</ButtonWrapper>
       </Grid>
-    </Wrapper>
+    </Section>
   );
 };
 
-GetStarted.propTypes = {
+CustomSection.propTypes = {
   linkComponent: PropTypes.any,
-  /* Section title that defaults to "Get Started" */
+  color: Section.propTypes.color,
+  /* Section title */
   title: PropTypes.string,
   /* One sentence about how to get started using this thing.  */
   description: PropTypes.string,
+  /* Array of custom components */
+  components: PropTypes.array,
   button: PropTypes.shape({
+    color: Button.propTypes.color,
     label: PropTypes.string,
     href: PropTypes.string,
   }),
 };
 
-GetStarted.defaultProps = {
-  title: "Get Started",
-};
-
-export default GetStarted;
+export default CustomSection;

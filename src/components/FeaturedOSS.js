@@ -6,12 +6,9 @@ import Button from "./Button";
 import Grid from "./Grid";
 import Section from "./Section";
 import Title from "./Title";
-import { linkStyles, tablet, desktop } from "../styles";
+import { linkStyles, tablet } from "../styles";
 
-const Wrapper = styled(Section)`
-  background: ${(props) => props.theme.colors.black};
-  color: ${(props) => props.theme.colors.white};
-`;
+const Wrapper = styled(Section).attrs({ color: "dark" })``;
 
 const StyledGrid = styled(Grid)`
   grid-template-columns: 1fr;
