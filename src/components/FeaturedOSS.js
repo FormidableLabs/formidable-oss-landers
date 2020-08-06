@@ -6,7 +6,7 @@ import Button from "./Button";
 import Grid from "./Grid";
 import Section from "./Section";
 import Title from "./Title";
-import { linkStyles, tablet } from "../styles";
+import { tablet, desktop } from "../styles";
 
 const Wrapper = styled(Section).attrs({ color: "dark" })``;
 
@@ -14,30 +14,51 @@ const StyledGrid = styled(Grid)`
   grid-template-columns: 1fr;
 
   ${tablet`
-    grid-gap: ${(props) => props.theme.spacing(8)};
+    grid-gap: ${(props) => props.theme.spacing(2)};
     grid-template-columns: 1fr 1fr;
-    margin-top: ${(props) => props.theme.spacing(8)};
+    margin-top: ${(props) => props.theme.spacing(5)};
     
     text-align: left;
-  `}
+  `};
+
+  ${desktop`
+    grid-gap: ${(props) => props.theme.spacing(5)};
+  `};
 `;
 
 const Project = styled.div`
   display: flex;
   flex-direction: column;
 
-  ${tablet`
+  margin: ${(props) => props.theme.spacing(8)} auto 0;
+  padding: ${(props) => props.theme.spacing(2)}
+    ${(props) => props.theme.spacing(3)};
+  transition: transform 200ms ease-in-out;
+  cursor: pointer;
+
+  ${desktop`
     flex-direction: row;
     grid-column: span 1;
+    
+    margin-top: 0;
   `};
+
+  &:hover,
+  &:focus {
+    transform: translate(15px, -15px);
+    box-shadow: -5px 5px 0 0 ${(props) => props.theme.colors.darkerNeutral};
+  }
 `;
 
 const BadgeWrapper = styled.div`
+  margin: 0 auto;
   max-width: 90px;
-  margin: ${(props) => props.theme.spacing(8)} auto 0;
 
   ${tablet`
-    margin-top: 0;
+    max-width: 150px;
+  `};
+
+  ${desktop`
     margin-right: ${(props) => props.theme.spacing(3)};
     max-width: none;
     flex: 1;
@@ -46,7 +67,6 @@ const BadgeWrapper = styled.div`
 
 const TextWrapper = styled.div`
   flex: 2;
-  ${linkStyles({ color: "white" })};
 `;
 
 const StyledTitle = styled(Title).attrs({ size: "medium" })`
