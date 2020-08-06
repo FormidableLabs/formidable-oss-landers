@@ -30,11 +30,12 @@ const Project = styled.div`
   display: flex;
   flex-direction: column;
 
-  margin: ${(props) => props.theme.spacing(8)} auto 0;
   padding: ${(props) => props.theme.spacing(2)}
     ${(props) => props.theme.spacing(3)};
   transition: transform 200ms ease-in-out;
-  cursor: pointer;
+
+  background-color: ${(props) => props.theme.colors.black};
+  color: ${(props) => props.theme.colors.white};
 
   ${desktop`
     flex-direction: row;
@@ -42,9 +43,12 @@ const Project = styled.div`
     
     margin-top: 0;
   `};
+`;
 
-  &:hover,
-  &:focus {
+const ProjectLink = styled.a`
+  margin: ${(props) => props.theme.spacing(8)} auto 0;
+
+  &:hover ${Project}, &:focus ${Project} {
     transform: translate(15px, -15px);
     box-shadow: -5px 5px 0 0 ${(props) => props.theme.colors.darkerNeutral};
   }
@@ -91,22 +95,21 @@ const FeaturedOSS = ({ title, list }) => {
       <StyledGrid>
         {list.map((project, index) => {
           return (
-            <Project key={`project-${index}`}>
-              <BadgeWrapper>{project.badge}</BadgeWrapper>
-              <TextWrapper>
-                <StyledTitle
-                  as="a"
-                  href={project.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {project.title}
-                </StyledTitle>
-                {project.description ? (
-                  <Section.Text>{project.description}</Section.Text>
-                ) : null}
-              </TextWrapper>
-            </Project>
+            <ProjectLink
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Project key={`project-${index}`}>
+                <BadgeWrapper>{project.badge}</BadgeWrapper>
+                <TextWrapper>
+                  <StyledTitle as="span">{project.title}</StyledTitle>
+                  {project.description ? (
+                    <Section.Text>{project.description}</Section.Text>
+                  ) : null}
+                </TextWrapper>
+              </Project>
+            </ProjectLink>
           );
         })}
         <ButtonWrapper>
