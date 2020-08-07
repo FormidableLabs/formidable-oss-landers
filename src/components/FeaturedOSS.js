@@ -11,7 +11,9 @@ import { tablet, desktop } from "../styles";
 const Wrapper = styled(Section).attrs({ color: "dark" })``;
 
 const StyledGrid = styled(Grid)`
+  margin-top: ${(props) => props.theme.spacing(4)};
   grid-template-columns: 1fr;
+  grid-gap: ${(props) => props.theme.spacing(4)};
 
   ${tablet`
     grid-gap: ${(props) => props.theme.spacing(2)};
@@ -40,14 +42,10 @@ const Project = styled.div`
   ${desktop`
     flex-direction: row;
     grid-column: span 1;
-    
-    margin-top: 0;
   `};
 `;
 
 const ProjectLink = styled.a`
-  margin: ${(props) => props.theme.spacing(8)} auto 0;
-
   &:hover ${Project}, &:focus ${Project} {
     transform: translate(15px, -15px);
     box-shadow: -5px 5px 0 0 ${(props) => props.theme.colors.darkerNeutral};
