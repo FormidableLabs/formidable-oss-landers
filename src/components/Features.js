@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Grid from "./Grid";
 import Section from "./Section";
 import Title from "./Title";
-import { tablet } from "../styles";
+import { boxShadow, tablet, desktop } from "../styles";
 
 const Wrapper = styled(Section).attrs({ color: "light", padding: 5 })``;
 
@@ -23,10 +23,20 @@ const Feature = styled.div``;
 const Image = styled.img`
   margin: ${(props) => props.theme.spacing(5)} auto 0;
   max-width: ${(props) => props.theme.spacing(20)};
+
+  ${boxShadow("lightNeutral")};
+
+  ${desktop`
+    max-width: ${(props) => props.theme.spacing(35)};
+  `};
 `;
 
 const StyledSubtitle = styled(Title)`
   margin-top: ${(props) => props.theme.spacing(3)};
+
+  ${desktop`
+    margin-top: ${(props) => props.theme.spacing(6)};
+  `};
 `;
 
 const Features = ({ title, list }) => {

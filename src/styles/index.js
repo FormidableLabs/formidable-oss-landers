@@ -40,6 +40,19 @@ export function desktop(...args) {
 }
 
 /*
+Set default responsive box-shadow using theme colors
+Usage: ${boxShadow("darkNeutral")};
+*/
+export function boxShadow(color) {
+  return css`
+    box-shadow: ${(props) => props.theme.boxShadows.small(color)};
+    ${desktop`
+      box-shadow: ${(props) => props.theme.boxShadows.large(color)}; 
+    `};
+  `;
+}
+
+/*
 Set color by theme
 Usage: ${color("darkNeutral")};
 */

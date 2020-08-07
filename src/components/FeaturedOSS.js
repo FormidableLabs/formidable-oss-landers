@@ -6,7 +6,7 @@ import Button from "./Button";
 import Grid from "./Grid";
 import Section from "./Section";
 import Title from "./Title";
-import { tablet, desktop } from "../styles";
+import { boxShadow, tablet, desktop } from "../styles";
 
 const Wrapper = styled(Section).attrs({ color: "dark" })``;
 
@@ -46,9 +46,11 @@ const Project = styled.div`
 `;
 
 const ProjectLink = styled.a`
+  margin: 0 auto;
+
   &:hover ${Project}, &:focus ${Project} {
     transform: translate(15px, -15px);
-    box-shadow: -5px 5px 0 0 ${(props) => props.theme.colors.darkerNeutral};
+    ${boxShadow("darkerNeutral")};
   }
 `;
 

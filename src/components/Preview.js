@@ -44,19 +44,24 @@ const CodeWrapper = styled.div`
   margin-top: ${(props) => props.theme.spacing(4)};
 
   ${tablet`
-    box-shadow: -5px 5px 0px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: ${(props) =>
+      props.theme.boxShadows.small("rgba(0, 0, 0, 0.5)")};
   `};
 
   ${desktop`
     grid-column: span 3;
     ${(props) => props.gridRow && `grid-row: ${props.gridRow};`};
     margin-top: 0;
+
+    box-shadow: ${(props) =>
+      props.theme.boxShadows.large("rgba(0, 0, 0, 0.5)")};
   `};
 `;
 
 const StyledPreview = styled(LivePreview)`
   ${mobileOnly`
-    box-shadow: -5px 5px 0px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: ${(props) =>
+      props.theme.boxShadows.small("rgba(0, 0, 0, 0.5)")};
   `};
 
   padding: ${(props) => props.theme.spacing(3)};
@@ -76,7 +81,8 @@ const StyledEditor = styled(LiveEditor)`
     ${breakGrid};
     margin-top: ${(props) => props.theme.spacing(5)};
 
-    box-shadow: -5px 5px 0px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: ${(props) =>
+      props.theme.boxShadows.small("rgba(0, 0, 0, 0.5)")};
   `};
 
   max-height: ${(props) => props.theme.spacing(40)};
