@@ -94,11 +94,12 @@ const FeaturedOSS = ({ title, list }) => {
         {list.map((project, index) => {
           return (
             <ProjectLink
+              key={`project-${index}`}
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Project key={`project-${index}`}>
+              <Project>
                 <BadgeWrapper>{project.badge}</BadgeWrapper>
                 <TextWrapper>
                   <StyledTitle as="span">{project.title}</StyledTitle>

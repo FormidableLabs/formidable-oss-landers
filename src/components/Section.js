@@ -5,20 +5,30 @@ import styled, { css } from "styled-components";
 import Title from "./Title";
 import Text from "./Text";
 
-const primaryStyles = css`
-  background: ${(props) => props.theme.gradients.reverseDarkGradient};
-  color: ${(props) => props.theme.colors.white};
-`;
+const getSectionStyles = (color) => {
+  switch (color) {
+    case "primary":
+      return css`
+        background: ${(props) => props.theme.gradients.reverseDarkGradient};
+        color: ${(props) => props.theme.colors.white};
+      `;
 
-const lightStyles = css`
-  background-color: ${(props) => props.theme.colors.lighterNeutral};
-  color: ${(props) => props.theme.colors.darkNeutral};
-`;
+    case "light":
+      return css`
+        background-color: ${(props) => props.theme.colors.lighterNeutral};
+        color: ${(props) => props.theme.colors.darkNeutral};
+      `;
 
-const darkStyles = css`
-  background: ${(props) => props.theme.colors.black};
-  color: ${(props) => props.theme.colors.white};
-`;
+    case "dark":
+      return css`
+        background: ${(props) => props.theme.colors.black};
+        color: ${(props) => props.theme.colors.white};
+      `;
+
+    default:
+      return ``;
+  }
+};
 
 const StyledSection = styled.div`
   padding-top: ${(props) => props.theme.spacing(props.padding)};
@@ -26,9 +36,7 @@ const StyledSection = styled.div`
 
   text-align: center;
 
-  ${(props) => props.color === "primary" && primaryStyles};
-  ${(props) => props.color === "light" && lightStyles};
-  ${(props) => props.color === "dark" && darkStyles};
+  ${(props) => getSectionStyles(props.$color)};
 `;
 
 const SectionTitle = styled(Title).attrs((props) => ({
@@ -43,7 +51,7 @@ const SectionText = styled(Text)`
 
 const Section = ({ children, className, color, padding }) => {
   return (
-    <StyledSection className={className} padding={padding} color={color}>
+    <StyledSection className={className} padding={padding} $color={color}>
       {children}
     </StyledSection>
   );

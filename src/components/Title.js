@@ -47,7 +47,10 @@ const getStyles = (styleType) => {
   }
 };
 
-const Title = styled.p`
+const Title = styled.p.withConfig({
+  // do not pass 'color' or 'align' to DOM
+  shouldForwardProp: (prop) => !["color", "align"].includes(prop),
+})`
   ${(props) => props.size && getStyles(props.size)};
   ${(props) => props.color && color(props.color)};
 

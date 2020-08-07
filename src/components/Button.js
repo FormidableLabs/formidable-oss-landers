@@ -15,53 +15,54 @@ const defaultButtonStyles = css`
   ${desktop`font-size: 14px;`};
 `;
 
-const lightButtonStyles = css`
-  background-color: ${(props) => props.theme.colors.lighterNeutral};
-  color: ${(props) => props.theme.colors.darkNeutral};
+const getButtonStyles = (color) => {
+  switch (color) {
+    case "light":
+      return css`
+        background-color: ${(props) => props.theme.colors.lighterNeutral};
+        color: ${(props) => props.theme.colors.darkNeutral};
 
-  &:not([disabled]):focus,
-  &:not([disabled]):hover {
-    background-color: ${(props) => props.theme.colors.lightPrimary};
-  }
-  &:not([disabled]):active {
-    background-color: ${(props) => props.theme.colors.white};
-  }
-`;
+        &:not([disabled]):focus,
+        &:not([disabled]):hover {
+          background-color: ${(props) => props.theme.colors.lightPrimary};
+        }
+        &:not([disabled]):active {
+          background-color: ${(props) => props.theme.colors.white};
+        }
+      `;
 
-const darkButtonStyles = css`
-  background-color: ${(props) => props.theme.colors.darkNeutral};
-  color: ${(props) => props.theme.colors.white};
-  &:focus,
-  &:hover {
-    background-color: ${(props) => props.theme.colors.darkerPrimary};
-  }
-`;
+    case "dark":
+    default:
+      return css`
+        background-color: ${(props) => props.theme.colors.darkNeutral};
+        color: ${(props) => props.theme.colors.white};
 
-const StyledButton = styled.button
-  .attrs((props) => ({
-    type: props.as ? undefined : "button",
-  }))
-  .withConfig({
-    // do not pass 'color' or 'full' to DOM
-    shouldForwardProp: (prop) => !["color", "full"].includes(prop),
-  })`
+        &:not([disabled]):focus,
+        &:not([disabled]):hover {
+          background-color: ${(props) => props.theme.colors.darkerPrimary};
+        }
+      `;
+  }
+};
+
+const StyledButton = styled.button.attrs((props) => ({
+  type: props.as ? undefined : "button",
+}))`
   ${defaultButtonStyles};
-  ${(props) => props.color === "light" && lightButtonStyles};
-  ${(props) => props.color === "dark" && darkButtonStyles};
+  ${(props) => getButtonStyles(props.$color)};
 
-  display: ${(props) => (props.full ? `block` : `inline-block`)};
+  display: ${(props) => (props.$full ? `block` : `inline-block`)};
 `;
 
-const Button = ({ children, className, ...props }) => {
+const Button = ({ children, className, color, full, ...props }) => {
   return (
-    <StyledButton className={className} {...props}>
+    <StyledButton className={className} $color={color} $full={full} {...props}>
       {children}
     </StyledButton>
   );
 };
 
 Button.defaultProps = {
-  color: "dark",
   full: false,
 };
 

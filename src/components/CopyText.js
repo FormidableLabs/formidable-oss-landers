@@ -6,8 +6,6 @@ import Button from "./Button";
 import Text from "./Text";
 
 const Wrapper = styled.div`
-  flex: 1 0 auto;
-
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -35,7 +33,7 @@ const AnimatedSpan = styled.span`
     props.animating ? "translateY(-0.5rem)" : "translateY(0)"};
 `;
 
-const CopyText = ({ text }) => {
+const CopyText = ({ className, text }) => {
   const [animating, setAnimating] = React.useState(false);
   const [copied, setCopied] = React.useState(false);
 
@@ -55,7 +53,7 @@ const CopyText = ({ text }) => {
 
   return (
     <CopyToClipboard text={text}>
-      <Wrapper>
+      <Wrapper className={className}>
         <StyledText size="xsmall" color="darkNeutral" as="div">
           {text}
         </StyledText>

@@ -2,9 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import Button from "./Button";
-import CopyText from "./CopyText";
 import Grid from "./Grid";
+import HeaderInstall from "./HeaderInstall";
 import Ribbon from "./Ribbon";
 import Text from "./Text";
 import Title from "./Title";
@@ -82,19 +81,6 @@ const Content = styled.div`
   `};
 `;
 
-const ButtonsWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-
-  margin-top: ${(props) => props.theme.spacing(9)};
-  margin-bottom: ${(props) => props.theme.spacing(1)};
-
-  ${tablet`
-    margin-top: ${(props) => props.theme.spacing(5)};
-  `};
-`;
-
 const Nav = styled(Text)`
   grid-area: nav;
 
@@ -132,12 +118,6 @@ const Header = ({
   linkComponent,
 }) => {
   const Link = linkComponent;
-  const renderButton =
-    button && button.label && button.href ? (
-      <Button full as={Link} href={button.href} color="light">
-        {button.label}
-      </Button>
-    ) : null;
 
   // TODO: Mobile nav switches to "Learn More"
   return (
@@ -152,10 +132,11 @@ const Header = ({
             {description}
           </Text>
           <Ribbon />
-          <ButtonsWrapper>
-            <CopyText text={install} />
-            {renderButton}
-          </ButtonsWrapper>
+          <HeaderInstall
+            button={button}
+            install={install}
+            linkComponent={linkComponent}
+          />
         </Content>
         <Nav size="large" as="ul">
           {nav.map((navItem, index) => {

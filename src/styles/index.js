@@ -86,6 +86,7 @@ export function linkStyles({ color }) {
         }
       `;
     default:
+    case "default":
       return css`
         a,
         a:link {
