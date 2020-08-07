@@ -183,11 +183,6 @@ class Counter extends React.Component {
     title: "My custom section",
     description: "I love custom sections!!",
     components: [],
-    button: {
-      color: "dark",
-      label: "Learn more",
-      href: "docs/",
-    },
   },
   getStarted: {
     description:
