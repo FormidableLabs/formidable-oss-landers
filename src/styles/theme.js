@@ -1,14 +1,14 @@
-import config from '../example/config';
+import config from "../example/config";
 const { colors } = config;
 
 const universalColors = {
-  white: '#FFFFFF',
-  lighterNeutral: '#F0F0F0',
-  lightNeutral: '#9A9A9A',
-  neutral: '#717171',
-  darkNeutral: '#3B3B3B',
-  darkerNeutral: '#1F1F1F',
-  black: '#000',
+  white: "#FFFFFF",
+  lighterNeutral: "#F0F0F0",
+  lightNeutral: "#9A9A9A",
+  neutral: "#717171",
+  darkNeutral: "#3B3B3B",
+  darkerNeutral: "#1F1F1F",
+  black: "#000",
 };
 
 const themeColors = { ...universalColors, ...colors };

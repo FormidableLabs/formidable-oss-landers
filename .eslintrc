@@ -5,12 +5,12 @@
     "prettier/react",
     "plugin:react/recommended"
   ],
-  "plugins": ["prettier", "react-hooks"],
+  "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": ["error"],
     "quotes": [
       "error",
-      "single",
+      "double",
       {
         "allowTemplateLiterals": true
       }

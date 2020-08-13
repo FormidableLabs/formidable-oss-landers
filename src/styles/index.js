@@ -63,6 +63,7 @@ export function color(name) {
         if (props.theme.colors[name]) {
           return `color: ${props.theme.colors[name]};`;
         } else {
+          /* eslint-disable-next-line no-console */
           console.warn(
             "Could not find '",
             name,
