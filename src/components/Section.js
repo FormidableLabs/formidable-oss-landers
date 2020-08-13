@@ -58,6 +58,8 @@ const Section = ({ children, className, color, padding }) => {
 };
 
 Section.propTypes = {
+  children: PropTypes.any,
+  className: PropTypes.string,
   color: PropTypes.oneOf(["primary", "light", "dark"]),
   /* Top and bottom padding for Section (as Grid controls side padding) */
   padding: PropTypes.number,

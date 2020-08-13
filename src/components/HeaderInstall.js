@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import Button from "./Button";
@@ -47,6 +48,15 @@ const HeaderInstall = ({ button, install, linkComponent }) => {
       ) : null}
     </Wrapper>
   );
+};
+
+HeaderInstall.propTypes = {
+  button: PropTypes.shape({
+    href: PropTypes.string,
+    label: PropTypes.string,
+  }),
+  install: PropTypes.string,
+  linkComponent: PropTypes.any,
 };
 
 export default HeaderInstall;
