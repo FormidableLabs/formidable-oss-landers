@@ -23,6 +23,7 @@ const CustomSection = ({
 };
 
 CustomSection.propTypes = {
+  className: PropTypes.string,
   color: Section.propTypes.color,
   /* Section title */
   title: PropTypes.string,

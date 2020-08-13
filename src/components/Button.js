@@ -67,6 +67,8 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
+  children: PropTypes.any,
+  className: PropTypes.string,
   color: PropTypes.oneOf(["light", "dark"]),
   full: PropTypes.bool,
 };
