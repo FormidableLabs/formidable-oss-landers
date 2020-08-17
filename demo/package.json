@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@mdx-js/react": "^1.6.1",
-    "formidable-oss-landers": "git://github.com/FormidableLabs/formidable-oss-landers.git#2b3de293e4ecae87f713925fa815f8c42d4db350",
+    "formidable-oss-landers": "git://github.com/FormidableLabs/formidable-oss-landers.git#task-addDemo",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
