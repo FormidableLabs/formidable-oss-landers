@@ -1,10 +1,10 @@
-import React, { Suspense } from 'react';
-import { Root, Routes } from 'react-static';
-import { ThemeProvider } from 'styled-components';
+import React, { Suspense } from "react";
+import { Root, Routes } from "react-static";
+import { ThemeProvider } from "styled-components";
 
-import { GlobalStyle } from './styles/global-style';
-import Analytics from './google-analytics';
-import { theme } from './styles/theme';
+import GlobalStyle from "../../src/styles/global";
+import Analytics from "./google-analytics";
+import { theme } from "./styles/theme";
 
 const App = () => {
   return (

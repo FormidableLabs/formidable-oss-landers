@@ -1,29 +1,29 @@
-import Document from './src/html';
-import metadata from './src/siteMetadata';
+import Document from "./src/html";
+import metadata from "./src/constants";
 
-const basePath = 'open-source/demo';
+const basePath = "open-source/demo";
 
 export default {
   paths: {
-    src: 'src',
+    src: "src",
     dist: `dist/${basePath}`,
-    buildArtifacts: 'node_modules/.cache/react-static/artifacts/',
-    devDist: 'node_modules/.cache/react-static/dist/',
-    temp: 'node_modules/.cache/react-static/temp/',
-    public: 'public', // The public directory (files copied to dist during build)
+    buildArtifacts: "node_modules/.cache/react-static/artifacts/",
+    devDist: "node_modules/.cache/react-static/dist/",
+    temp: "node_modules/.cache/react-static/temp/",
+    public: "public", // The public directory (files copied to dist during build)
   },
   plugins: [
-    [
-      'react-static-plugin-md-pages',
-      {
-        location: './content',
-        template: './src/screens/docs',
-        pathPrefix: 'docs',
-      },
-    ],
-    'react-static-plugin-styled-components',
-    'react-static-plugin-sitemap',
-    'react-static-plugin-react-router',
+    // [
+    //   "react-static-plugin-md-pages",
+    //   {
+    //     location: "./content",
+    //     template: "./src/screens/docs",
+    //     pathPrefix: "docs",
+    //   },
+    // ],
+    "react-static-plugin-styled-components",
+    "react-static-plugin-sitemap",
+    "react-static-plugin-react-router",
   ],
   basePath,
   stagingBasePath: basePath,
@@ -34,8 +34,8 @@ export default {
   }),
   getRoutes: async () => [
     {
-      path: '/',
-      template: require.resolve('./src/screens/home'),
-    }
+      path: "/",
+      template: require.resolve("./src/screens/home"),
+    },
   ],
 };
