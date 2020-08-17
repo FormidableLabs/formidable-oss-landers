@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import metadata from './siteMetadata';
+import metadata from "./siteMetadata";
 
 const CustomDocument = ({ Html, Head, Body, children }) => {
   return (
@@ -11,22 +11,16 @@ const CustomDocument = ({ Html, Head, Body, children }) => {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta
-          name="description"
-          content={metadata.description}
-        />
+        <meta name="description" content={metadata.description} />
         <meta property="og:title" content={`${metadata.title} Documentation`} />
-        <meta property="og:site_name" content={`${metadata.title} Documentation`} />
+        <meta
+          property="og:site_name"
+          content={`${metadata.title} Documentation`}
+        />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content={metadata.url}
-        />
+        <meta property="og:url" content={metadata.url} />
         <meta property="og:image" content="./static/og-image.png" />
-        <meta
-          property="og:description"
-          content={metadata.description}
-        />
+        <meta property="og:description" content={metadata.description} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link
           rel="icon"
