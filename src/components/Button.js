@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
-import { desktop } from "../styles";
+// import { desktop } from "../styles";
 
 const defaultButtonStyles = css`
   padding: 0.75em 1.4em;
@@ -11,9 +11,8 @@ const defaultButtonStyles = css`
   line-height: 1.2;
   text-align: center;
   text-transform: uppercase;
-
-  ${desktop`font-size: 14px;`};
 `;
+// ${desktop`font-size: 14px;`};
 
 const getButtonStyles = (color) => {
   switch (color) {

@@ -40,11 +40,11 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^5.3.19",
-    "@storybook/addon-links": "^5.3.19",
-    "@storybook/addons": "^5.3.19",
-    "@storybook/preset-create-react-app": "^3.1.2",
-    "@storybook/react": "^5.3.19",
+    "@storybook/addon-actions": "^6.0.12",
+    "@storybook/addon-links": "^6.0.12",
+    "@storybook/addons": "^6.0.12",
+    "@storybook/preset-create-react-app": "^3.1.4",
+    "@storybook/react": "^6.0.12",
     "eslint-config-formidable": "^4.0.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
