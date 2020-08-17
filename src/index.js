@@ -5,7 +5,10 @@ import * as serviceWorker from "./serviceWorker";
 import { ThemeProvider } from "styled-components";
 
 import GlobalStyle from "./styles/global";
-import { theme } from "./styles/theme";
+import { getTheme } from "./styles/theme";
+import config from "./example/config";
+
+const theme = getTheme(config.colors);
 
 ReactDOM.render(
   <React.StrictMode>

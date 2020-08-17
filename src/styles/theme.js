@@ -1,6 +1,3 @@
-import config from "../example/config";
-const { colors } = config;
-
 const universalColors = {
   white: "#FFFFFF",
   lighterNeutral: "#F0F0F0",
@@ -11,16 +8,18 @@ const universalColors = {
   black: "#000",
 };
 
-const themeColors = { ...universalColors, ...colors };
-
-const gradients = {
-  darkGradient: `linear-gradient(208deg, ${colors.darkPrimary} 0%, ${colors.darkerPrimary} 100%)`,
-  reverseDarkGradient: `linear-gradient(-161deg, ${colors.darkPrimary} 0%, ${colors.darkerPrimary} 100%)`,
+const gradients = (userColors) => {
+  return {
+    darkGradient: `linear-gradient(208deg, ${userColors.darkPrimary} 0%, ${userColors.darkerPrimary} 100%)`,
+    reverseDarkGradient: `linear-gradient(-161deg, ${userColors.darkPrimary} 0%, ${userColors.darkerPrimary} 100%)`,
+  };
 };
 
-const boxShadows = {
-  small: (color) => `-5px 5px 0px 0px ${themeColors[color] || color}`,
-  large: (color) => `-15px 15px 0px 0px ${themeColors[color] || color}`,
+const boxShadows = (themeColors) => {
+  return {
+    small: (color) => `-5px 5px 0px 0px ${themeColors[color] || color}`,
+    large: (color) => `-15px 15px 0px 0px ${themeColors[color] || color}`,
+  };
 };
 
 const fonts = {
@@ -38,11 +37,14 @@ const breakpoints = {
   desktop: 1200,
 };
 
-export const theme = {
-  breakpoints,
-  boxShadows,
-  colors: themeColors,
-  fonts,
-  gradients,
-  spacing,
+export const getTheme = (userColors) => {
+  const colors = { ...universalColors, ...userColors };
+  return {
+    breakpoints,
+    boxShadows: boxShadows(colors),
+    colors,
+    fonts,
+    gradients: gradients(userColors),
+    spacing,
+  };
 };
