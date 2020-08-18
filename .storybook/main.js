@@ -10,3 +10,6 @@ module.exports = {
 // Controls documentation:
 // https://storybook.js.org/docs/react/essentials/controls
 // github: https://github.com/storybookjs/storybook/tree/next/addons/controls
+
+// Essentials documentation:
+// https://github.com/storybookjs/storybook/tree/next/addons/essentials
