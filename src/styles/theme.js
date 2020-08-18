@@ -1,7 +1,4 @@
-import config from "../example/config";
-const { colors } = config;
-
-const universalColors = {
+const colors = {
   white: "#FFFFFF",
   lighterNeutral: "#F0F0F0",
   lightNeutral: "#9A9A9A",
@@ -11,16 +8,14 @@ const universalColors = {
   black: "#000",
 };
 
-const themeColors = { ...universalColors, ...colors };
-
 const gradients = {
   darkGradient: `linear-gradient(208deg, ${colors.darkPrimary} 0%, ${colors.darkerPrimary} 100%)`,
   reverseDarkGradient: `linear-gradient(-161deg, ${colors.darkPrimary} 0%, ${colors.darkerPrimary} 100%)`,
 };
 
 const boxShadows = {
-  small: (color) => `-5px 5px 0px 0px ${themeColors[color] || color}`,
-  large: (color) => `-15px 15px 0px 0px ${themeColors[color] || color}`,
+  small: (color) => `-5px 5px 0px 0px ${colors[color] || color}`,
+  large: (color) => `-15px 15px 0px 0px ${colors[color] || color}`,
 };
 
 const fonts = {
@@ -41,7 +36,7 @@ const breakpoints = {
 export const theme = {
   breakpoints,
   boxShadows,
-  colors: themeColors,
+  colors,
   fonts,
   gradients,
   spacing,

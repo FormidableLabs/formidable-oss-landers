@@ -1,57 +1,37 @@
 {
   "name": "formidable-oss-landers",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "formidable-oss-badges": "^0.3.5",
+  "version": "0.0.1",
+  "main": "dist/formidable-oss-landers.cjs.js",
+  "module": "dist/formidable-oss-landers.esm.js",
+  "browser": "dist/formidable-oss-landers.umd.js",
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "styled-components": ">=5.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.10.4",
+    "@rollup/plugin-babel": "^5.2.0",
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
-    "react-copy-to-clipboard": "^5.0.2",
-    "react-dom": "^16.13.1",
-    "react-live": "^2.2.2",
-    "react-scripts": "3.4.1",
+    "rollup": "^1.0.0",
+    "rollup-plugin-react-svg": "^3.0.3",
     "styled-components": "^5.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
-    "format": "yarn run lint --fix",
-    "lint": "eslint 'src/**/*.js'"
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@storybook/addon-actions": "^5.3.19",
-    "@storybook/addon-links": "^5.3.19",
-    "@storybook/addons": "^5.3.19",
-    "@storybook/preset-create-react-app": "^3.1.2",
-    "@storybook/react": "^5.3.19",
-    "eslint-config-formidable": "^4.0.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "prettier": "^2.0.5"
-  },
-  "peerDependencies": {
-    "react-router-dom": "^5.2.0",
-    "react-static": "^7.2.3"
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "formidable-oss-badges": "^0.3.5",
+    "prism-react-renderer": "^1.1.1",
+    "react-copy-to-clipboard": "^5.0.2",
+    "react-live": "^2.2.2"
   }
 }
