@@ -59,16 +59,16 @@ const Features = ({ title, list }) => {
 };
 
 Features.propTypes = {
-  /* Section title defaults to "Features" */
+  /** Section title defaults to "Features" */
   title: PropTypes.string,
-  /* An array of each feature */
+  /** An array of each feature */
   list: PropTypes.arrayOf(
     PropTypes.shape({
-      /* Illustration/Visual: value for `src` of an <img> element */
+      /** Illustration/Visual: value for `src` of an <img> element */
       image: PropTypes.string,
-      /* Feature heading */
+      /** Feature heading */
       title: PropTypes.string,
-      /* Feature short paragraph */
+      /** Feature short paragraph */
       description: PropTypes.string,
     })
   ),

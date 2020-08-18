@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
-// import { desktop } from "../styles";
+import { desktop } from "../styles";
 
 const defaultButtonStyles = css`
   padding: 0.75em 1.4em;
@@ -11,8 +11,9 @@ const defaultButtonStyles = css`
   line-height: 1.2;
   text-align: center;
   text-transform: uppercase;
+
+  ${desktop`font-size: 14px;`};
 `;
-// ${desktop`font-size: 14px;`};
 
 const getButtonStyles = (color) => {
   switch (color) {
@@ -68,7 +69,13 @@ Button.defaultProps = {
 Button.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
+  /**
+   * The visual style of the button
+   */
   color: PropTypes.oneOf(["light", "dark"]),
+  /**
+   * Button will take up as much width as possible
+   * */
   full: PropTypes.bool,
 };
 

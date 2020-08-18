@@ -25,11 +25,11 @@ const CustomSection = ({
 CustomSection.propTypes = {
   className: PropTypes.string,
   color: Section.propTypes.color,
-  /* Section title */
+  /** Section title */
   title: PropTypes.string,
-  /* One sentence about how to get started using this thing.  */
+  /** One sentence about how to get started using this thing.  */
   description: PropTypes.string,
-  /* Array of custom components */
+  /** Array of custom components */
   components: PropTypes.array,
 };
 
