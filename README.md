@@ -9,7 +9,7 @@ You'll need to [yarn link](https://classic.yarnpkg.com/en/docs/cli/link/#toc-yar
 ```
 yarn
 yarn build
-yarn link .
+yarn link
 cd ./examples
 yarn
 yarn link formidable-oss-landers
