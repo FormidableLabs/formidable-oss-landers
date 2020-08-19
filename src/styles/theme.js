@@ -1,4 +1,4 @@
-const colors = {
+const universalColors = {
   white: "#FFFFFF",
   lighterNeutral: "#F0F0F0",
   lightNeutral: "#9A9A9A",
@@ -8,14 +8,18 @@ const colors = {
   black: "#000",
 };
 
-const gradients = {
-  darkGradient: `linear-gradient(208deg, ${colors.darkPrimary} 0%, ${colors.darkerPrimary} 100%)`,
-  reverseDarkGradient: `linear-gradient(-161deg, ${colors.darkPrimary} 0%, ${colors.darkerPrimary} 100%)`,
+const gradients = (colors) => {
+  return {
+    darkGradient: `linear-gradient(208deg, ${colors.darkPrimary} 0%, ${colors.darkerPrimary} 100%)`,
+    reverseDarkGradient: `linear-gradient(-161deg, ${colors.darkPrimary} 0%, ${colors.darkerPrimary} 100%)`,
+  };
 };
 
-const boxShadows = {
-  small: (color) => `-5px 5px 0px 0px ${colors[color] || color}`,
-  large: (color) => `-15px 15px 0px 0px ${colors[color] || color}`,
+const boxShadows = (colors) => {
+  return {
+    small: (color) => `-5px 5px 0px 0px ${colors[color] || color}`,
+    large: (color) => `-15px 15px 0px 0px ${colors[color] || color}`,
+  };
 };
 
 const fonts = {
@@ -33,11 +37,14 @@ const breakpoints = {
   desktop: 1200,
 };
 
-export const theme = {
-  breakpoints,
-  boxShadows,
-  colors,
-  fonts,
-  gradients,
-  spacing,
+export const getTheme = (userColors) => {
+  const colors = { ...universalColors, ...userColors };
+  return {
+    breakpoints,
+    boxShadows: boxShadows(colors),
+    colors: colors,
+    fonts,
+    gradients: gradients(colors),
+    spacing,
+  };
 };

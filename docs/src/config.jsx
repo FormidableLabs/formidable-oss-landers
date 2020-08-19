@@ -4,7 +4,7 @@ import { Link } from "formidable-oss-landers";
 import { FeaturedBadge, ProjectBadge } from "formidable-oss-badges";
 import nightOwl from "prism-react-renderer/themes/nightOwl";
 
-import featureSvg from "../../assets/feature.svg";
+import featureSvg from "./assets/feature.svg";
 
 const config = {
   colors: {

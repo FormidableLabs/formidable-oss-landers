@@ -1,5 +1,4 @@
-// TODO:
-// import { getTheme } from "formidable-oss-landers";
+import { getTheme } from "formidable-oss-landers";
 
 const colors = {
   lighterPrimary: "#F8F7FE",
@@ -12,7 +11,4 @@ const colors = {
   darkComplement: "#595112",
 };
 
-export const theme = {
-  // getTheme(colors)
-  colors,
-};
+export const theme = getTheme(colors);

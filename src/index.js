@@ -1,4 +1,4 @@
-export { theme } from "./styles/theme";
+export { getTheme } from "./styles/theme";
 export { default as GlobalStyles } from "./styles/global";
 
 export { default as Button } from "./components/Button";
