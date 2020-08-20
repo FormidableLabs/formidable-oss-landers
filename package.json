@@ -26,9 +26,6 @@
     "build": "rollup -c",
     "dev": "rollup -c -w"
   },
-  "files": [
-    "dist"
-  ],
   "dependencies": {
     "formidable-oss-badges": "^0.3.5",
     "prism-react-renderer": "^1.1.1",
