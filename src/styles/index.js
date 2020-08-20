@@ -3,9 +3,9 @@ import { css } from "styled-components";
 
 /* 
 Media query template
-Usage: ${mobileOnly`border: 1px solid black;`}
+Usage: ${mobile`border: 1px solid black;`}
 */
-export function mobileOnly(...args) {
+export function mobile(...args) {
   return css`
     @media (min-width: ${(props) =>
         props.theme.breakpoints.mobile}px) and (max-width: ${(props) =>
@@ -17,7 +17,7 @@ export function mobileOnly(...args) {
 
 /* 
 Media query template
-Usage: ${tablet`border: 1px solid black;`}
+Usage: ${props => props.theme.media.tablet`border: 1px solid black;`}
 */
 export function tablet(...args) {
   return css`
@@ -29,7 +29,7 @@ export function tablet(...args) {
 
 /* 
 Media query template
-Usage: ${desktop`border: 1px solid black;`}
+Usage: ${props => props.theme.media.desktop`border: 1px solid black;`}
 */
 export function desktop(...args) {
   return css`
@@ -46,7 +46,7 @@ Usage: ${boxShadow("darkNeutral")};
 export function boxShadow(color) {
   return css`
     box-shadow: ${(props) => props.theme.boxShadows.small(color)};
-    ${desktop`
+    ${(props) => props.theme.media.desktop`
       box-shadow: ${(props) => props.theme.boxShadows.large(color)}; 
     `};
   `;

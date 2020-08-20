@@ -28,12 +28,12 @@ const Triangle = styled.div`
   border-color: ${(props) => props.theme.colors.primary} transparent transparent
     transparent;
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     border-top-width: ${(props) => props.theme.spacing(29)};
     border-right-width: ${(props) => props.theme.spacing(28)};
   `};
 
-  ${desktop`
+  ${(props) => props.theme.media.desktop`
     border-top-width: ${(props) => props.theme.spacing(36)};
     border-right-width: ${(props) => props.theme.spacing(35)};
   `};
@@ -45,12 +45,12 @@ const Content = styled.div`
   padding-top: ${(props) => props.theme.spacing(3)};
   padding-left: ${(props) => props.theme.spacing(3)};
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     padding-top: ${(props) => props.theme.spacing(4)};
     padding-left: ${(props) => props.theme.spacing(4)};
   `};
 
-  ${desktop`
+  ${(props) => props.theme.media.desktop`
     padding-top: ${(props) => props.theme.spacing(5)};
     padding-left: ${(props) => props.theme.spacing(6)};
   `};
@@ -58,7 +58,7 @@ const Content = styled.div`
 
 const StyledText = styled(Text)`
   display: none;
-  ${tablet`display: inline-block;`};
+  ${(props) => props.theme.media.tablet`display: inline-block;`};
 `;
 
 const StyledLogo = styled(Logo)`

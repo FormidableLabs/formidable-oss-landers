@@ -12,7 +12,7 @@ const defaultButtonStyles = css`
   text-align: center;
   text-transform: uppercase;
 
-  ${desktop`font-size: 14px;`};
+  ${(props) => props.theme.media.desktop`font-size: 14px;`};
 `;
 
 const getButtonStyles = (color) => {

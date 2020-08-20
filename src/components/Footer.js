@@ -19,7 +19,7 @@ const Wrapper = styled(Section).attrs({ padding: 10 })`
 const StyledGrid = styled(Grid)`
   grid-row-gap: ${(props) => props.theme.spacing(2)};
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     grid-template-columns: 1fr auto;
     grid-column-gap: ${(props) => props.theme.spacing(9)};
   `};

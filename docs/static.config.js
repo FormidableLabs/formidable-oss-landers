@@ -34,5 +34,5 @@ export default {
   Document,
   getSiteData: () => ({
     title: metadata.title,
-  })
+  }),
 };

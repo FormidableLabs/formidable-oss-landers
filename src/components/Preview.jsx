@@ -7,14 +7,14 @@ import nightOwl from "prism-react-renderer/themes/nightOwl";
 import Grid, { breakGrid } from "./Grid";
 import Section from "./Section";
 import Title from "./Title";
-import { mobileOnly, tablet, desktop } from "../styles";
+import { mobile, tablet, desktop } from "../styles";
 
 const Wrapper = styled(Section).attrs({ color: "primary" })``;
 
 const StyledGrid = styled(Grid)`
   grid-template-columns: 1fr;
 
-  ${desktop`
+  ${(props) => props.theme.media.desktop`
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: ${(props) => props.theme.spacing(4)};
     grid-row-gap: ${(props) => props.theme.spacing(20)};
@@ -29,7 +29,7 @@ const TextWrapper = styled.div`
     margin-top: ${(props) => props.theme.spacing(6)};
   }
 
-  ${desktop`
+  ${(props) => props.theme.media.desktop`
     grid-column: ${(props) => (props.isOdd ? 4 : 1)};
     margin-top: 0;
     text-align: left;
@@ -43,12 +43,12 @@ const TextWrapper = styled.div`
 const CodeWrapper = styled.div`
   margin-top: ${(props) => props.theme.spacing(4)};
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     box-shadow: ${(props) =>
       props.theme.boxShadows.small("rgba(0, 0, 0, 0.5)")};
   `};
 
-  ${desktop`
+  ${(props) => props.theme.media.desktop`
     grid-column: span 3;
     ${(props) => props.gridRow && `grid-row: ${props.gridRow};`};
     margin-top: 0;
@@ -59,7 +59,7 @@ const CodeWrapper = styled.div`
 `;
 
 const StyledPreview = styled(LivePreview)`
-  ${mobileOnly`
+  ${mobile`
     box-shadow: ${(props) =>
       props.theme.boxShadows.small("rgba(0, 0, 0, 0.5)")};
   `};
@@ -77,7 +77,7 @@ const StyledError = styled(LiveError)`
 `;
 
 const StyledEditor = styled(LiveEditor)`
-  ${mobileOnly`
+  ${mobile`
     ${breakGrid};
     margin-top: ${(props) => props.theme.spacing(5)};
 

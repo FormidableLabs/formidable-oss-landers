@@ -9,11 +9,11 @@ function getStyles(styleType) {
       return css`
         font-size: 15px;
         line-height: ${22 / 15};
-        ${tablet`
+        ${(props) => props.theme.media.tablet`
           font-size: 18px;
           line-height: ${25 / 18};
         `};
-        ${desktop`
+        ${(props) => props.theme.media.desktop`
           font-size: 24px; 
           line-height: ${30 / 24};
         `};
@@ -25,7 +25,7 @@ function getStyles(styleType) {
         line-height: ${24 / 18};
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        ${desktop`font-size: 18px;`};
+        ${(props) => props.theme.media.desktop`font-size: 18px;`};
       `;
     case "small":
       // Button label
@@ -33,14 +33,14 @@ function getStyles(styleType) {
         font-size: 12px;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        ${desktop`font-size: 14px;`};
+        ${(props) => props.theme.media.desktop`font-size: 14px;`};
       `;
     case "xsmall":
       // Textfield Input
       return css`
         font-size: 12px;
         letter-spacing: 0.02em;
-        ${desktop`font-size: 14px;`};
+        ${(props) => props.theme.media.desktop`font-size: 14px;`};
       `;
     case "xxsmall":
       // Ribbon text
@@ -55,11 +55,11 @@ function getStyles(styleType) {
       return css`
         font-size: 12px;
         line-height: ${18 / 12};
-        ${tablet`
+        ${(props) => props.theme.media.tablet`
           font-size: 14px;
           line-height: ${18 / 14};
         `};
-        ${desktop`
+        ${(props) => props.theme.media.desktop`
           font-size: 15px;
           line-height: ${24 / 15};
         `};

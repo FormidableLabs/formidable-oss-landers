@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   margin-left: ${(props) => props.theme.spacing(-2)};
   margin-bottom: ${(props) => props.theme.spacing(1)};
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     margin-top: ${(props) => props.theme.spacing(5)};
   `};
 

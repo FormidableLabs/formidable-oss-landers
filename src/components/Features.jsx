@@ -12,7 +12,7 @@ const Wrapper = styled(Section).attrs({ color: "light", padding: 5 })``;
 const StyledGrid = styled(Grid)`
   grid-template-columns: 1fr;
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: ${(props) => props.theme.spacing(6)};
   `}
@@ -26,7 +26,7 @@ const Image = styled.img`
 
   ${boxShadow("lightNeutral")};
 
-  ${desktop`
+  ${(props) => props.theme.media.desktop`
     max-width: ${(props) => props.theme.spacing(35)};
   `};
 `;
@@ -34,7 +34,7 @@ const Image = styled.img`
 const StyledSubtitle = styled(Title)`
   margin-top: ${(props) => props.theme.spacing(3)};
 
-  ${desktop`
+  ${(props) => props.theme.media.desktop`
     margin-top: ${(props) => props.theme.spacing(6)};
   `};
 `;

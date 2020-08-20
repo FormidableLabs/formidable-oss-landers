@@ -15,7 +15,7 @@ const StyledGrid = styled(Grid)`
   grid-template-columns: 1fr;
   grid-gap: ${(props) => props.theme.spacing(4)};
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     grid-gap: ${(props) => props.theme.spacing(2)};
     grid-template-columns: 1fr 1fr;
     margin-top: ${(props) => props.theme.spacing(5)};
@@ -23,7 +23,7 @@ const StyledGrid = styled(Grid)`
     text-align: left;
   `};
 
-  ${desktop`
+  ${(props) => props.theme.media.desktop`
     grid-gap: ${(props) => props.theme.spacing(5)};
   `};
 `;
@@ -39,7 +39,7 @@ const Project = styled.div`
   background-color: ${(props) => props.theme.colors.black};
   color: ${(props) => props.theme.colors.white};
 
-  ${desktop`
+  ${(props) => props.theme.media.desktop`
     flex-direction: row;
     grid-column: span 1;
   `};
@@ -58,11 +58,11 @@ const BadgeWrapper = styled.div`
   margin: 0 auto;
   max-width: 90px;
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     max-width: 150px;
   `};
 
-  ${desktop`
+  ${(props) => props.theme.media.desktop`
     margin-right: ${(props) => props.theme.spacing(3)};
     max-width: none;
     flex: 1;
@@ -81,7 +81,7 @@ const StyledTitle = styled(Title).attrs({ size: "medium" })`
 const ButtonWrapper = styled.div`
   margin-top: ${(props) => props.theme.spacing(4)};
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     margin-top: 0;
     grid-column: span 2;
     text-align: center;

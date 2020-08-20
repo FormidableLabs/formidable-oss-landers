@@ -1,3 +1,5 @@
+import { mobile, tablet, desktop } from "./index";
+
 const universalColors = {
   white: "#FFFFFF",
   lighterNeutral: "#F0F0F0",
@@ -37,7 +39,7 @@ const breakpoints = {
   desktop: 1200,
 };
 
-export const getTheme = (userColors) => {
+export const getTheme = (userColors, overrides) => {
   const colors = { ...universalColors, ...userColors };
   return {
     breakpoints,
@@ -46,5 +48,11 @@ export const getTheme = (userColors) => {
     fonts,
     gradients: gradients(colors),
     spacing,
+    media: {
+      mobile,
+      tablet,
+      desktop,
+    },
+    ...overrides,
   };
 };

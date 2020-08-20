@@ -7,7 +7,7 @@ import HeaderInstall from "./HeaderInstall";
 import Ribbon from "./Ribbon";
 import Text from "./Text";
 import Title from "./Title";
-import { linkStyles, tablet, desktop } from "../styles";
+import { linkStyles } from "../styles";
 
 const Wrapper = styled.div`
   position: relative;
@@ -23,11 +23,11 @@ const Wrapper = styled.div`
   `};
   color: ${(props) => props.theme.colors.white};
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     padding-top: ${(props) => props.theme.spacing(19)};
   `};
 
-  ${desktop`
+  ${(props) => props.theme.media.desktop`
     padding-bottom: ${(props) => props.theme.spacing(15)};
   `};
 `;
@@ -38,7 +38,7 @@ const StyledGrid = styled(Grid)`
     "content"
     "nav";
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     grid-column-gap: ${(props) => props.theme.spacing(8)};
     grid-row-gap: ${(props) => props.theme.spacing(8)};
     grid-template-columns: ${(props) => props.theme.spacing(27)} auto;
@@ -47,7 +47,7 @@ const StyledGrid = styled(Grid)`
       "nav nav";
   `};
 
-  ${desktop`
+  ${(props) => props.theme.media.desktop`
     grid-column-gap: ${(props) => props.theme.spacing(12)};
     grid-row-gap: 0;
     grid-template-columns: ${(props) => props.theme.spacing(44)} auto;
@@ -65,7 +65,7 @@ const Badge = styled.div`
   height: auto;
   margin: 0 auto;
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     width: auto;
   `};
 `;
@@ -76,7 +76,7 @@ const Content = styled.div`
   margin-top: ${(props) => props.theme.spacing(3)};
   text-align: center;
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     text-align: left;
   `};
 `;
@@ -94,7 +94,7 @@ const Nav = styled(Text)`
 
   ${linkStyles({ color: "white" })};
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     justify-content: center;
 
     > * + * {
@@ -102,7 +102,7 @@ const Nav = styled(Text)`
     }
   `};
 
-  ${desktop`
+  ${(props) => props.theme.media.desktop`
     justify-content: space-between;
   `};
 `;
