@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Text from './Text';
-import { tablet, desktop } from '../styles';
-
 import Logo from '../assets/formidable.svg';
 
 const Wrapper = styled.div`

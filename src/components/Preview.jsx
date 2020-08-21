@@ -7,6 +7,7 @@ import nightOwl from 'prism-react-renderer/themes/nightOwl';
 import Grid, { breakGrid } from './Grid';
 import Section from './Section';
 import Title from './Title';
+
 const Wrapper = styled(Section).attrs({ color: 'primary' })``;
 
 const StyledGrid = styled(Grid)`

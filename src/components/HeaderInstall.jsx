@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import Button from './Button';
 import CopyText from './CopyText';
-import { tablet } from '../styles';
 
 const Wrapper = styled.div`
   display: flex;

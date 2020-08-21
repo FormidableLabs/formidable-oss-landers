@@ -6,7 +6,7 @@ import Button from './Button';
 import Grid from './Grid';
 import Section from './Section';
 import Title from './Title';
-import { boxShadow, tablet, desktop } from '../styles';
+import { boxShadow } from '../styles';
 
 const Wrapper = styled(Section).attrs({ color: 'dark' })``;
 

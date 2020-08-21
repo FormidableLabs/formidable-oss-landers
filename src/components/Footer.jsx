@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Grid from './Grid';
 import Section from './Section';
 import Text from './Text';
-import { linkStyles, tablet } from '../styles';
+import { linkStyles } from '../styles';
 
 import Logo from '../assets/formidable.svg';
 
