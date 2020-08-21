@@ -126,6 +126,7 @@ const IndexPage = () => {
     }
   };
 
+  // TODO: Add floating nav to left
   return (
     <Wrapper>
       <ThemeProvider theme={theme}>
