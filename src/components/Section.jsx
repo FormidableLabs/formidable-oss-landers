@@ -1,25 +1,25 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
 
-import Title from "./Title";
-import Text from "./Text";
+import Title from './Title';
+import Text from './Text';
 
 const getSectionStyles = (color) => {
   switch (color) {
-    case "primary":
+    case 'primary':
       return css`
         background: ${(props) => props.theme.gradients.reverseDarkGradient};
         color: ${(props) => props.theme.colors.white};
       `;
 
-    case "light":
+    case 'light':
       return css`
         background-color: ${(props) => props.theme.colors.lighterNeutral};
         color: ${(props) => props.theme.colors.darkNeutral};
       `;
 
-    case "dark":
+    case 'dark':
       return css`
         background: ${(props) => props.theme.colors.black};
         color: ${(props) => props.theme.colors.white};
@@ -40,8 +40,8 @@ const StyledSection = styled.div`
 `;
 
 const SectionTitle = styled(Title).attrs((props) => ({
-  as: props.as || "h3",
-  size: props.size || "large",
+  as: props.as || 'h3',
+  size: props.size || 'large',
 }))``;
 
 const SectionText = styled(Text)`
@@ -60,7 +60,7 @@ const Section = ({ children, className, color, padding }) => {
 Section.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
-  color: PropTypes.oneOf(["primary", "light", "dark"]),
+  color: PropTypes.oneOf(['primary', 'light', 'dark']),
   /* Top and bottom padding for Section (as Grid controls side padding) */
   padding: PropTypes.number,
 };

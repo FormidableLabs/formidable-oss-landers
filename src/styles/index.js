@@ -1,5 +1,5 @@
 /* Mixins for styled-components */
-import { css } from "styled-components";
+import { css } from 'styled-components';
 
 /* 
 Media query template
@@ -65,9 +65,7 @@ export function color(name) {
         } else {
           /* eslint-disable-next-line no-console */
           console.warn(
-            "Could not find '",
-            name,
-            "' in available list of theme colors: ",
+            `Could not find '${name}' in available list of theme colors: `,
             Object.keys(props.theme.colors)
           );
         }
@@ -83,7 +81,7 @@ Usage: ${linkStyles({ color: "white "})}
 */
 export function linkStyles({ color }) {
   switch (color) {
-    case "white":
+    case 'white':
       return css`
         a,
         a:link {
@@ -100,7 +98,7 @@ export function linkStyles({ color }) {
         }
       `;
     default:
-    case "default":
+    case 'default':
       return css`
         a,
         a:link {

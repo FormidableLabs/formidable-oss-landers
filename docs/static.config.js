@@ -1,15 +1,15 @@
-import path from "path";
+import path from 'path';
 
-import Document from "./src/html";
-import metadata from "./src/constants";
+import Document from './src/html';
+import metadata from './src/constants';
 
 export default {
   paths: {
-    src: "src",
+    src: 'src',
     dist: `dist`,
-    buildArtifacts: "node_modules/.cache/react-static/artifacts/",
-    devDist: "node_modules/.cache/react-static/dist/",
-    temp: "node_modules/.cache/react-static/temp/",
+    buildArtifacts: 'node_modules/.cache/react-static/artifacts/',
+    devDist: 'node_modules/.cache/react-static/dist/',
+    temp: 'node_modules/.cache/react-static/temp/',
     // public: "public", // The public directory (files copied to dist during build)
   },
   plugins: [
@@ -22,17 +22,17 @@ export default {
     //   },
     // ],
     [
-      require.resolve("react-static-plugin-source-filesystem"),
+      require.resolve('react-static-plugin-source-filesystem'),
       {
-        location: path.resolve("./src/pages"),
+        location: path.resolve('./src/pages'),
       },
     ],
-    require.resolve("react-static-plugin-styled-components"),
-    require.resolve("react-static-plugin-sitemap"),
-    require.resolve("react-static-plugin-react-router"),
+    require.resolve('react-static-plugin-styled-components'),
+    require.resolve('react-static-plugin-sitemap'),
+    require.resolve('react-static-plugin-react-router'),
   ],
   Document,
   getSiteData: () => ({
     title: metadata.title,
-  })
+  }),
 };

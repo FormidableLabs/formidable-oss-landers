@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import Grid from "./Grid";
-import HeaderInstall from "./HeaderInstall";
-import Ribbon from "./Ribbon";
-import Text from "./Text";
-import Title from "./Title";
-import { linkStyles, tablet, desktop } from "../styles";
+import Grid from './Grid';
+import HeaderInstall from './HeaderInstall';
+import Ribbon from './Ribbon';
+import Text from './Text';
+import Title from './Title';
+import { linkStyles, tablet, desktop } from '../styles';
 
 const Wrapper = styled.div`
   position: relative;
@@ -34,9 +34,9 @@ const Wrapper = styled.div`
 
 const StyledGrid = styled(Grid)`
   grid-template-areas:
-    "badge"
-    "content"
-    "nav";
+    'badge'
+    'content'
+    'nav';
 
   ${tablet`
     grid-column-gap: ${(props) => props.theme.spacing(8)};
@@ -92,7 +92,7 @@ const Nav = styled(Text)`
   flex-direction: row;
   justify-content: space-between;
 
-  ${linkStyles({ color: "white" })};
+  ${linkStyles({ color: 'white' })};
 
   ${tablet`
     justify-content: center;

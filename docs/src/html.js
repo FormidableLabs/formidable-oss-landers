@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import metadata from "./constants";
+import metadata from './constants';
 
 const CustomDocument = ({ Html, Head, Body, children }) => {
   return (
@@ -12,7 +12,10 @@ const CustomDocument = ({ Html, Head, Body, children }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="description" content={metadata.description} />
-        <meta property="og:title" content={`Formidable OSS Landers Documentation`} />
+        <meta
+          property="og:title"
+          content={`Formidable OSS Landers Documentation`}
+        />
         <meta
           property="og:site_name"
           content={`Formidable OSS Landers Documentation`}
