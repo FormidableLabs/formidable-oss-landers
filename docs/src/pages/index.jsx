@@ -1,10 +1,10 @@
 import React, { useState, useCallback } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { Link } from "react-router-dom";
-import { Header } from "formidable-oss-landers";
 import { ProjectBadge } from "formidable-oss-badges";
 
-import Component from "../components/Component";
+import ComponentPreview from "../components/ComponentPreview";
+import ThemeSelect from "../components/ThemeSelect";
 import { themes } from "../styles/theme";
 
 const Wrapper = styled.div`
@@ -51,8 +51,8 @@ const Nav = styled.div`
   flex-wrap: nowrap;
   padding: 1em;
 
-  background-color: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
   border-bottom: 2px solid ${(props) => props.theme.colors.lighterNeutral};
   font-size: 0.8rem;
 `;
@@ -74,6 +74,14 @@ const StyledButton = styled.button.attrs({ type: "button" })`
     outline: none;
     box-shadow: 0 0 0 1px ${(props) => props.theme.colors.primary};
   }
+
+  ${(props) =>
+    props.selected &&
+    `
+    background-color: ${props.theme.colors.lighterNeutral};
+    border-color: ${props.theme.colors.lightNeutral};
+    color: ${props.theme.colors.neutral};
+  `};
 `;
 
 const Title = styled.h1`
@@ -83,11 +91,11 @@ const Title = styled.h1`
   text-align: center;
 `;
 
+const Subtitle = styled.h2``;
+
 const IndexPage = () => {
-  // TODO: Set width of Component wrapper & add/remove the mobile/tablet/desktop classes
   const [width, setWidth] = useState(320);
   const [mediaClass, setMediaClass] = useState("mobile");
-
   const [theme, setTheme] = useState(themes.default);
 
   const handleChange = useCallback((ev) => {
@@ -95,23 +103,27 @@ const IndexPage = () => {
     if (themes[newTheme]) {
       setTheme(themes[newTheme]);
     } else {
-      console.warn("Could not find a theme for ", newTheme);
+      console.warn("Could not find a theme for", newTheme, "in", themes);
     }
   }, theme);
 
-  const onClickMobile = () => {
-    setWidth(320);
-    setMediaClass("mobile");
-  };
-
-  const onClickTablet = () => {
-    setWidth(768);
-    setMediaClass("tablet");
-  };
-
-  const onClickDesktop = () => {
-    setWidth(1200);
-    setMediaClass("tablet desktop");
+  const handleClick = (name) => (ev) => {
+    switch (name) {
+      case "mobile":
+        setWidth(320);
+        setMediaClass("mobile");
+        break;
+      case "tablet":
+        setWidth(768);
+        setMediaClass("tablet");
+        break;
+      case "desktop":
+        setWidth(1200);
+        setMediaClass("tablet desktop");
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -135,51 +147,111 @@ const IndexPage = () => {
         </Content>
         <Nav>
           <NavItem>
-            <StyledButton onClick={onClickMobile}>Mobile</StyledButton>
-            <StyledButton onClick={onClickTablet}>Tablet</StyledButton>
-            <StyledButton onClick={onClickDesktop}>Desktop</StyledButton>
+            <StyledButton
+              onClick={handleClick("mobile")}
+              selected={mediaClass === "mobile"}
+            >
+              Mobile
+            </StyledButton>
+            <StyledButton
+              onClick={handleClick("tablet")}
+              selected={mediaClass === "tablet"}
+            >
+              Tablet
+            </StyledButton>
+            <StyledButton
+              onClick={handleClick("desktop")}
+              selected={mediaClass === "tablet desktop"}
+            >
+              Desktop
+            </StyledButton>
           </NavItem>
           <NavItem>
-            Theme:&nbsp;
-            <select onChange={handleChange}>
-              <option value="purple" selected={theme === "purple"}>
-                purple (Renature)
-              </option>
-              <option value="cornflower" selected={theme === "cornflower"}>
-                cornflower (Urql)
-              </option>
-              <option value="poppy" selected={theme === "poppy"}>
-                poppy red
-              </option>
-              <option value="red" selected={theme === "red"}>
-                red
-              </option>
-            </select>
+            <ThemeSelect currentTheme={theme.key} onChange={handleChange} />
           </NavItem>
         </Nav>
         <Content>
-          <h2>
+          <Subtitle>
             <code>&lt;Header&gt;</code> Component
-          </h2>
+          </Subtitle>
         </Content>
-        <Component media={mediaClass} width={width} theme={theme}>
-          <Header
-            title="Example"
-            badge={
-              <ProjectBadge
-                isHoverable={false}
-                color={theme.colors.primary}
-                abbreviation="Ex"
-                description="Example"
-              />
-            }
-            description="Short description of the project goes here."
-            install="npm install example"
-            button={{ label: "Documentation", href: "#button" }}
-            nav={[{ label: "Docs", href: "#docs" }]}
-            linkComponent={Link}
-          />
-        </Component>
+        <ComponentPreview
+          media={mediaClass}
+          width={width}
+          theme={theme}
+          code={`<Header
+  title="Example"
+  badge={
+    <ProjectBadge
+      isHoverable={false}
+      color={theme.colors.primary}
+      abbreviation="Ex"
+      description="Example"
+    />
+  }
+  description="Short description of the project goes here."
+  install="npm install example"
+  button={{ label: "Documentation", href: "#button" }}
+  nav={[{ label: "Docs", href: "#docs" }]}
+  linkComponent={Link}
+/>`}
+        />
+        <Content>
+          <Subtitle>
+            <code>&lt;Features&gt;</code> Component
+          </Subtitle>
+        </Content>
+        <ComponentPreview
+          media={mediaClass}
+          width={width}
+          theme={theme}
+          code={`<Features
+  list={[
+    {
+      image: "http://placekitten.com/300/300",
+      title: "Feature 1",
+      description: "Feature 1 description goes here!",
+    },
+    {
+      image: "http://placekitten.com/300/300",
+      title: "Feature 2",
+      description: "Feature 1 description goes here!",
+    },
+    {
+      image: "http://placekitten.com/300/300",
+      title: "Feature 3",
+      description: "Feature 1 description goes here!",
+    },
+  ]}
+/>`}
+        />
+        <Content>
+          <Subtitle>
+            <code>&lt;Preview&gt;</code> Component
+          </Subtitle>
+        </Content>
+        <ComponentPreview
+          media={mediaClass}
+          width={width}
+          theme={theme}
+          code={`<Preview
+  title="Simple greetings"
+  list={[
+    {
+      title: "Say hello!",
+      props: {
+        code: "<strong>hello</strong>",
+      },
+    },
+    {
+      title: "Say howdy!",
+      props: {
+        code: "<strong>howdy</strong>",
+      },
+    },
+  ]}
+/>`}
+        />
       </ThemeProvider>
     </Wrapper>
   );

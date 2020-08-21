@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const renatureTheme = getTheme(config.colors);
+const renatureTheme = getTheme({ colors: config.colors });
 
 function Renature() {
   const hasPreview = !!config.preview;

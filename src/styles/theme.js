@@ -1,4 +1,5 @@
 import { mobile, tablet, desktop } from "./index";
+import { themes } from "../../docs/src/styles/theme";
 
 const universalColors = {
   white: "#FFFFFF",
@@ -39,20 +40,21 @@ const breakpoints = {
   desktop: 1200,
 };
 
-export const getTheme = (userColors, overrides) => {
-  const colors = { ...universalColors, ...userColors };
+export const getTheme = (options = {}) => {
+  const { colors, ...rest } = options;
+  const allColors = { ...universalColors, ...colors };
   return {
     breakpoints,
-    boxShadows: boxShadows(colors),
-    colors: colors,
+    boxShadows: boxShadows(allColors),
+    colors: allColors,
     fonts,
-    gradients: gradients(colors),
+    gradients: gradients(allColors),
     spacing,
     media: {
       mobile,
       tablet,
       desktop,
     },
-    ...overrides,
+    ...rest,
   };
 };
