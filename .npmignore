@@ -1,5 +1,7 @@
 *
-!/dist/formidable-oss-landers*.js
+!/dist/**/*
+!/lib/**/*
+!/es/**/*
 !/docs/**/*
 !LICENSE
 !README.md
