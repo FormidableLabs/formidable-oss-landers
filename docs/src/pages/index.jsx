@@ -20,11 +20,6 @@ const Wrapper = styled.div`
     border-radius: 4px;
     font-family: ${(props) => props.theme.fonts.code};
   }
-
-  p,
-  h2 {
-    margin: 1em 0 0 0;
-  }
 `;
 
 const Content = styled.div`
@@ -34,6 +29,11 @@ const Content = styled.div`
   code {
     background-color: ${(props) => props.theme.colors.lighterPrimary};
     color: ${(props) => props.theme.colors.darkerPrimary};
+  }
+
+  > p,
+  > h2 {
+    margin: 1em 0 0 0;
   }
 `;
 
@@ -249,6 +249,62 @@ const IndexPage = () => {
         code: "<strong>howdy</strong>",
       },
     },
+  ]}
+/>`}
+        />
+        <Content>
+          <Subtitle>
+            <code>&lt;CustomSection&gt;</code> Component
+          </Subtitle>
+        </Content>
+        <ComponentPreview
+          media={mediaClass}
+          width={width}
+          theme={theme}
+          code={`<CustomSection
+  color="dark"
+  title="Anything is possible"
+  description="(within reason, time, ability, drive, and support)"
+  components={[<div>🔮magic🔮</div>]}
+/>`}
+        />
+        <Content>
+          <Subtitle>
+            <code>&lt;GetStarted&gt;</code> Component
+          </Subtitle>
+        </Content>
+        <ComponentPreview
+          media={mediaClass}
+          width={width}
+          theme={theme}
+          code={`<GetStarted
+  description="The world is an oyster"
+  button={{ label: "Documentation", href: "#docs" }}
+/>`}
+        />
+        <Content>
+          <Subtitle>
+            <code>&lt;FeaturedOSS&gt;</code> Component
+          </Subtitle>
+        </Content>
+        <ComponentPreview
+          media={mediaClass}
+          width={width}
+          theme={theme}
+          code={`<FeaturedOSS
+  list={[
+    { 
+      badge: <div>badge</div>, 
+      href: "#hello", 
+      title: "Hello", 
+      description: "The first greeting that comes to my mind" 
+    }, 
+    { 
+      badge: <div>badge</div>, 
+      href: "#howdy", 
+      title: "Howdy", 
+      description: "The second greeting that comes to my mind" 
+    }
   ]}
 />`}
         />
