@@ -1,5 +1,4 @@
-import { mobile, tablet, desktop } from "./index";
-import { themes } from "../../docs/src/styles/theme";
+import { mobile, tablet, desktop } from './index';
 
 const universalColors = {
   white: '#FFFFFF',
@@ -40,7 +39,7 @@ const breakpoints = {
   desktop: 1200,
 };
 
-export const getTheme = (options = {}) => {
+export const createTheme = (options = {}) => {
   const { colors, ...rest } = options;
   const allColors = { ...universalColors, ...colors };
   return {

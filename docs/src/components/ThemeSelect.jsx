@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { themeConfig } from "../styles/theme";
+import { themeConfig } from '../styles/theme';
 
 const Wrapper = styled.div``;
 

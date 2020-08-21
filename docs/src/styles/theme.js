@@ -1,4 +1,4 @@
-import { getTheme } from 'formidable-oss-landers';
+import { createTheme } from 'formidable-oss-landers';
 import { css } from 'styled-components';
 
 export const guideTheme = {
@@ -9,44 +9,44 @@ export const guideTheme = {
     neutral: '#394471',
     darkNeutral: '#000C3B',
     darkerNeutral: '#00061F',
-    black: '#000517'
+    black: '#000517',
   },
   fonts: {
-    heading: "'Rubik', sans-serif",
-    body: "'Rubik', sans-serif",
-    code: "'Roboto Mono', monospace"
-  }
+    heading: `'Rubik', sans-serif`,
+    body: `'Rubik', sans-serif`,
+    code: `'Roboto Mono', monospace`,
+  },
 };
 
 // Using classnames instead of media queries allows the docs to showcase different sizes of each component.
 const overrides = {
   media: {
-    mobile: function(...args) {
+    mobile: function (...args) {
       return css`
         .mobile & {
           ${css(...args)};
         }
       `;
     },
-    tablet: function(...args) {
+    tablet: function (...args) {
       return css`
         .tablet & {
           ${css(...args)};
         }
       `;
     },
-    desktop: function(...args) {
+    desktop: function (...args) {
       return css`
         .desktop & {
           ${css(...args)};
         }
       `;
-    }
-  }
+    },
+  },
 };
 
 export const themeConfig = {
-  cornflower: getTheme({
+  cornflower: createTheme({
     key: 'cornflower',
     label: 'Cornflower (Urql)',
     colors: {
@@ -57,11 +57,11 @@ export const themeConfig = {
       darkerPrimary: '#263766',
 
       lightComplement: '#857141',
-      darkComplement: '#664E11'
+      darkComplement: '#664E11',
     },
-    ...overrides
+    ...overrides,
   }),
-  orchid: getTheme({
+  orchid: createTheme({
     key: 'orchid',
     label: 'Orchid',
     colors: {
@@ -72,11 +72,11 @@ export const themeConfig = {
       darkerPrimary: '#572F58',
 
       lightComplement: '#597249',
-      darkComplement: '#2F4F1B'
+      darkComplement: '#2F4F1B',
     },
-    ...overrides
+    ...overrides,
   }),
-  poppy: getTheme({
+  poppy: createTheme({
     key: 'poppy',
     label: 'Poppy Red',
     colors: {
@@ -87,11 +87,11 @@ export const themeConfig = {
       darkerPrimary: '#661F1F',
 
       lightComplement: '#3B8550',
-      darkComplement: '#0A6624'
+      darkComplement: '#0A6624',
     },
-    ...overrides
+    ...overrides,
   }),
-  purple: getTheme({
+  purple: createTheme({
     key: 'purple',
     label: 'Purple (Renature)',
     colors: {
@@ -102,11 +102,11 @@ export const themeConfig = {
       darkerPrimary: '#30265F',
 
       lightComplement: '#7A7441',
-      darkComplement: '#595112'
+      darkComplement: '#595112',
     },
-    ...overrides
+    ...overrides,
   }),
-  red: getTheme({
+  red: createTheme({
     key: 'red',
     label: 'Red',
     colors: {
@@ -117,13 +117,13 @@ export const themeConfig = {
       darkerPrimary: '#5E2022',
 
       lightComplement: '#3D794D',
-      darkComplement: '#0C5720'
+      darkComplement: '#0C5720',
     },
-    ...overrides
-  })
+    ...overrides,
+  }),
 };
 
 export const themes = {
   default: themeConfig.purple,
-  ...themeConfig
+  ...themeConfig,
 };

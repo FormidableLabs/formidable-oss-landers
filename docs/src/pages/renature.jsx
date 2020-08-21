@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import styled, { ThemeProvider } from "styled-components";
-import config from "../renature-config";
+import styled, { ThemeProvider } from 'styled-components';
+import config from '../renature-config';
 
 import {
   Header,
@@ -11,14 +11,14 @@ import {
   GetStarted,
   FeaturedOSS,
   Footer,
-  getTheme,
-} from "formidable-oss-landers";
+  createTheme,
+} from 'formidable-oss-landers';
 
 const Wrapper = styled.div`
   width: 100%;
 `;
 
-const renatureTheme = getTheme({ colors: config.colors });
+const renatureTheme = createTheme({ colors: config.colors });
 
 function Renature() {
   const hasPreview = !!config.preview;

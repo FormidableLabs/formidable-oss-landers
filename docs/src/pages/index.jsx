@@ -9,15 +9,15 @@ import { themes } from '../styles/theme';
 const Wrapper = styled.div`
   margin-top: 5rem;
 
-  color: ${props => props.theme.colors.darkerPrimary};
-  font-family: ${props => props.theme.fonts.body};
+  color: ${(props) => props.theme.colors.darkerPrimary};
+  font-family: ${(props) => props.theme.fonts.body};
   font-size: 1.25rem;
 
   code {
     padding: 0.05em 0.2em;
 
     border-radius: 4px;
-    font-family: ${props => props.theme.fonts.code};
+    font-family: ${(props) => props.theme.fonts.code};
   }
 `;
 
@@ -26,8 +26,8 @@ const Content = styled.div`
   max-width: 50ch;
 
   code {
-    background-color: ${props => props.theme.colors.lighterPrimary};
-    color: ${props => props.theme.colors.darkerPrimary};
+    background-color: ${(props) => props.theme.colors.lighterPrimary};
+    color: ${(props) => props.theme.colors.darkerPrimary};
   }
 
   > p {
@@ -66,7 +66,7 @@ const ControlList = styled.div`
 
   background-color: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(20px);
-  border-bottom: 2px solid ${props => props.theme.colors.lighterNeutral};
+  border-bottom: 2px solid ${(props) => props.theme.colors.lighterNeutral};
   font-size: 0.8rem;
 `;
 
@@ -85,10 +85,10 @@ const StyledButton = styled.button.attrs({ type: 'button' })`
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 1px ${props => props.theme.colors.primary};
+    box-shadow: 0 0 0 1px ${(props) => props.theme.colors.primary};
   }
 
-  ${props =>
+  ${(props) =>
     props.selected &&
     `
     background-color: ${props.theme.colors.lighterNeutral};
@@ -113,7 +113,7 @@ const IndexPage = () => {
   const [mediaClass, setMediaClass] = useState('mobile');
   const [theme, setTheme] = useState(themes.default);
 
-  const handleChange = useCallback(ev => {
+  const handleChange = useCallback((ev) => {
     const newTheme = ev.target.value;
     if (themes[newTheme]) {
       setTheme(themes[newTheme]);
@@ -122,7 +122,7 @@ const IndexPage = () => {
     }
   }, theme);
 
-  const handleClick = name => ev => {
+  const handleClick = (name) => (ev) => {
     switch (name) {
       case 'mobile':
         setWidth(320);

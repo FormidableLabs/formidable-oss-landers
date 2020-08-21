@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import styled, { ThemeProvider } from "styled-components";
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
-import { Link } from "react-router-dom";
-import nightOwl from "prism-react-renderer/themes/nightOwl";
+import React, { useState } from 'react';
+import styled, { ThemeProvider } from 'styled-components';
+import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
+import { Link } from 'react-router-dom';
+import nightOwl from 'prism-react-renderer/themes/nightOwl';
 
-import { ProjectBadge } from "formidable-oss-badges";
+import { ProjectBadge } from 'formidable-oss-badges';
 import {
   Header,
   Features,
@@ -13,7 +13,7 @@ import {
   GetStarted,
   FeaturedOSS,
   Footer,
-} from "formidable-oss-landers";
+} from 'formidable-oss-landers';
 
 const Wrapper = styled.div`
   margin: 0 auto 6em;
@@ -25,7 +25,7 @@ const PreviewWrapper = styled.div`
 `;
 
 const EditorWrapper = styled.div`
-  display: ${(props) => (props.isVisible ? "block" : "none")};
+  display: ${(props) => (props.isVisible ? 'block' : 'none')};
 `;
 
 const StyledButton = styled.button`
