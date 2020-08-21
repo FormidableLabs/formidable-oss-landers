@@ -12,7 +12,10 @@ const CustomDocument = ({ Html, Head, Body, children }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="description" content={metadata.description} />
-        <meta property="og:title" content={`Formidable OSS Landers Documentation`} />
+        <meta
+          property="og:title"
+          content={`Formidable OSS Landers Documentation`}
+        />
         <meta
           property="og:site_name"
           content={`Formidable OSS Landers Documentation`}
@@ -32,6 +35,11 @@ const CustomDocument = ({ Html, Head, Body, children }) => {
         <meta name="msapplication-TileColor" content="#ff4081" />
         <meta name="msapplication-config" content="./browserconfig.xml" />
         <meta name="theme-color" content="#ffffff" />
+        {/* Fonts */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Rubik:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+          rel="stylesheet"
+        />
         <title>Formidable OSS Landers Documentation</title>
       </Head>
       <Body>

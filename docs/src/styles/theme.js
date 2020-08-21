@@ -1,6 +1,23 @@
 import { getTheme } from "formidable-oss-landers";
 import { css } from "styled-components";
 
+export const guideTheme = {
+  colors: {
+    white: "#EBEEFA",
+    lighterNeutral: "#C0CAF0",
+    lightNeutral: "#4D5C9A",
+    neutral: "#394471",
+    darkNeutral: "#000C3B",
+    darkerNeutral: "#00061F",
+    black: "#000517",
+  },
+  fonts: {
+    heading: "'Rubik', sans-serif",
+    body: "'Rubik', sans-serif",
+    code: "'Roboto Mono', monospace",
+  },
+};
+
 // Using classnames instead of media queries allows the docs to showcase different sizes of each component.
 const overrides = {
   media: {
@@ -28,7 +45,7 @@ const overrides = {
   },
 };
 
-export const purple = getTheme(
+const purple = getTheme(
   {
     lighterPrimary: "#F8F7FE",
     lightPrimary: "#D6CFF9",
@@ -42,22 +59,67 @@ export const purple = getTheme(
   overrides
 );
 
-export const blue = getTheme(
+const poppy = getTheme(
   {
-    lighterPrimary: "rgb(240, 247, 251)",
-    lightPrimary: "rgb(188, 198, 250)",
-    primary: "rgb(129, 150, 255)",
-    darkPrimary: "rgb(86, 106, 200)",
-    darkerPrimary: "rgb(13, 17, 41)",
+    lighterPrimary: "#FFF6F6",
+    lightPrimary: "#FFC9C9",
+    primary: "#FF4D4D",
+    darkPrimary: "#B33636",
+    darkerPrimary: "#661F1F",
 
-    lightComplement: "#AD9A5F",
-    darkComplement: "#7A631C",
+    lightComplement: "#3B8550",
+    darkComplement: "#0A6624",
+  },
+  overrides
+);
+
+const red = getTheme(
+  {
+    lighterPrimary: "#FEF6F6",
+    lightPrimary: "#F8CACC",
+    primary: "#EA5056",
+    darkPrimary: "#A4383C",
+    darkerPrimary: "#5E2022",
+
+    lightComplement: "#3D794D",
+    darkComplement: "#0C5720",
+  },
+  overrides
+);
+
+const orchid = getTheme(
+  {
+    lighterPrimary: "#FDF8FD",
+    lightPrimary: "#F3D5F4",
+    primary: "#DA76DD",
+    darkPrimary: "#99539B",
+    darkerPrimary: "#572F58",
+
+    lightComplement: "#597249",
+    darkComplement: "#2F4F1B",
+  },
+  overrides
+);
+
+const cornflower = getTheme(
+  {
+    lighterPrimary: "#F7F9FF",
+    lightPrimary: "#CFDBFF",
+    primary: "#5F8AFF",
+    darkPrimary: "#4361B3",
+    darkerPrimary: "#263766",
+
+    lightComplement: "#857141",
+    darkComplement: "#664E11",
   },
   overrides
 );
 
 export const themes = {
   default: purple,
-  blue,
+  poppy,
   purple,
+  red,
+  orchid,
+  cornflower,
 };
