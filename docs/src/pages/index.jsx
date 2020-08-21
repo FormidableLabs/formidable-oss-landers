@@ -36,7 +36,22 @@ const Content = styled.div`
   }
 `;
 
-const Nav = styled.div`
+const Nav = styled.nav`
+  position: fixed;
+  top: 50px;
+  left: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin-left: 1em;
+
+  font-size: 0.8rem;
+`;
+
+const ControlList = styled.div`
   z-index: 1;
   position: fixed;
   top: 0;
@@ -56,7 +71,7 @@ const Nav = styled.div`
   font-size: 0.8rem;
 `;
 
-const NavItem = styled.div`
+const ControlItem = styled.div`
   margin-left: 1em;
 
   > * + * {
@@ -148,7 +163,15 @@ const IndexPage = () => {
           </p>
         </Content>
         <Nav>
-          <NavItem>
+          <a href="#header">Header</a>
+          <a href="#features">Features</a>
+          <a href="#preview">Preview</a>
+          <a href="#custom-section">Custom Section</a>
+          <a href="#get-started">Get Started</a>
+          <a href="#featured-oss">Featured OSS</a>
+        </Nav>
+        <ControlList>
+          <ControlItem>
             <StyledButton
               onClick={handleClick("mobile")}
               selected={mediaClass === "mobile"}
@@ -167,13 +190,13 @@ const IndexPage = () => {
             >
               Desktop
             </StyledButton>
-          </NavItem>
-          <NavItem>
+          </ControlItem>
+          <ControlItem>
             <ThemeSelect currentTheme={theme.key} onChange={handleChange} />
-          </NavItem>
-        </Nav>
+          </ControlItem>
+        </ControlList>
         <Content>
-          <Subtitle>
+          <Subtitle id="header">
             <code>&lt;Header&gt;</code> Component
           </Subtitle>
         </Content>
@@ -199,7 +222,7 @@ const IndexPage = () => {
 />`}
         />
         <Content>
-          <Subtitle>
+          <Subtitle id="features">
             <code>&lt;Features&gt;</code> Component
           </Subtitle>
         </Content>
@@ -228,7 +251,7 @@ const IndexPage = () => {
 />`}
         />
         <Content>
-          <Subtitle>
+          <Subtitle id="preview">
             <code>&lt;Preview&gt;</code> Component
           </Subtitle>
         </Content>
@@ -255,7 +278,7 @@ const IndexPage = () => {
 />`}
         />
         <Content>
-          <Subtitle>
+          <Subtitle id="custom-section">
             <code>&lt;CustomSection&gt;</code> Component
           </Subtitle>
         </Content>
@@ -271,7 +294,7 @@ const IndexPage = () => {
 />`}
         />
         <Content>
-          <Subtitle>
+          <Subtitle id="get-started">
             <code>&lt;GetStarted&gt;</code> Component
           </Subtitle>
         </Content>
@@ -285,7 +308,7 @@ const IndexPage = () => {
 />`}
         />
         <Content>
-          <Subtitle>
+          <Subtitle id="featured-oss">
             <code>&lt;FeaturedOSS&gt;</code> Component
           </Subtitle>
         </Content>
