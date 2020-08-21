@@ -16,6 +16,10 @@ import {
 } from "formidable-oss-landers";
 
 const Wrapper = styled.div`
+  margin: 0 auto 6em;
+`;
+
+const PreviewWrapper = styled.div`
   margin: 1em auto 0;
   width: ${(props) => props.width}px;
 `;
@@ -52,40 +56,41 @@ const ComponentPreview = ({ code, media, width, theme }) => {
   };
   return (
     <ThemeProvider theme={theme}>
-      <LiveProvider
-        theme={nightOwl}
-        code={code}
-        scope={{
-          ProjectBadge,
-          Header,
-          Features,
-          Preview,
-          CustomSection,
-          GetStarted,
-          FeaturedOSS,
-          Footer,
-          theme,
-          Link,
-          Wrapper,
-          width,
-          media,
-        }}
-      >
-        <Wrapper className={media} width={width}>
-          <LivePreview />
-        </Wrapper>
-        <LiveError />
-        <StyledButton
-          type="button"
-          onClick={toggleEditor}
-          isVisible={isVisible}
+      <Wrapper>
+        <LiveProvider
+          theme={nightOwl}
+          code={code}
+          scope={{
+            ProjectBadge,
+            Header,
+            Features,
+            Preview,
+            CustomSection,
+            GetStarted,
+            FeaturedOSS,
+            Footer,
+            theme,
+            Link,
+            width,
+            media,
+          }}
         >
-          View code
-        </StyledButton>
-        <EditorWrapper isVisible={isVisible}>
-          <LiveEditor />
-        </EditorWrapper>
-      </LiveProvider>
+          <PreviewWrapper className={media} width={width}>
+            <LivePreview />
+          </PreviewWrapper>
+          <LiveError />
+          <StyledButton
+            type="button"
+            onClick={toggleEditor}
+            isVisible={isVisible}
+          >
+            View code
+          </StyledButton>
+          <EditorWrapper isVisible={isVisible}>
+            <LiveEditor />
+          </EditorWrapper>
+        </LiveProvider>
+      </Wrapper>
     </ThemeProvider>
   );
 };

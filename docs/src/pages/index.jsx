@@ -31,8 +31,7 @@ const Content = styled.div`
     color: ${(props) => props.theme.colors.darkerPrimary};
   }
 
-  > p,
-  > h2 {
+  > p {
     margin: 1em 0 0 0;
   }
 `;
@@ -91,7 +90,9 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const Subtitle = styled.h2``;
+const Subtitle = styled.h2`
+  margin-top: 2em;
+`;
 
 const IndexPage = () => {
   const [width, setWidth] = useState(320);
