@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import Button from "./Button";
-import Grid from "./Grid";
-import Section from "./Section";
+import Button from './Button';
+import Grid from './Grid';
+import Section from './Section';
 
-const Wrapper = styled(Section).attrs({ color: "light" })``;
+const Wrapper = styled(Section).attrs({ color: 'light' })``;
 
 const ButtonWrapper = styled.div`
   margin-top: ${(props) => props.theme.spacing(4)};
@@ -45,7 +45,7 @@ GetStarted.propTypes = {
 };
 
 GetStarted.defaultProps = {
-  title: "Get Started",
+  title: 'Get Started',
 };
 
 export default GetStarted;

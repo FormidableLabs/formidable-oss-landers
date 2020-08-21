@@ -1,38 +1,61 @@
 {
   "name": "formidable-oss-landers",
+  "private": true,
   "version": "0.0.1",
-  "main": "dist/formidable-oss-landers.cjs.js",
-  "module": "dist/formidable-oss-landers.esm.js",
+  "main": "lib/index.js",
+  "module": "es/index.js",
   "browser": "dist/formidable-oss-landers.umd.js",
   "peerDependencies": {
     "react": ">=16.8.0",
     "styled-components": ">=5.1.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.10.5",
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.10.4",
     "@rollup/plugin-babel": "^5.2.0",
     "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
+    "babel-eslint": "^10.1.0",
+    "builder": "^5.0.0",
+    "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0",
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
+    "rimraf": "^3.0.2",
     "rollup": "^1.0.0",
     "rollup-plugin-react-svg": "^3.0.3",
     "styled-components": "^5.1.1"
   },
   "scripts": {
-    "start": "cd docs && yarn start",
-    "build": "rollup -c",
-    "dev": "rollup -c -w"
+    "build-babel": "babel src",
+    "build-umd": "rollup -c",
+    "build-babel-esm": "builder run build-babel -- -d es",
+    "build-babel-cjs": "builder run --env \"{\\\"BABEL_ENV\\\":\\\"cjs\\\"}\" build-babel -- -d lib",
+    "build": "builder concurrent --buffer build-babel-esm build-babel-cjs build-umd",
+    "clean": "rimraf dist lib es \"docs/dist\"",
+    "dev": "rollup -c -w",
+    "lint": "eslint '*.js' src 'docs/*.js' docs/src",
+    "prettier": "prettier \"**/*.{js,jsx,json,ts,css,md}\"",
+    "prettier-check": "yarn prettier --check",
+    "prettier-fix": "yarn prettier --write",
+    "version": "yarn clean && yarn build"
   },
-  "files": [
-    "dist"
-  ],
   "dependencies": {
     "formidable-oss-badges": "^0.3.5",
     "prism-react-renderer": "^1.1.1",
     "react-copy-to-clipboard": "^5.0.2",
     "react-live": "^2.2.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn prettier-fix && yarn lint"
+    }
   }
 }

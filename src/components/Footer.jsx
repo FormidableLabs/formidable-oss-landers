@@ -1,19 +1,19 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import Grid from "./Grid";
-import Section from "./Section";
-import Text from "./Text";
-import { linkStyles, tablet } from "../styles";
+import Grid from './Grid';
+import Section from './Section';
+import Text from './Text';
+import { linkStyles, tablet } from '../styles';
 
-import Logo from "../assets/formidable.svg";
+import Logo from '../assets/formidable.svg';
 
 const Wrapper = styled(Section).attrs({ padding: 10 })`
   background-color: ${(props) => props.theme.colors.darkerNeutral};
   color: ${(props) => props.theme.colors.white};
   text-align: left;
 
-  ${linkStyles({ color: "white" })};
+  ${linkStyles({ color: 'white' })};
 `;
 
 const StyledGrid = styled(Grid)`
@@ -94,7 +94,7 @@ const Footer = () => {
           Formidable is a Seattle, Denver, and London-based engineering
           consultancy and open source software organization, specializing in
           React.js, React Native, GraphQL, Node.js, and the extended JavaScript
-          ecosystem. For more information about Formidable, please visit{" "}
+          ecosystem. For more information about Formidable, please visit{' '}
           <a href="https://formidable.com">formidable.com</a>.
         </StyledText>
       </StyledGrid>

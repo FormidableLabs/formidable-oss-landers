@@ -1,5 +1,8 @@
-src/**/*.test.js
-lib/**/*.test.js
-src/examples/**
-lib/examples/**
-examples/**
+*
+!/dist/**/*
+!/lib/**/*
+!/es/**/*
+!/docs/**/*
+!LICENSE
+!README.md
+!package.json

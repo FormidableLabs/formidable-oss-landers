@@ -1,10 +1,10 @@
-import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
-import { color, tablet, desktop } from "../styles";
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import { color, tablet, desktop } from '../styles';
 
 function getStyles(styleType) {
   switch (styleType) {
-    case "xlarge":
+    case 'xlarge':
       // Subtitle
       return css`
         font-size: 15px;
@@ -18,7 +18,7 @@ function getStyles(styleType) {
           line-height: ${30 / 24};
         `};
       `;
-    case "large":
+    case 'large':
       // Nav Item Label
       return css`
         font-size: 14px;
@@ -27,7 +27,7 @@ function getStyles(styleType) {
         text-transform: uppercase;
         ${(props) => props.theme.media.desktop`font-size: 18px;`};
       `;
-    case "small":
+    case 'small':
       // Button label
       return css`
         font-size: 12px;
@@ -35,14 +35,14 @@ function getStyles(styleType) {
         text-transform: uppercase;
         ${(props) => props.theme.media.desktop`font-size: 14px;`};
       `;
-    case "xsmall":
+    case 'xsmall':
       // Textfield Input
       return css`
         font-size: 12px;
         letter-spacing: 0.02em;
         ${(props) => props.theme.media.desktop`font-size: 14px;`};
       `;
-    case "xxsmall":
+    case 'xxsmall':
       // Ribbon text
       return css`
         font-size: 12px;
@@ -50,7 +50,7 @@ function getStyles(styleType) {
         letter-spacing: 0.07em;
         text-transform: uppercase;
       `;
-    case "medium":
+    case 'medium':
     default:
       return css`
         font-size: 12px;
@@ -69,7 +69,7 @@ function getStyles(styleType) {
 
 const Text = styled.p.withConfig({
   // do not pass 'color' or 'align' to DOM
-  shouldForwardProp: (prop) => !["color", "align"].includes(prop),
+  shouldForwardProp: (prop) => !['color', 'align'].includes(prop),
 })`
   ${(props) => getStyles(props.size)};
   ${(props) => props.color && color(props.color)};
@@ -80,7 +80,7 @@ const Text = styled.p.withConfig({
 `;
 
 Text.defaultProps = {
-  align: "inherit",
+  align: 'inherit',
 };
 
 Text.propTypes = {
@@ -88,12 +88,12 @@ Text.propTypes = {
   children: PropTypes.node.isRequired,
   color: PropTypes.string,
   size: PropTypes.oneOf([
-    "xxsmall",
-    "xsmall",
-    "small",
-    "medium",
-    "large",
-    "xlarge",
+    'xxsmall',
+    'xsmall',
+    'small',
+    'medium',
+    'large',
+    'xlarge',
   ]),
 };
 

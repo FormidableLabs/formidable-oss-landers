@@ -1,10 +1,10 @@
-import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
-import { color, tablet, desktop } from "../styles";
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import { color, tablet, desktop } from '../styles';
 
 const getStyles = (styleType) => {
   switch (styleType) {
-    case "xlarge":
+    case 'xlarge':
       // Title/h1 of site
       return css`
         font-size: 45px;
@@ -20,7 +20,7 @@ const getStyles = (styleType) => {
           font-size: 90px;
         `};
       `;
-    case "large":
+    case 'large':
       // Section title
       return css`
         font-size: 24px;
@@ -32,7 +32,7 @@ const getStyles = (styleType) => {
           line-height: ${38 / 30};
         `};
       `;
-    case "medium":
+    case 'medium':
     default:
       // Section subtitle
       return css`
@@ -49,7 +49,7 @@ const getStyles = (styleType) => {
 
 const Title = styled.p.withConfig({
   // do not pass 'color' or 'align' to DOM
-  shouldForwardProp: (prop) => !["color", "align"].includes(prop),
+  shouldForwardProp: (prop) => !['color', 'align'].includes(prop),
 })`
   ${(props) => props.size && getStyles(props.size)};
   ${(props) => props.color && color(props.color)};
@@ -59,14 +59,14 @@ const Title = styled.p.withConfig({
 `;
 
 Title.defaultProps = {
-  align: "inherit",
+  align: 'inherit',
 };
 
 Title.propTypes = {
   align: PropTypes.string,
   children: PropTypes.node.isRequired,
   color: PropTypes.string,
-  size: PropTypes.oneOf(["xlarge", "large", "medium"]),
+  size: PropTypes.oneOf(['xlarge', 'large', 'medium']),
 };
 
 export default Title;

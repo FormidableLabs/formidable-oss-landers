@@ -1,74 +1,45 @@
-import { nodeResolve } from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
-import babel from "@rollup/plugin-babel";
-import reactSvg from "rollup-plugin-react-svg";
-import pkg from "./package.json";
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import babel from '@rollup/plugin-babel';
+import reactSvg from 'rollup-plugin-react-svg';
+import pkg from './package.json';
 
-const common = {
-  external: [
-    "react",
-    "styled-components",
-    "prop-types",
-    "prism-react-renderer",
-    "react-copy-to-clipboard",
-    "react-live",
-  ],
-  extensions: [".jsx", ".js"],
-  globals: {
-    react: "React",
-    "styled-components": "styled",
-    "prop-types": "PropTypes",
-    "react-copy-to-clipboard": "reactCopyToClipboard",
-    "react-live": "reactLive",
-  },
-};
 export default [
   // browser-friendly UMD build
   {
-    input: "src/index.js",
-    external: common.external,
+    input: 'src/index.js',
+    external: [
+      'react',
+      'styled-components',
+      'prop-types',
+      'prism-react-renderer',
+      'prism-react-renderer/themes/nightOwl',
+      'react-copy-to-clipboard',
+      'react-live',
+    ],
     output: {
-      name: "formidableOSSLanders",
+      name: 'formidableOSSLanders',
       file: pkg.browser,
-      format: "umd",
-      globals: common.globals,
+      format: 'umd',
+      globals: {
+        react: 'React',
+        'styled-components': 'styled',
+        'prop-types': 'PropTypes',
+        'react-copy-to-clipboard': 'reactCopyToClipboard',
+        'react-live': 'reactLive',
+        'prism-react-renderer/themes/nightOwl': 'nightOwl',
+      },
     },
     plugins: [
-      nodeResolve({ extensions: common.extensions }),
-      commonjs(),
+      nodeResolve({ extensions: ['.jsx', '.js'] }),
+      commonjs(), // necessary to convert dependencies to ES modules
       babel({
-        extensions: common.extensions,
-        exclude: "node_modules/**",
-        babelHelpers: "bundled",
+        extensions: ['.jsx', '.js'],
+        exclude: 'node_modules/**',
+        babelHelpers: 'bundled',
       }),
       reactSvg({
-        exclue: "node_modules/**",
-      }),
-    ],
-  },
-
-  // CommonJS (for Node) and ES module (for bundlers) build.
-  // (We could have three entries in the configuration array
-  // instead of two, but it's quicker to generate multiple
-  // builds from a single configuration where possible, using
-  // an array for the `output` option, where we can specify
-  // `file` and `format` for each target)
-  {
-    input: "src/index.js",
-    external: common.external,
-    output: [
-      { file: pkg.main, format: "cjs", globals: common.globals },
-      { file: pkg.module, format: "es", globals: common.globals },
-    ],
-    plugins: [
-      nodeResolve({ extensions: common.extensions }),
-      babel({
-        extensions: common.extensions,
-        exclude: ["node_modules/**"],
-        babelHelpers: "bundled",
-      }),
-      reactSvg({
-        exclue: "node_modules/**",
+        exclue: 'node_modules/**',
       }),
     ],
   },

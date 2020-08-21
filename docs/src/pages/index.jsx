@@ -1,24 +1,23 @@
-import React, { useState, useCallback } from "react";
-import styled, { ThemeProvider } from "styled-components";
-import { Link } from "react-router-dom";
-import { ProjectBadge } from "formidable-oss-badges";
+import React, { useState, useCallback } from 'react';
+import styled, { ThemeProvider } from 'styled-components';
+import { Link } from 'react-router-dom';
 
-import ComponentPreview from "../components/ComponentPreview";
-import ThemeSelect from "../components/ThemeSelect";
-import { themes } from "../styles/theme";
+import ComponentPreview from '../components/ComponentPreview';
+import ThemeSelect from '../components/ThemeSelect';
+import { themes } from '../styles/theme';
 
 const Wrapper = styled.div`
   margin-top: 5rem;
 
-  color: ${(props) => props.theme.colors.darkerPrimary};
-  font-family: ${(props) => props.theme.fonts.body};
+  color: ${props => props.theme.colors.darkerPrimary};
+  font-family: ${props => props.theme.fonts.body};
   font-size: 1.25rem;
 
   code {
     padding: 0.05em 0.2em;
 
     border-radius: 4px;
-    font-family: ${(props) => props.theme.fonts.code};
+    font-family: ${props => props.theme.fonts.code};
   }
 `;
 
@@ -27,8 +26,8 @@ const Content = styled.div`
   max-width: 50ch;
 
   code {
-    background-color: ${(props) => props.theme.colors.lighterPrimary};
-    color: ${(props) => props.theme.colors.darkerPrimary};
+    background-color: ${props => props.theme.colors.lighterPrimary};
+    color: ${props => props.theme.colors.darkerPrimary};
   }
 
   > p {
@@ -67,7 +66,7 @@ const ControlList = styled.div`
 
   background-color: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(20px);
-  border-bottom: 2px solid ${(props) => props.theme.colors.lighterNeutral};
+  border-bottom: 2px solid ${props => props.theme.colors.lighterNeutral};
   font-size: 0.8rem;
 `;
 
@@ -79,17 +78,17 @@ const ControlItem = styled.div`
   }
 `;
 
-const StyledButton = styled.button.attrs({ type: "button" })`
+const StyledButton = styled.button.attrs({ type: 'button' })`
   padding: 0.25em 1em;
   border: 1px solid black;
   border-radius: 20rem;
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 1px ${(props) => props.theme.colors.primary};
+    box-shadow: 0 0 0 1px ${props => props.theme.colors.primary};
   }
 
-  ${(props) =>
+  ${props =>
     props.selected &&
     `
     background-color: ${props.theme.colors.lighterNeutral};
@@ -111,31 +110,31 @@ const Subtitle = styled.h2`
 
 const IndexPage = () => {
   const [width, setWidth] = useState(320);
-  const [mediaClass, setMediaClass] = useState("mobile");
+  const [mediaClass, setMediaClass] = useState('mobile');
   const [theme, setTheme] = useState(themes.default);
 
-  const handleChange = useCallback((ev) => {
+  const handleChange = useCallback(ev => {
     const newTheme = ev.target.value;
     if (themes[newTheme]) {
       setTheme(themes[newTheme]);
     } else {
-      console.warn("Could not find a theme for", newTheme, "in", themes);
+      console.warn('Could not find a theme for', newTheme, 'in', themes);
     }
   }, theme);
 
-  const handleClick = (name) => (ev) => {
+  const handleClick = name => ev => {
     switch (name) {
-      case "mobile":
+      case 'mobile':
         setWidth(320);
-        setMediaClass("mobile");
+        setMediaClass('mobile');
         break;
-      case "tablet":
+      case 'tablet':
         setWidth(768);
-        setMediaClass("tablet");
+        setMediaClass('tablet');
         break;
-      case "desktop":
+      case 'desktop':
         setWidth(1200);
-        setMediaClass("tablet desktop");
+        setMediaClass('tablet desktop');
         break;
       default:
         break;
@@ -173,20 +172,20 @@ const IndexPage = () => {
         <ControlList>
           <ControlItem>
             <StyledButton
-              onClick={handleClick("mobile")}
-              selected={mediaClass === "mobile"}
+              onClick={handleClick('mobile')}
+              selected={mediaClass === 'mobile'}
             >
               Mobile
             </StyledButton>
             <StyledButton
-              onClick={handleClick("tablet")}
-              selected={mediaClass === "tablet"}
+              onClick={handleClick('tablet')}
+              selected={mediaClass === 'tablet'}
             >
               Tablet
             </StyledButton>
             <StyledButton
-              onClick={handleClick("desktop")}
-              selected={mediaClass === "tablet desktop"}
+              onClick={handleClick('desktop')}
+              selected={mediaClass === 'tablet desktop'}
             >
               Desktop
             </StyledButton>
