@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
-import Button from './Button';
-import Grid from './Grid';
-import Section from './Section';
-import Title from './Title';
-import { boxShadow, tablet, desktop } from '../styles';
+import Button from "./Button";
+import Grid from "./Grid";
+import Section from "./Section";
+import Title from "./Title";
+import { boxShadow, tablet, desktop } from "../styles";
 
-const Wrapper = styled(Section).attrs({ color: 'dark' })``;
+const Wrapper = styled(Section).attrs({ color: "dark" })``;
 
 const StyledGrid = styled(Grid)`
   margin-top: ${(props) => props.theme.spacing(4)};
@@ -50,7 +50,7 @@ const ProjectLink = styled.a`
 
   &:hover ${Project}, &:focus ${Project} {
     transform: translate(15px, -15px);
-    ${boxShadow('darkerNeutral')};
+    ${boxShadow("darkerNeutral")};
   }
 `;
 
@@ -73,7 +73,7 @@ const TextWrapper = styled.div`
   flex: 2;
 `;
 
-const StyledTitle = styled(Title).attrs({ size: 'medium' })`
+const StyledTitle = styled(Title).attrs({ size: "medium" })`
   display: block;
   margin-top: ${(props) => props.theme.spacing(1)};
 `;
@@ -148,7 +148,7 @@ FeaturedOSS.propTypes = {
 };
 
 FeaturedOSS.defaultProps = {
-  title: 'More Open Source from Formidable',
+  title: "More Open Source from Formidable",
 };
 
 export default FeaturedOSS;

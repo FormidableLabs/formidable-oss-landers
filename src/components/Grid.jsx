@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { tablet, desktop } from '../styles';
+import styled, { css } from "styled-components";
+import { tablet, desktop } from "../styles";
 
 const Grid = styled.div`
   display: grid;

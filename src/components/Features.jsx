@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
-import Grid from './Grid';
-import Section from './Section';
-import Title from './Title';
-import { boxShadow, tablet, desktop } from '../styles';
+import Grid from "./Grid";
+import Section from "./Section";
+import Title from "./Title";
+import { boxShadow, tablet, desktop } from "../styles";
 
-const Wrapper = styled(Section).attrs({ color: 'light', padding: 5 })``;
+const Wrapper = styled(Section).attrs({ color: "light", padding: 5 })``;
 
 const StyledGrid = styled(Grid)`
   grid-template-columns: 1fr;
@@ -24,7 +24,7 @@ const Image = styled.img`
   margin: ${(props) => props.theme.spacing(5)} auto 0;
   max-width: ${(props) => props.theme.spacing(20)};
 
-  ${boxShadow('lightNeutral')};
+  ${boxShadow("lightNeutral")};
 
   ${desktop`
     max-width: ${(props) => props.theme.spacing(35)};
@@ -75,7 +75,7 @@ Features.propTypes = {
 };
 
 Features.defaultProps = {
-  title: 'Features',
+  title: "Features",
 };
 
 export default Features;

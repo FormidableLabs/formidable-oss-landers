@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import metadata from './constants';
+import metadata from "./constants";
 
 const CustomDocument = ({ Html, Head, Body, children }) => {
   return (

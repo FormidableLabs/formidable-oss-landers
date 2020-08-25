@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import styled from 'styled-components';
-import config from '../config';
+import styled from "styled-components";
+import config from "../config";
 
 import {
   Header,
@@ -11,7 +11,7 @@ import {
   GetStarted,
   FeaturedOSS,
   Footer,
-} from 'formidable-oss-landers';
+} from "formidable-oss-landers";
 
 const Wrapper = styled.div`
   width: 100%;
