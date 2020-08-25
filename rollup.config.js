@@ -39,7 +39,7 @@ export default [
         babelHelpers: "bundled",
       }),
       reactSvg({
-        exclue: "node_modules/**",
+        exclude: "node_modules/**",
       }),
     ],
   },
