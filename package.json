@@ -22,6 +22,7 @@
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.0",
     "husky": "^4.2.5",
+    "lint-staged": "^10.2.13",
     "prettier": "^2.0.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -35,7 +36,7 @@
     "build": "builder concurrent --buffer build-babel-esm build-babel-cjs",
     "clean": "rimraf dist lib es \"docs/dist\"",
     "dev": "yarn build-babel-esm -- --watch",
-    "lint": "eslint 'src/**/*.js' src 'docs/**/*.js' docs/src",
+    "lint": "eslint \"**/*.{js,jsx}\"",
     "prettier": "prettier \"**/*.{js,jsx,json,ts,css,md}\"",
     "prettier-check": "yarn prettier --check",
     "prettier-fix": "yarn prettier --write",
@@ -47,9 +48,13 @@
     "react-copy-to-clipboard": "^5.0.2",
     "react-live": "^2.2.2"
   },
+  "lint-staged": {
+    "*.{json,ts,css,md}": "prettier --write",
+    "*.{js,jsx}": ["prettier --write", "eslint --fix"]
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn prettier-fix && yarn lint"
+      "pre-commit": "lint-staged"
     }
   }
 }
