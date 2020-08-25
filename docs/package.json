@@ -1,5 +1,6 @@
 {
   "name": "formidable-oss-landers-docs",
+  "private": true,
   "version": "0.1.0",
   "main": "static.config.js",
   "license": "MIT",
