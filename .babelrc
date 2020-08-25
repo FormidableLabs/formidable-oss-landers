@@ -11,6 +11,7 @@
     ],
     "@babel/preset-react"
   ],
+  "plugins": ["inline-react-svg"],
   "env": {
     "cjs": {
       "presets": [
@@ -23,7 +24,8 @@
           }
         ],
         "@babel/preset-react"
-      ]
+      ],
+      "plugins": ["inline-react-svg"],
     }
   }
 }
