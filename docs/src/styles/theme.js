@@ -49,6 +49,7 @@ export const themeConfig = {
   cornflower: createTheme({
     key: 'cornflower',
     label: 'Cornflower (Urql)',
+    type: 'dark',
     colors: {
       lighterPrimary: '#F7F9FF',
       lightPrimary: '#CFDBFF',
@@ -61,9 +62,26 @@ export const themeConfig = {
     },
     ...overrides,
   }),
+  lime: createTheme({
+    key: 'lime',
+    label: 'Lime',
+    type: 'light',
+    colors: {
+      lighterPrimary: '#FDFEF6',
+      lightPrimary: '#F3FBCD',
+      primary: '#D8F459',
+      darkPrimary: '#97AB3E',
+      darkerPrimary: '#566224',
+
+      lightComplement: '#673F7E',
+      darkComplement: '#410F5E',
+    },
+    ...overrides,
+  }),
   orchid: createTheme({
     key: 'orchid',
     label: 'Orchid',
+    type: 'dark',
     colors: {
       lighterPrimary: '#FDF8FD',
       lightPrimary: '#F3D5F4',
@@ -79,6 +97,7 @@ export const themeConfig = {
   poppy: createTheme({
     key: 'poppy',
     label: 'Poppy Red',
+    type: 'dark',
     colors: {
       lighterPrimary: '#FFF6F6',
       lightPrimary: '#FFC9C9',
@@ -94,6 +113,7 @@ export const themeConfig = {
   purple: createTheme({
     key: 'purple',
     label: 'Purple (Renature)',
+    type: 'dark',
     colors: {
       lighterPrimary: '#F8F7FE',
       lightPrimary: '#D6CFF9',
@@ -109,6 +129,7 @@ export const themeConfig = {
   red: createTheme({
     key: 'red',
     label: 'Red',
+    type: 'dark',
     colors: {
       lighterPrimary: '#FEF6F6',
       lightPrimary: '#F8CACC',
@@ -118,6 +139,22 @@ export const themeConfig = {
 
       lightComplement: '#3D794D',
       darkComplement: '#0C5720',
+    },
+    ...overrides,
+  }),
+  teal: createTheme({
+    key: 'teal',
+    label: 'Teal',
+    type: 'light',
+    colors: {
+      lighterPrimary: '#F7FEFE',
+      lightPrimary: '#CFF7F9',
+      primary: '#62E7EC',
+      darkPrimary: '#45A2A5',
+      darkerPrimary: '#275C5E',
+
+      lightComplement: '#7A5943',
+      darkComplement: '#592F14',
     },
     ...overrides,
   }),

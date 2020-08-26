@@ -58,7 +58,7 @@ const CopyText = ({ className, text }) => {
         <StyledText size="xsmall" color="darkNeutral" as="div">
           {text}
         </StyledText>
-        <StyledButton color="light" onClick={handleCopy} disabled={copied}>
+        <StyledButton color="inverse" onClick={handleCopy} disabled={copied}>
           <AnimatedSpan animating={animating}>
             {copied ? 'Copied' : 'Copy'}
           </AnimatedSpan>

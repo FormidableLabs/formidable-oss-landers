@@ -11,7 +11,10 @@ const Wrapper = styled.div`
 
   max-width: 220px;
 
-  color: ${(props) => props.theme.colors.white};
+  color: ${(props) =>
+    props.theme.type === 'dark'
+      ? props.theme.colors.white
+      : props.theme.colors.black};
 `;
 
 const Triangle = styled.div`
@@ -63,6 +66,11 @@ const StyledLogo = styled(Logo)`
   display: block;
   margin-top: ${(props) => props.theme.spacing(1)};
   width: ${(props) => props.theme.spacing(6)};
+
+  fill: ${(props) =>
+    props.theme.type === 'dark'
+      ? props.theme.colors.white
+      : props.theme.colors.black};
 `;
 
 const Ribbon = () => {

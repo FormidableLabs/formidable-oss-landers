@@ -9,8 +9,14 @@ const getSectionStyles = (color) => {
   switch (color) {
     case 'primary':
       return css`
-        background: ${(props) => props.theme.gradients.reverseDarkGradient};
-        color: ${(props) => props.theme.colors.white};
+        background: ${(props) =>
+          props.theme.type === 'dark'
+            ? props.theme.gradients.reverseDarkGradient
+            : props.theme.gradients.reverseLightGradient};
+        color: ${(props) =>
+          props.theme.type === 'dark'
+            ? props.theme.colors.white
+            : props.theme.colors.black};
       `;
 
     case 'light':

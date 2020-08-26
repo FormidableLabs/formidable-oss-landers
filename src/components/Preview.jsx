@@ -21,6 +21,15 @@ const StyledGrid = styled(Grid)`
   `};
 `;
 
+const Subtitle = styled(Title).attrs({
+  size: 'medium',
+})`
+  color: ${(props) =>
+    props.theme.type === 'dark'
+      ? props.theme.colors.lightPrimary
+      : props.theme.colors.darkerPrimary};
+`;
+
 const TextWrapper = styled.div`
   margin-top: ${(props) => props.theme.spacing(12)};
 
@@ -105,9 +114,7 @@ const Preview = ({ title, list, theme }) => {
           return (
             <React.Fragment key={`example-${index}`}>
               <TextWrapper isOdd={isOdd}>
-                <Title size="medium" color="lightPrimary">
-                  {example.title}
-                </Title>
+                <Subtitle>{example.title}</Subtitle>
                 {example.description ? (
                   <Section.Text>{example.description}</Section.Text>
                 ) : null}

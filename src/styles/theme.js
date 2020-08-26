@@ -12,6 +12,8 @@ const universalColors = {
 
 const gradients = (colors) => {
   return {
+    lightGradient: `linear-gradient(208deg, ${colors.lighterPrimary} 0%, ${colors.lightPrimary} 100%)`,
+    reverseLightGradient: `linear-gradient(-161deg, ${colors.lighterPrimary} 0%, ${colors.lightPrimary} 100%)`,
     darkGradient: `linear-gradient(208deg, ${colors.darkPrimary} 0%, ${colors.darkerPrimary} 100%)`,
     reverseDarkGradient: `linear-gradient(-161deg, ${colors.darkPrimary} 0%, ${colors.darkerPrimary} 100%)`,
   };
@@ -48,12 +50,13 @@ export const createTheme = (options = {}) => {
     colors: allColors,
     fonts,
     gradients: gradients(allColors),
-    spacing,
     media: {
       mobile,
       tablet,
       desktop,
     },
+    spacing,
+    type: 'light',
     ...rest,
   };
 };

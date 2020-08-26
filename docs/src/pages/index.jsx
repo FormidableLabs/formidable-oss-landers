@@ -37,7 +37,7 @@ const Content = styled.div`
 
 const Nav = styled.nav`
   position: fixed;
-  top: 50px;
+  top: 0;
   left: 0;
   bottom: 0;
 
@@ -141,7 +141,8 @@ const IndexPage = () => {
     }
   };
 
-  // TODO: Add floating nav to left
+  console.log(theme);
+
   return (
     <Wrapper>
       <ThemeProvider theme={theme}>
@@ -216,7 +217,12 @@ const IndexPage = () => {
   description="Short description of the project goes here."
   install="npm install example"
   button={{ label: "Documentation", href: "#button" }}
-  nav={[{ label: "Docs", href: "#docs" }]}
+  nav={[
+    { label: "Docs", href: "#" }, 
+    { label: "Gallery", href: "#" },
+    { label: "Issues", href: "#" },
+    { label: "Github", href: "#" },
+  ]}
   linkComponent={Link}
 />`}
         />

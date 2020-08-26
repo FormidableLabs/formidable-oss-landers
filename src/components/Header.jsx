@@ -7,21 +7,25 @@ import HeaderInstall from './HeaderInstall';
 import Ribbon from './Ribbon';
 import Text from './Text';
 import Title from './Title';
-import { linkStyles } from '../styles';
+import { color, linkStyles } from '../styles';
 
 const Wrapper = styled.div`
   position: relative;
   padding-top: ${(props) => props.theme.spacing(14)};
   padding-bottom: ${(props) => props.theme.spacing(4)};
 
-  background: ${(props) => props.theme.gradients.darkGradient};
+  background: ${(props) =>
+    props.theme.type === 'dark'
+      ? props.theme.gradients.darkGradient
+      : props.theme.gradients.lightGradient};
   ${(props) =>
     props.bg &&
     `
     background-image: url(${props.bg}); 
     background-size: cover;
   `};
-  color: ${(props) => props.theme.colors.white};
+
+  ${(props) => (props.theme.type === 'dark' ? color('white') : color('black'))};
 
   ${(props) => props.theme.media.tablet`
     padding-top: ${(props) => props.theme.spacing(19)};
@@ -86,13 +90,20 @@ const Nav = styled(Text)`
 
   margin-top: ${(props) => props.theme.spacing(3)};
   padding-top: ${(props) => props.theme.spacing(2)};
-  border-top: 2px solid ${(props) => props.theme.colors.white};
+  border-top: 2px solid
+    ${(props) =>
+      props.theme.type === 'dark'
+        ? props.theme.colors.white
+        : props.theme.colors.black};
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
-  ${linkStyles({ color: 'white' })};
+  ${(props) =>
+    props.theme.type === 'dark'
+      ? linkStyles({ color: 'white' })
+      : linkStyles({ color: 'default' })};
 
   ${(props) => props.theme.media.tablet`
     justify-content: center;

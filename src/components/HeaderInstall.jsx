@@ -41,7 +41,7 @@ const HeaderInstall = ({ button, install, linkComponent }) => {
     <Wrapper>
       <StyledCopyText text={install} />
       {hasButton ? (
-        <Button as={Link} href={button.href} color="light">
+        <Button as={Link} href={button.href} color="inverse">
           {button.label}
         </Button>
       ) : null}

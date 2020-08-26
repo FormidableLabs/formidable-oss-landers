@@ -2,7 +2,7 @@ import React from 'react';
 import { render, hydrate } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
-import App from './App';
+import App from './app';
 
 export default App;
 
@@ -19,6 +19,6 @@ if (typeof document !== 'undefined') {
 
   mount(App);
   if (module.hot) {
-    module.hot.accept('./App', () => mount(require('./App').default));
+    module.hot.accept('./app', () => mount(require('./app').default));
   }
 }
