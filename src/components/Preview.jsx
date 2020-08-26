@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
-import nightOwl from 'prism-react-renderer/themes/nightOwl';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
+import nightOwl from "prism-react-renderer/themes/nightOwl";
 
-import Grid, { breakGrid } from './Grid';
-import Section from './Section';
-import Title from './Title';
+import Grid, { breakGrid } from "./Grid";
+import Section from "./Section";
+import Title from "./Title";
 
-const Wrapper = styled(Section).attrs({ color: 'primary' })``;
+const Wrapper = styled(Section).attrs({ color: "primary" })``;
 
 const StyledGrid = styled(Grid)`
   grid-template-columns: 1fr;
@@ -22,10 +22,10 @@ const StyledGrid = styled(Grid)`
 `;
 
 const Subtitle = styled(Title).attrs({
-  size: 'medium',
+  size: "medium",
 })`
   color: ${(props) =>
-    props.theme.type === 'dark'
+    props.theme.type === "dark"
       ? props.theme.colors.lightPrimary
       : props.theme.colors.darkerPrimary};
 `;
@@ -53,7 +53,7 @@ const CodeWrapper = styled.div`
 
   ${(props) => props.theme.media.tablet`
     box-shadow: ${(props) =>
-      props.theme.boxShadows.small('rgba(0, 0, 0, 0.5)')};
+      props.theme.boxShadows.small("rgba(0, 0, 0, 0.5)")};
   `};
 
   ${(props) => props.theme.media.desktop`
@@ -62,14 +62,14 @@ const CodeWrapper = styled.div`
     margin-top: 0;
 
     box-shadow: ${(props) =>
-      props.theme.boxShadows.large('rgba(0, 0, 0, 0.5)')};
+      props.theme.boxShadows.large("rgba(0, 0, 0, 0.5)")};
   `};
 `;
 
 const StyledPreview = styled(LivePreview)`
   ${(props) => props.theme.media.mobile`
     box-shadow: ${(props) =>
-      props.theme.boxShadows.small('rgba(0, 0, 0, 0.5)')};
+      props.theme.boxShadows.small("rgba(0, 0, 0, 0.5)")};
   `};
 
   padding: ${(props) => props.theme.spacing(3)};
@@ -90,7 +90,7 @@ const StyledEditor = styled(LiveEditor)`
     margin-top: ${(props) => props.theme.spacing(5)};
 
     box-shadow: ${(props) =>
-      props.theme.boxShadows.small('rgba(0, 0, 0, 0.5)')};
+      props.theme.boxShadows.small("rgba(0, 0, 0, 0.5)")};
   `};
 
   max-height: ${(props) => props.theme.spacing(40)};
@@ -100,7 +100,7 @@ const StyledEditor = styled(LiveEditor)`
 const importRegex = /import\s+?(?:(?:(?:[\w*\s{},]*)\s+from\s+?)|)(?:(?:".*?")|(?:'.*?'))[\s]*?(?:;|$|)/g;
 
 function removeImportFromPreview(code) {
-  return code.replace(importRegex, '');
+  return code.replace(importRegex, "");
 }
 
 const Preview = ({ title, list, theme }) => {
@@ -124,7 +124,7 @@ const Preview = ({ title, list, theme }) => {
                 transformCode={removeImportFromPreview}
                 {...example.props}
               >
-                <CodeWrapper gridRow={isOdd ? index + 1 : ''}>
+                <CodeWrapper gridRow={isOdd ? index + 1 : ""}>
                   <StyledPreview />
                   <StyledError />
                   <StyledEditor />

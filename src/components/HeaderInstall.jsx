@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
-import Button from './Button';
-import CopyText from './CopyText';
+import Button from "./Button";
+import CopyText from "./CopyText";
 
 const Wrapper = styled.div`
   display: flex;

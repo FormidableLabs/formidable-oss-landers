@@ -1,10 +1,10 @@
-import React, { useState, useCallback } from 'react';
-import styled, { ThemeProvider } from 'styled-components';
-import { Link } from 'react-router-dom';
+import React, { useState, useCallback } from "react";
+import styled, { ThemeProvider } from "styled-components";
+import { Link } from "react-router-dom";
 
-import ComponentPreview from '../components/ComponentPreview';
-import ThemeSelect from '../components/ThemeSelect';
-import { themes } from '../styles/theme';
+import ComponentPreview from "../components/ComponentPreview";
+import ThemeSelect from "../components/ThemeSelect";
+import { themes } from "../styles/theme";
 
 const Wrapper = styled.div`
   margin-top: 5rem;
@@ -78,7 +78,7 @@ const ControlItem = styled.div`
   }
 `;
 
-const StyledButton = styled.button.attrs({ type: 'button' })`
+const StyledButton = styled.button.attrs({ type: "button" })`
   padding: 0.25em 1em;
   border: 1px solid black;
   border-radius: 20rem;
@@ -110,7 +110,7 @@ const Subtitle = styled.h2`
 
 const IndexPage = () => {
   const [width, setWidth] = useState(320);
-  const [mediaClass, setMediaClass] = useState('mobile');
+  const [mediaClass, setMediaClass] = useState("mobile");
   const [theme, setTheme] = useState(themes.default);
 
   const handleChange = useCallback((ev) => {
@@ -118,23 +118,23 @@ const IndexPage = () => {
     if (themes[newTheme]) {
       setTheme(themes[newTheme]);
     } else {
-      console.warn('Could not find a theme for', newTheme, 'in', themes);
+      console.warn("Could not find a theme for", newTheme, "in", themes);
     }
   }, theme);
 
   const handleClick = (name) => (ev) => {
     switch (name) {
-      case 'mobile':
+      case "mobile":
         setWidth(320);
-        setMediaClass('mobile');
+        setMediaClass("mobile");
         break;
-      case 'tablet':
+      case "tablet":
         setWidth(768);
-        setMediaClass('tablet');
+        setMediaClass("tablet");
         break;
-      case 'desktop':
+      case "desktop":
         setWidth(1200);
-        setMediaClass('tablet desktop');
+        setMediaClass("tablet desktop");
         break;
       default:
         break;
@@ -150,8 +150,9 @@ const IndexPage = () => {
           <Title>Guide to Formidable OSS Landers</Title>
           <p>
             The goal is to enable a speedy deployment of an open source
-            project's documentation site and maintain brand consistency across
-            all of them. The components below are here to serve this purpose.
+            project&rsquo;s documentation site and maintain brand consistency
+            across all of them. The components below are here to serve this
+            purpose.
           </p>
           <p>
             Use the controls above to change color themes of the components or
@@ -173,20 +174,20 @@ const IndexPage = () => {
         <ControlList>
           <ControlItem>
             <StyledButton
-              onClick={handleClick('mobile')}
-              selected={mediaClass === 'mobile'}
+              onClick={handleClick("mobile")}
+              selected={mediaClass === "mobile"}
             >
               Mobile
             </StyledButton>
             <StyledButton
-              onClick={handleClick('tablet')}
-              selected={mediaClass === 'tablet'}
+              onClick={handleClick("tablet")}
+              selected={mediaClass === "tablet"}
             >
               Tablet
             </StyledButton>
             <StyledButton
-              onClick={handleClick('desktop')}
-              selected={mediaClass === 'tablet desktop'}
+              onClick={handleClick("desktop")}
+              selected={mediaClass === "tablet desktop"}
             >
               Desktop
             </StyledButton>

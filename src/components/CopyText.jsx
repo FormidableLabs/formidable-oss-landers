@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
-import Button from './Button';
-import Text from './Text';
+import Button from "./Button";
+import Text from "./Text";
 
 const Wrapper = styled.div`
   display: flex;
@@ -31,7 +31,7 @@ const AnimatedSpan = styled.span`
   display: block;
   transition: transform 300ms ease-out;
   transform: ${(props) =>
-    props.animating ? 'translateY(-0.5rem)' : 'translateY(0)'};
+    props.animating ? "translateY(-0.5rem)" : "translateY(0)"};
 `;
 
 const CopyText = ({ className, text }) => {
@@ -60,7 +60,7 @@ const CopyText = ({ className, text }) => {
         </StyledText>
         <StyledButton color="inverse" onClick={handleCopy} disabled={copied}>
           <AnimatedSpan animating={animating}>
-            {copied ? 'Copied' : 'Copy'}
+            {copied ? "Copied" : "Copy"}
           </AnimatedSpan>
         </StyledButton>
       </Wrapper>

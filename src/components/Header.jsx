@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
-import Grid from './Grid';
-import HeaderInstall from './HeaderInstall';
-import Ribbon from './Ribbon';
-import Text from './Text';
-import Title from './Title';
-import { color, linkStyles } from '../styles';
+import Grid from "./Grid";
+import HeaderInstall from "./HeaderInstall";
+import Ribbon from "./Ribbon";
+import Text from "./Text";
+import Title from "./Title";
+import { color, linkStyles } from "../styles";
 
 const Wrapper = styled.div`
   position: relative;
@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   padding-bottom: ${(props) => props.theme.spacing(4)};
 
   background: ${(props) =>
-    props.theme.type === 'dark'
+    props.theme.type === "dark"
       ? props.theme.gradients.darkGradient
       : props.theme.gradients.lightGradient};
   ${(props) =>
@@ -25,7 +25,7 @@ const Wrapper = styled.div`
     background-size: cover;
   `};
 
-  ${(props) => (props.theme.type === 'dark' ? color('white') : color('black'))};
+  ${(props) => (props.theme.type === "dark" ? color("white") : color("black"))};
 
   ${(props) => props.theme.media.tablet`
     padding-top: ${(props) => props.theme.spacing(19)};
@@ -38,9 +38,9 @@ const Wrapper = styled.div`
 
 const StyledGrid = styled(Grid)`
   grid-template-areas:
-    'badge'
-    'content'
-    'nav';
+    "badge"
+    "content"
+    "nav";
 
   ${(props) => props.theme.media.tablet`
     grid-column-gap: ${(props) => props.theme.spacing(8)};
@@ -92,7 +92,7 @@ const Nav = styled(Text)`
   padding-top: ${(props) => props.theme.spacing(2)};
   border-top: 2px solid
     ${(props) =>
-      props.theme.type === 'dark'
+      props.theme.type === "dark"
         ? props.theme.colors.white
         : props.theme.colors.black};
 
@@ -101,9 +101,9 @@ const Nav = styled(Text)`
   justify-content: space-between;
 
   ${(props) =>
-    props.theme.type === 'dark'
-      ? linkStyles({ color: 'white' })
-      : linkStyles({ color: 'default' })};
+    props.theme.type === "dark"
+      ? linkStyles({ color: "white" })
+      : linkStyles({ color: "default" })};
 
   ${(props) => props.theme.media.tablet`
     justify-content: center;

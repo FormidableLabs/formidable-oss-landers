@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import Text from './Text';
-import Logo from '../assets/formidable.svg';
+import Text from "./Text";
+import Logo from "../assets/formidable.svg";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   max-width: 220px;
 
   color: ${(props) =>
-    props.theme.type === 'dark'
+    props.theme.type === "dark"
       ? props.theme.colors.white
       : props.theme.colors.black};
 `;
@@ -68,7 +68,7 @@ const StyledLogo = styled(Logo)`
   width: ${(props) => props.theme.spacing(6)};
 
   fill: ${(props) =>
-    props.theme.type === 'dark'
+    props.theme.type === "dark"
       ? props.theme.colors.white
       : props.theme.colors.black};
 `;

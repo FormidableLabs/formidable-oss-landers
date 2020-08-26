@@ -1,9 +1,9 @@
-import React, { Suspense } from 'react';
-import { Root, Routes } from 'react-static';
-import { ThemeProvider } from 'styled-components';
+import React, { Suspense } from "react";
+import { Root, Routes } from "react-static";
+import { ThemeProvider } from "styled-components";
 
-import { GlobalStyles } from 'formidable-oss-landers';
-import { guideTheme } from './styles/theme';
+import { GlobalStyles } from "formidable-oss-landers";
+import { guideTheme } from "./styles/theme";
 
 const App = () => {
   return (

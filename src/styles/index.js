@@ -1,5 +1,5 @@
 /* Mixins for styled-components */
-import { css } from 'styled-components';
+import { css } from "styled-components";
 
 /* 
 Media query template
@@ -81,7 +81,7 @@ Usage: ${linkStyles({ color: "white "})}
 */
 export function linkStyles({ color }) {
   switch (color) {
-    case 'white':
+    case "white":
       return css`
         a,
         a:link {
@@ -98,7 +98,7 @@ export function linkStyles({ color }) {
         }
       `;
     default:
-    case 'default':
+    case "default":
       return css`
         a,
         a:link {

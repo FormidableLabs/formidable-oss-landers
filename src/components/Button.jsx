@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import styled, { css } from "styled-components";
 
 const defaultButtonStyles = css`
   padding: 0.75em 1.4em;
@@ -15,12 +15,12 @@ const defaultButtonStyles = css`
 
 const getButtonStyles = (color) => {
   switch (color) {
-    case 'inverse':
+    case "inverse":
       return (props) =>
-        props.theme.type === 'dark'
-          ? getButtonStyles('light')
-          : getButtonStyles('dark');
-    case 'light':
+        props.theme.type === "dark"
+          ? getButtonStyles("light")
+          : getButtonStyles("dark");
+    case "light":
       return css`
         background-color: ${(props) => props.theme.colors.lighterNeutral};
         color: ${(props) => props.theme.colors.darkNeutral};
@@ -34,7 +34,7 @@ const getButtonStyles = (color) => {
         }
       `;
 
-    case 'dark':
+    case "dark":
     default:
       return css`
         background-color: ${(props) => props.theme.colors.darkerNeutral};
@@ -49,7 +49,7 @@ const getButtonStyles = (color) => {
 };
 
 const StyledButton = styled.button.attrs((props) => ({
-  type: props.as ? undefined : 'button',
+  type: props.as ? undefined : "button",
 }))`
   ${defaultButtonStyles};
   ${(props) => getButtonStyles(props.$color)};
@@ -72,7 +72,7 @@ Button.defaultProps = {
 Button.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
-  color: PropTypes.oneOf(['light', 'dark', 'inverse']),
+  color: PropTypes.oneOf(["light", "dark", "inverse"]),
   full: PropTypes.bool,
 };
 

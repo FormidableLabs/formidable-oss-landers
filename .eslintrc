@@ -31,7 +31,7 @@
     "prettier/prettier": ["error"],
     "quotes": [
       "error",
-      "single",
+      "double",
       {
         "allowTemplateLiterals": true
       }

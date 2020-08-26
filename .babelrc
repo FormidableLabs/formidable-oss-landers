@@ -11,9 +11,21 @@
     ],
     "@babel/preset-react"
   ],
+  "plugins": ["inline-react-svg"],
   "env": {
     "cjs": {
-      "presets": ["@babel/preset-env", "@babel/preset-react"]
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "browsers": ["last 2 versions", "safari >= 7"]
+            }
+          }
+        ],
+        "@babel/preset-react"
+      ],
+      "plugins": ["inline-react-svg"],
     }
   }
 }
