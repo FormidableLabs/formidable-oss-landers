@@ -36,6 +36,7 @@ const Content = styled.div`
 `;
 
 const Nav = styled.nav`
+  z-index: 1;
   position: fixed;
   top: 0;
   left: 0;
@@ -48,6 +49,91 @@ const Nav = styled.nav`
   margin-left: 1em;
 
   font-size: 0.8rem;
+`;
+
+const NavList = styled.ul`
+  list-style: none;
+`;
+
+const SlideIn = styled.span`
+  display: inline-block;
+
+  color: inherit;
+  transition: transform 200ms ease, opacity 200ms ease;
+`;
+
+const NavLink = styled.a`
+  display: inline-block;
+  position: relative;
+
+  &:link {
+    color: #274aec;
+
+    &:before {
+      background-color: #274aec;
+      border-color: #274aec;
+    }
+  }
+
+  &:visited {
+    color: #274aec;
+
+    &:before {
+      background-color: #274aec;
+      border-color: #274aec;
+    }
+  }
+
+  &:hover {
+    color: #0a2ebd;
+
+    &:before {
+      background-color: #0a2ebd;
+      border-color: #0a2ebd;
+    }
+  }
+
+  &:active {
+    color: #717171;
+
+    &:before {
+      background-color: #717171;
+      border-color: #717171;
+    }
+  }
+
+  &:before {
+    content: " ";
+
+    display: inline-block;
+    margin-right: 0.75em;
+    height: 0.75em;
+    width: 0.75em;
+    vertical-align: middle;
+
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 0.25em white;
+  }
+`;
+
+const NavListItem = styled.li`
+  margin-top: 1em;
+  margin-left: 0;
+  padding: 0;
+
+  ${SlideIn} {
+    opacity: 0;
+    transform: translate(2em, 0);
+  }
+
+  &:hover {
+    ${SlideIn} {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
 `;
 
 const ControlList = styled.div`
@@ -164,12 +250,38 @@ const IndexPage = () => {
           </p>
         </Content>
         <Nav>
-          <a href="#header">Header</a>
-          <a href="#features">Features</a>
-          <a href="#preview">Preview</a>
-          <a href="#custom-section">Custom Section</a>
-          <a href="#get-started">Get Started</a>
-          <a href="#featured-oss">Featured OSS</a>
+          <NavList>
+            <NavListItem>
+              <NavLink href="#header">
+                <SlideIn>Header</SlideIn>
+              </NavLink>
+            </NavListItem>
+            <NavListItem>
+              <NavLink href="#features">
+                <SlideIn>Features</SlideIn>
+              </NavLink>
+            </NavListItem>
+            <NavListItem>
+              <NavLink href="#preview">
+                <SlideIn>Preview</SlideIn>
+              </NavLink>
+            </NavListItem>
+            <NavListItem>
+              <NavLink href="#custom-section">
+                <SlideIn>Custom Section</SlideIn>
+              </NavLink>
+            </NavListItem>
+            <NavListItem>
+              <NavLink href="#get-started">
+                <SlideIn>Get Started</SlideIn>
+              </NavLink>
+            </NavListItem>
+            <NavListItem>
+              <NavLink href="#featured-oss">
+                <SlideIn>Featured OSS</SlideIn>
+              </NavLink>
+            </NavListItem>
+          </NavList>
         </Nav>
         <ControlList>
           <ControlItem>
