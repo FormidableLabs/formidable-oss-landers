@@ -6,7 +6,7 @@ import Section from "./Section";
 import Text from "./Text";
 import { linkStyles, tablet } from "../styles";
 
-import { ReactComponent as Logo } from "../assets/formidable.svg";
+import Logo from "../assets/formidable.svg";
 
 const Wrapper = styled(Section).attrs({ padding: 10 })`
   background-color: ${(props) => props.theme.colors.darkerNeutral};
@@ -91,10 +91,11 @@ const Footer = () => {
           </ul>
         </LinksWrapper>
         <StyledText>
-          Formidable is a Seattle, Denver, and London-based engineering
-          consultancy and open source software organization, specializing in
-          React.js, React Native, GraphQL, Node.js, and the extended JavaScript
-          ecosystem. For more information about Formidable, please visit{" "}
+          Formidable is a global design and engineering consultancy and open
+          source software organization, specializing in React.js, React Native,
+          GraphQL, Node.js, and the extended JavaScript ecosystem. We have
+          locations in Seattle, London, Toronto, Denver, and Phoenix with remote
+          consultants worldwide. For more information please visit{" "}
           <a href="https://formidable.com">formidable.com</a>.
         </StyledText>
       </StyledGrid>

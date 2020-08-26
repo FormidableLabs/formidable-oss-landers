@@ -1,57 +1,60 @@
 {
   "name": "formidable-oss-landers",
-  "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "formidable-oss-badges": "^0.3.5",
+  "version": "0.0.1",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "styled-components": ">=5.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.10.4",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-inline-react-svg": "^1.1.1",
+    "builder": "^5.0.0",
+    "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.13",
+    "prettier": "^2.0.5",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
-    "react-copy-to-clipboard": "^5.0.2",
-    "react-dom": "^16.13.1",
-    "react-live": "^2.2.2",
-    "react-scripts": "3.4.1",
+    "rimraf": "^3.0.2",
     "styled-components": "^5.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
-    "format": "yarn run lint --fix",
-    "lint": "eslint 'src/**/*.js'"
+    "build-babel": "babel src",
+    "build-babel-esm": "builder run build-babel -- -d es",
+    "build-babel-cjs": "builder run --env \"{\\\"BABEL_ENV\\\":\\\"cjs\\\"}\" build-babel -- -d lib",
+    "build": "builder concurrent --buffer build-babel-esm build-babel-cjs",
+    "clean": "rimraf dist lib es \"docs/dist\"",
+    "dev": "yarn build-babel-esm -- --watch",
+    "lint": "eslint \"**/*.{js,jsx}\"",
+    "prettier": "prettier \"**/*.{js,jsx,json,ts,css,md}\"",
+    "prettier-check": "yarn prettier --check",
+    "prettier-fix": "yarn prettier --write",
+    "version": "yarn clean && yarn build"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "dependencies": {
+    "formidable-oss-badges": "^0.3.5",
+    "prism-react-renderer": "^1.1.1",
+    "react-copy-to-clipboard": "^5.0.2",
+    "react-live": "^2.2.2"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "lint-staged": {
+    "*.{json,ts,css,md}": "prettier --write",
+    "*.{js,jsx}": ["prettier --write", "eslint --fix"]
   },
-  "devDependencies": {
-    "@storybook/addon-actions": "^5.3.19",
-    "@storybook/addon-links": "^5.3.19",
-    "@storybook/addons": "^5.3.19",
-    "@storybook/preset-create-react-app": "^3.1.2",
-    "@storybook/react": "^5.3.19",
-    "eslint-config-formidable": "^4.0.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "prettier": "^2.0.5"
-  },
-  "peerDependencies": {
-    "react-router-dom": "^5.2.0",
-    "react-static": "^7.2.3"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }

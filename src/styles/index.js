@@ -65,9 +65,7 @@ export function color(name) {
         } else {
           /* eslint-disable-next-line no-console */
           console.warn(
-            "Could not find '",
-            name,
-            "' in available list of theme colors: ",
+            `Could not find '${name}' in available list of theme colors: `,
             Object.keys(props.theme.colors)
           );
         }

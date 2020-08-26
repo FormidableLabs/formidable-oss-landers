@@ -1,15 +1,17 @@
 import React from "react";
+
 import styled from "styled-components";
+import config from "../config";
 
-import Header from "./components/Header";
-import Features from "./components/Features";
-import Preview from "./components/Preview";
-import CustomSection from "./components/CustomSection";
-import GetStarted from "./components/GetStarted";
-import FeaturedOSS from "./components/FeaturedOSS";
-import Footer from "./components/Footer";
-
-import config from "./example/config";
+import {
+  Header,
+  Features,
+  Preview,
+  CustomSection,
+  GetStarted,
+  FeaturedOSS,
+  Footer,
+} from "formidable-oss-landers";
 
 const Wrapper = styled.div`
   width: 100%;
