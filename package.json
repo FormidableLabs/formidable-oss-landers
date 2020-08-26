@@ -35,7 +35,7 @@
     "build-babel-cjs": "builder run --env \"{\\\"BABEL_ENV\\\":\\\"cjs\\\"}\" build-babel -- -d lib",
     "build": "builder concurrent --buffer build-babel-esm build-babel-cjs",
     "clean": "rimraf dist lib es \"docs/dist\"",
-    "dev": "yarn build-babel-esm -- --watch",
+    "dev": "yarn build-babel-cjs --watch",
     "lint": "eslint \"**/*.{js,jsx}\"",
     "prettier": "prettier \"**/*.{js,jsx,json,ts,css,md}\"",
     "prettier-check": "yarn prettier --check",
@@ -44,13 +44,19 @@
   },
   "dependencies": {
     "formidable-oss-badges": "^0.3.5",
+    "markdown-toc": "^1.2.0",
     "prism-react-renderer": "^1.1.1",
     "react-copy-to-clipboard": "^5.0.2",
-    "react-live": "^2.2.2"
+    "react-live": "^2.2.2",
+    "slugify": "^1.4.5",
+    "yaml-front-matter": "^4.1.0"
   },
   "lint-staged": {
     "*.{json,ts,css,md}": "prettier --write",
-    "*.{js,jsx}": ["prettier --write", "eslint --fix"]
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   },
   "husky": {
     "hooks": {
