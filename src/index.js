@@ -11,6 +11,7 @@ export { default as GetStarted } from "./components/GetStarted";
 export { default as Grid } from "./components/Grid";
 export { default as Header } from "./components/Header";
 export { default as HeaderInstall } from "./components/HeaderInstall";
+export { default as IndexPageTemplate } from "./components/IndexPageTemplate";
 export { default as Link } from "./components/Link";
 export { default as Preview } from "./components/Preview";
 export { default as Ribbon } from "./components/Ribbon";

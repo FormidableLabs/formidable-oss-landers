@@ -169,7 +169,7 @@ Header.propTypes = {
   /* Optional background image for entire header */
   background: PropTypes.string,
   /* See: `formidable-oss-badges` repo */
-  badge: PropTypes.node,
+  badge: PropTypes.element,
   /* Name of OSS project */
   title: PropTypes.string,
   /* Short description of OSS Project */
