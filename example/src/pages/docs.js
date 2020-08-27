@@ -11,7 +11,12 @@ export default function Docs() {
     <div>
       <h1>It&rsquo;s the docs page!</h1>
 
-      <Link to="/"></Link>
+      {docs.map((doc, i) => (
+        <React.Fragment key={doc.filePath}>
+          <Link to={doc.route}>{doc.fileName}</Link>
+          <br />
+        </React.Fragment>
+      ))}
     </div>
   );
 }

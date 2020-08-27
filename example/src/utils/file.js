@@ -27,6 +27,9 @@ async function processMdFile(dir, filePath) {
   const rawContent = await readFile(filePath, { encoding: "utf8" });
   const { __content: content, ...metadata } = yamlFront.loadFront(rawContent);
   const fileName = path.basename(filePath);
+  const route = ["/docs", pathKey, fileName.replace(/\.md$/i, "")]
+    .filter(Boolean)
+    .join("/");
 
   return {
     filePath,
@@ -34,6 +37,7 @@ async function processMdFile(dir, filePath) {
     pathKey,
     content,
     metadata,
+    route,
   };
 }
 
