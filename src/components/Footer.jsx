@@ -34,6 +34,8 @@ const LinksWrapper = styled.div`
 const StyledLogo = styled(Logo)`
   margin-right: ${(props) => props.theme.spacing(3)};
   width: 70px;
+
+  fill: ${(props) => props.theme.colors.white};
 `;
 
 const ListItem = styled.li`
