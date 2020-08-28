@@ -87,7 +87,7 @@ export const createFileTOC = async (filePath, options = {}) => {
     name = "",
     linkRoot = "/",
     createSlug = defaultSlugify,
-    maxDepth = Infinity,
+    maxDepth = 3,
     id = defaultCreateId,
   } = options;
   const md = await fs.readFile(filePath, { encoding: "utf8" });
