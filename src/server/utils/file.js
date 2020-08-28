@@ -39,20 +39,23 @@ export async function processMdFile(dir, filePath) {
   };
 }
 
-export async function getMarkdownPages(dir) {
+const defaultPageSorter = (a, b) => {
+  if (a.pathKey === b.pathKey)
+    return Math.sign(a.metadata?.order - b.metadata?.order);
+
+  if (a.pathKey.startsWith(b.pathKey)) return -1;
+  if (b.pathKey.startsWith(a.pathKey)) return 1;
+
+  return 0;
+};
+
+export async function getMarkdownPages(dir, options = {}) {
+  const { sorter = defaultPageSorter } = options;
   const files = await getFiles(dir);
   const pages = await Promise.all(files.map((f) => processMdFile(dir, f)));
 
   // Sort pages by pathKey and metadata order
-  pages.sort((a, b) => {
-    if (a.pathKey === b.pathKey)
-      return Math.sign(a.metadata?.order - b.metadata?.order);
-
-    if (a.pathKey.startsWith(b.pathKey)) return -1;
-    if (b.pathKey.startsWith(a.pathKey)) return 1;
-
-    return 0;
-  });
+  pages.sort(sorter);
 
   return pages;
 }
