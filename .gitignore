@@ -13,6 +13,9 @@ node_modules
 /lib
 /es
 /docs/dist
+/helpers-demo/tmp
+/helpers-demo/public
+/helpers-demo/artifacts
 
 # misc
 .DS_Store
