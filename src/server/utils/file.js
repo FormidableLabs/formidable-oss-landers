@@ -84,7 +84,7 @@ const defaultCreateId = (slug, depth) => slug;
 
 export const createFileTOC = async (filePath, options = {}) => {
   const {
-    name = "",
+    name = path.parse(filePath).name,
     linkRoot = "/",
     createSlug = defaultSlugify,
     maxDepth = 3,
