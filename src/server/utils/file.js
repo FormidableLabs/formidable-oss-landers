@@ -81,6 +81,7 @@ const removeLinks = (node) => {
 
 const defaultSlugify = (str) => slugify(str, { lower: true });
 const defaultCreateId = (slug, depth) => slug;
+const defaultCreateLink = (linkRoot, slug) => linkRoot + slug;
 
 export const createFileTOC = async (filePath, options = {}) => {
   const {
@@ -89,6 +90,7 @@ export const createFileTOC = async (filePath, options = {}) => {
     createSlug = defaultSlugify,
     maxDepth = 3,
     id = defaultCreateId,
+    link = defaultCreateLink,
   } = options;
   const md = await fs.readFile(filePath, { encoding: "utf8" });
   const lines = md.split(LINE_BREAK_REGEX).map((line) => line.trim());
@@ -99,7 +101,7 @@ export const createFileTOC = async (filePath, options = {}) => {
     name,
     depth: 0,
     slug,
-    link: linkRoot + slug,
+    link: link(linkRoot, slug),
     children: [],
     parent: null,
   };
