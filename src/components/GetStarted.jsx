@@ -33,7 +33,7 @@ const GetStarted = ({ title, description, button, linkComponent }) => {
 };
 
 GetStarted.propTypes = {
-  linkComponent: PropTypes.any,
+  linkComponent: PropTypes.func.isRequired,
   /* Section title that defaults to "Get Started" */
   title: PropTypes.string,
   /* One sentence about how to get started using this thing.  */

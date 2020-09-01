@@ -50,12 +50,12 @@ const HeaderInstall = ({ button, install, linkComponent }) => {
 };
 
 HeaderInstall.propTypes = {
+  linkComponent: PropTypes.func.isRequired,
   button: PropTypes.shape({
     href: PropTypes.string,
     label: PropTypes.string,
   }),
   install: PropTypes.string,
-  linkComponent: PropTypes.any,
 };
 
 export default HeaderInstall;

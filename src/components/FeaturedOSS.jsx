@@ -136,7 +136,7 @@ FeaturedOSS.propTypes = {
   list: PropTypes.arrayOf(
     PropTypes.shape({
       /* Badge */
-      badge: PropTypes.node,
+      badge: PropTypes.element,
       /* Link to project OSS page */
       href: PropTypes.string,
       /* Project Name */

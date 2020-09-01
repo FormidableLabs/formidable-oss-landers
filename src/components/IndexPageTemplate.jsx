@@ -32,11 +32,11 @@ function IndexPageTemplate({ config }) {
 
 IndexPageTemplate.propTypes = {
   config: PropTypes.shape({
-    linkComponent: PropTypes.element.isRequired,
+    linkComponent: PropTypes.func.isRequired,
     header: Header.propTypes.isRequired,
     features: Features.propTypes.isRequired,
-    preview: Preview.propTypes,
-    customSection: CustomSection.propTypes,
+    preview: PropTypes.shape({ ...Preview.propTypes }),
+    customSection: PropTypes.shape({ ...CustomSection.propTypes }),
     getStarted: GetStarted.propTypes.isRequired,
     featuredOss: FeaturedOSS.propTypes.isRequired,
   }),
