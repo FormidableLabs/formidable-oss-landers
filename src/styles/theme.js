@@ -42,7 +42,7 @@ const breakpoints = {
 };
 
 export const createTheme = (options = {}) => {
-  const { colors, ...rest } = options;
+  const { colors = {}, ...rest } = options;
   const allColors = { ...universalColors, ...colors };
   return {
     breakpoints,
