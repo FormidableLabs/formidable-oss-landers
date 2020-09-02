@@ -19,11 +19,11 @@ function IndexPageTemplate({ config }) {
   const hasCustomSection = !!config.customSection;
   return (
     <Wrapper>
-      <Header {...config.header} linkComponent={config.linkComponent} />
+      <Header {...config.header} />
       <Features {...config.features} />
       {hasPreview ? <Preview {...config.preview} /> : null}
       {hasCustomSection ? <CustomSection {...config.customSection} /> : null}
-      <GetStarted {...config.getStarted} linkComponent={config.linkComponent} />
+      <GetStarted {...config.getStarted} />
       <FeaturedOSS {...config.featuredOss} />
       <Footer />
     </Wrapper>
@@ -32,7 +32,6 @@ function IndexPageTemplate({ config }) {
 
 IndexPageTemplate.propTypes = {
   config: PropTypes.shape({
-    linkComponent: PropTypes.func.isRequired,
     header: Header.propTypes.isRequired,
     features: Features.propTypes.isRequired,
     preview: PropTypes.shape({ ...Preview.propTypes }),

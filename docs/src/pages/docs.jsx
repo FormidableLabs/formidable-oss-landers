@@ -336,7 +336,6 @@ const DocsPage = () => {
     { label: "Issues", href: "#" },
     { label: "Github", href: "#" },
   ]}
-  linkComponent={Link}
 />`}
         />
         <Content>

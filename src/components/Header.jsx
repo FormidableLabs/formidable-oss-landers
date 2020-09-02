@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import Grid from "./Grid";
 import HeaderInstall from "./HeaderInstall";
+import Link from "./Link";
 import Ribbon from "./Ribbon";
 import Text from "./Text";
 import Title from "./Title";
@@ -126,10 +127,7 @@ const Header = ({
   install,
   nav,
   title,
-  linkComponent,
 }) => {
-  const Link = linkComponent;
-
   // TODO: Mobile nav switches to "Learn More"
   return (
     <Wrapper bg={background}>
@@ -143,17 +141,13 @@ const Header = ({
             {description}
           </Text>
           <Ribbon />
-          <HeaderInstall
-            button={button}
-            install={install}
-            linkComponent={linkComponent}
-          />
+          <HeaderInstall button={button} install={install} />
         </Content>
         <Nav size="large" as="ul">
           {nav.map((navItem, index) => {
             return (
               <Text size="large" as="li" key={`navItem-${index}`}>
-                <Link href={navItem.href}>{navItem.label}</Link>
+                <Link to={navItem.href}>{navItem.label}</Link>
               </Text>
             );
           })}
@@ -164,8 +158,6 @@ const Header = ({
 };
 
 Header.propTypes = {
-  /* React-router <Link> component? */
-  linkComponent: PropTypes.any.isRequired,
   /* Optional background image for entire header */
   background: PropTypes.string,
   /* See: `formidable-oss-badges` repo */

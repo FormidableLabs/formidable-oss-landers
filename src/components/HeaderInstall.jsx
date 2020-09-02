@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import Button from "./Button";
 import CopyText from "./CopyText";
+import Link from "./Link";
 
 const Wrapper = styled.div`
   display: flex;
@@ -33,15 +34,14 @@ const StyledCopyText = styled(CopyText)`
   flex: 1 0 auto;
 `;
 
-const HeaderInstall = ({ button, install, linkComponent }) => {
-  const Link = linkComponent;
+const HeaderInstall = ({ button, install }) => {
   const hasButton = button && button.label && button.href;
 
   return (
     <Wrapper>
       <StyledCopyText text={install} />
       {hasButton ? (
-        <Button as={Link} href={button.href} color="inverse">
+        <Button as={Link} to={button.href} color="inverse">
           {button.label}
         </Button>
       ) : null}
@@ -50,7 +50,6 @@ const HeaderInstall = ({ button, install, linkComponent }) => {
 };
 
 HeaderInstall.propTypes = {
-  linkComponent: PropTypes.func.isRequired,
   button: PropTypes.shape({
     href: PropTypes.string,
     label: PropTypes.string,

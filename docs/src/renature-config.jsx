@@ -1,6 +1,5 @@
 /* Example config for Renature OSS Lander */
 import React from "react";
-import { Link } from "formidable-oss-landers";
 import { FeaturedBadge, ProjectBadge } from "formidable-oss-badges";
 import nightOwl from "prism-react-renderer/themes/nightOwl";
 
@@ -17,7 +16,6 @@ const config = {
     lightComplement: "#7A7441",
     darkComplement: "#595112",
   },
-  linkComponent: Link,
   header: {
     title: "Renature",
     badge: <FeaturedBadge name="renature" />,
