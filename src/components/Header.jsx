@@ -4,30 +4,35 @@ import styled from "styled-components";
 
 import Grid from "./Grid";
 import HeaderInstall from "./HeaderInstall";
+import Link from "./Link";
 import Ribbon from "./Ribbon";
 import Text from "./Text";
 import Title from "./Title";
-import { linkStyles, tablet, desktop } from "../styles";
+import { color, linkStyles } from "../styles";
 
 const Wrapper = styled.div`
   position: relative;
   padding-top: ${(props) => props.theme.spacing(14)};
   padding-bottom: ${(props) => props.theme.spacing(4)};
 
-  background: ${(props) => props.theme.gradients.darkGradient};
+  background: ${(props) =>
+    props.theme.type === "dark"
+      ? props.theme.gradients.darkGradient
+      : props.theme.gradients.lightGradient};
   ${(props) =>
     props.bg &&
     `
     background-image: url(${props.bg}); 
     background-size: cover;
   `};
-  color: ${(props) => props.theme.colors.white};
 
-  ${tablet`
+  ${(props) => (props.theme.type === "dark" ? color("white") : color("black"))};
+
+  ${(props) => props.theme.media.tablet`
     padding-top: ${(props) => props.theme.spacing(19)};
   `};
 
-  ${desktop`
+  ${(props) => props.theme.media.desktop`
     padding-bottom: ${(props) => props.theme.spacing(15)};
   `};
 `;
@@ -38,7 +43,7 @@ const StyledGrid = styled(Grid)`
     "content"
     "nav";
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     grid-column-gap: ${(props) => props.theme.spacing(8)};
     grid-row-gap: ${(props) => props.theme.spacing(8)};
     grid-template-columns: ${(props) => props.theme.spacing(27)} auto;
@@ -47,7 +52,7 @@ const StyledGrid = styled(Grid)`
       "nav nav";
   `};
 
-  ${desktop`
+  ${(props) => props.theme.media.desktop`
     grid-column-gap: ${(props) => props.theme.spacing(12)};
     grid-row-gap: 0;
     grid-template-columns: ${(props) => props.theme.spacing(44)} auto;
@@ -65,7 +70,7 @@ const Badge = styled.div`
   height: auto;
   margin: 0 auto;
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     width: auto;
   `};
 `;
@@ -76,7 +81,7 @@ const Content = styled.div`
   margin-top: ${(props) => props.theme.spacing(3)};
   text-align: center;
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     text-align: left;
   `};
 `;
@@ -86,15 +91,22 @@ const Nav = styled(Text)`
 
   margin-top: ${(props) => props.theme.spacing(3)};
   padding-top: ${(props) => props.theme.spacing(2)};
-  border-top: 2px solid ${(props) => props.theme.colors.white};
+  border-top: 2px solid
+    ${(props) =>
+      props.theme.type === "dark"
+        ? props.theme.colors.white
+        : props.theme.colors.black};
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
-  ${linkStyles({ color: "white" })};
+  ${(props) =>
+    props.theme.type === "dark"
+      ? linkStyles({ color: "white" })
+      : linkStyles({ color: "default" })};
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     justify-content: center;
 
     > * + * {
@@ -102,7 +114,7 @@ const Nav = styled(Text)`
     }
   `};
 
-  ${desktop`
+  ${(props) => props.theme.media.desktop`
     justify-content: space-between;
   `};
 `;
@@ -115,10 +127,7 @@ const Header = ({
   install,
   nav,
   title,
-  linkComponent,
 }) => {
-  const Link = linkComponent;
-
   // TODO: Mobile nav switches to "Learn More"
   return (
     <Wrapper bg={background}>
@@ -132,17 +141,13 @@ const Header = ({
             {description}
           </Text>
           <Ribbon />
-          <HeaderInstall
-            button={button}
-            install={install}
-            linkComponent={linkComponent}
-          />
+          <HeaderInstall button={button} install={install} />
         </Content>
         <Nav size="large" as="ul">
           {nav.map((navItem, index) => {
             return (
               <Text size="large" as="li" key={`navItem-${index}`}>
-                <Link href={navItem.href}>{navItem.label}</Link>
+                <Link to={navItem.href}>{navItem.label}</Link>
               </Text>
             );
           })}
@@ -153,12 +158,10 @@ const Header = ({
 };
 
 Header.propTypes = {
-  /* React-router <Link> component? */
-  linkComponent: PropTypes.any.isRequired,
   /* Optional background image for entire header */
   background: PropTypes.string,
   /* See: `formidable-oss-badges` repo */
-  badge: PropTypes.node,
+  badge: PropTypes.element,
   /* Name of OSS project */
   title: PropTypes.string,
   /* Short description of OSS Project */

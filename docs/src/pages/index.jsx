@@ -1,36 +1,17 @@
 import React from "react";
+import { ThemeProvider } from "styled-components";
+import { IndexPageTemplate, createTheme } from "formidable-oss-landers";
 
-import styled from "styled-components";
-import config from "../config";
+import config from "../renature-config";
 
-import {
-  Header,
-  Features,
-  Preview,
-  CustomSection,
-  GetStarted,
-  FeaturedOSS,
-  Footer,
-} from "formidable-oss-landers";
+const renatureTheme = createTheme({ colors: config.colors, type: "dark" });
 
-const Wrapper = styled.div`
-  width: 100%;
-`;
-
-function App() {
-  const hasPreview = !!config.preview;
-  const hasCustomSection = !!config.customSection;
+function RenaturePage() {
   return (
-    <Wrapper>
-      <Header {...config.header} linkComponent={config.linkComponent} />
-      <Features {...config.features} />
-      {hasPreview ? <Preview {...config.preview} /> : null}
-      {hasCustomSection ? <CustomSection {...config.customSection} /> : null}
-      <GetStarted {...config.getStarted} linkComponent={config.linkComponent} />
-      <FeaturedOSS {...config.featuredOss} />
-      <Footer />
-    </Wrapper>
+    <ThemeProvider theme={renatureTheme}>
+      <IndexPageTemplate config={config} />
+    </ThemeProvider>
   );
 }
 
-export default App;
+export default RenaturePage;

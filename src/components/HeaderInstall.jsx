@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import Button from "./Button";
 import CopyText from "./CopyText";
-import { tablet } from "../styles";
+import Link from "./Link";
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   margin-left: ${(props) => props.theme.spacing(-2)};
   margin-bottom: ${(props) => props.theme.spacing(1)};
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     margin-top: ${(props) => props.theme.spacing(5)};
   `};
 
@@ -34,15 +34,14 @@ const StyledCopyText = styled(CopyText)`
   flex: 1 0 auto;
 `;
 
-const HeaderInstall = ({ button, install, linkComponent }) => {
-  const Link = linkComponent;
+const HeaderInstall = ({ button, install }) => {
   const hasButton = button && button.label && button.href;
 
   return (
     <Wrapper>
       <StyledCopyText text={install} />
       {hasButton ? (
-        <Button as={Link} href={button.href} color="light">
+        <Button as={Link} to={button.href} color="inverse">
           {button.label}
         </Button>
       ) : null}
@@ -56,7 +55,6 @@ HeaderInstall.propTypes = {
     label: PropTypes.string,
   }),
   install: PropTypes.string,
-  linkComponent: PropTypes.any,
 };
 
 export default HeaderInstall;

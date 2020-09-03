@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { color, tablet, desktop } from "../styles";
+import { color } from "../styles";
 
 const getStyles = (styleType) => {
   switch (styleType) {
@@ -12,11 +12,11 @@ const getStyles = (styleType) => {
         letter-spacing: 0.04em;
         line-height: 1.3;
         text-transform: uppercase;
-        ${tablet`
+        ${(props) => props.theme.media.tablet`
           font-size: 60px;
           line-height: 1.5;
         `};
-        ${desktop`
+        ${(props) => props.theme.media.desktop`
           font-size: 90px;
         `};
       `;
@@ -27,7 +27,7 @@ const getStyles = (styleType) => {
         font-weight: 500;
         line-height: 1.2;
         letter-spacing: 0.02em;
-        ${desktop`
+        ${(props) => props.theme.media.desktop`
           font-size: 30px;
           line-height: ${38 / 30};
         `};
@@ -39,7 +39,7 @@ const getStyles = (styleType) => {
         font-size: 18px;
         font-weight: 500;
         line-height: 1.3;
-        ${desktop`
+        ${(props) => props.theme.media.desktop`
           font-size: 22px;
           line-height: ${26 / 22};
         `};

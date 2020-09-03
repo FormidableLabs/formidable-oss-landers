@@ -1,3 +1,5 @@
+import { mobile, tablet, desktop } from "./index";
+
 const universalColors = {
   white: "#FFFFFF",
   lighterNeutral: "#F0F0F0",
@@ -10,6 +12,8 @@ const universalColors = {
 
 const gradients = (colors) => {
   return {
+    lightGradient: `linear-gradient(208deg, ${colors.lighterPrimary} 0%, ${colors.lightPrimary} 100%)`,
+    reverseLightGradient: `linear-gradient(-161deg, ${colors.lighterPrimary} 0%, ${colors.lightPrimary} 100%)`,
     darkGradient: `linear-gradient(208deg, ${colors.darkPrimary} 0%, ${colors.darkerPrimary} 100%)`,
     reverseDarkGradient: `linear-gradient(-161deg, ${colors.darkPrimary} 0%, ${colors.darkerPrimary} 100%)`,
   };
@@ -37,14 +41,22 @@ const breakpoints = {
   desktop: 1200,
 };
 
-export const getTheme = (userColors) => {
-  const colors = { ...universalColors, ...userColors };
+export const createTheme = (options = {}) => {
+  const { colors = {}, ...rest } = options;
+  const allColors = { ...universalColors, ...colors };
   return {
     breakpoints,
-    boxShadows: boxShadows(colors),
-    colors: colors,
+    boxShadows: boxShadows(allColors),
+    colors: allColors,
     fonts,
-    gradients: gradients(colors),
+    gradients: gradients(allColors),
+    media: {
+      mobile,
+      tablet,
+      desktop,
+    },
     spacing,
+    type: "light",
+    ...rest,
   };
 };

@@ -13,10 +13,14 @@ const CustomSection = ({
 }) => {
   return (
     <Section className={className} color={color}>
-      <Section.Title>{title}</Section.Title>
+      {title ? <Section.Title>{title}</Section.Title> : null}
       <Grid>
         {description ? <Section.Text>{description}</Section.Text> : null}
-        {components}
+        {components.map((component, index) => {
+          return React.cloneElement(component, {
+            key: `custom-section-${index}`,
+          });
+        })}
       </Grid>
     </Section>
   );

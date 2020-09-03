@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
-import { desktop } from "../styles";
-
 const defaultButtonStyles = css`
   padding: 0.75em 1.4em;
   font-size: 12px;
@@ -12,11 +10,16 @@ const defaultButtonStyles = css`
   text-align: center;
   text-transform: uppercase;
 
-  ${desktop`font-size: 14px;`};
+  ${(props) => props.theme.media.desktop`font-size: 14px;`};
 `;
 
 const getButtonStyles = (color) => {
   switch (color) {
+    case "inverse":
+      return (props) =>
+        props.theme.type === "dark"
+          ? getButtonStyles("light")
+          : getButtonStyles("dark");
     case "light":
       return css`
         background-color: ${(props) => props.theme.colors.lighterNeutral};
@@ -34,7 +37,7 @@ const getButtonStyles = (color) => {
     case "dark":
     default:
       return css`
-        background-color: ${(props) => props.theme.colors.darkNeutral};
+        background-color: ${(props) => props.theme.colors.darkerNeutral};
         color: ${(props) => props.theme.colors.white};
 
         &:not([disabled]):focus,
@@ -69,7 +72,7 @@ Button.defaultProps = {
 Button.propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
-  color: PropTypes.oneOf(["light", "dark"]),
+  color: PropTypes.oneOf(["light", "dark", "inverse"]),
   full: PropTypes.bool,
 };
 

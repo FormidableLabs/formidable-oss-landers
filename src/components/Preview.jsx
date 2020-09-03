@@ -7,19 +7,27 @@ import nightOwl from "prism-react-renderer/themes/nightOwl";
 import Grid, { breakGrid } from "./Grid";
 import Section from "./Section";
 import Title from "./Title";
-import { mobileOnly, tablet, desktop } from "../styles";
 
 const Wrapper = styled(Section).attrs({ color: "primary" })``;
 
 const StyledGrid = styled(Grid)`
   grid-template-columns: 1fr;
 
-  ${desktop`
+  ${(props) => props.theme.media.desktop`
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: ${(props) => props.theme.spacing(4)};
     grid-row-gap: ${(props) => props.theme.spacing(20)};
     margin-top: ${(props) => props.theme.spacing(8)};
   `};
+`;
+
+const Subtitle = styled(Title).attrs({
+  size: "medium",
+})`
+  color: ${(props) =>
+    props.theme.type === "dark"
+      ? props.theme.colors.lightPrimary
+      : props.theme.colors.darkerPrimary};
 `;
 
 const TextWrapper = styled.div`
@@ -29,7 +37,7 @@ const TextWrapper = styled.div`
     margin-top: ${(props) => props.theme.spacing(6)};
   }
 
-  ${desktop`
+  ${(props) => props.theme.media.desktop`
     grid-column: ${(props) => (props.isOdd ? 4 : 1)};
     margin-top: 0;
     text-align: left;
@@ -43,12 +51,12 @@ const TextWrapper = styled.div`
 const CodeWrapper = styled.div`
   margin-top: ${(props) => props.theme.spacing(4)};
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     box-shadow: ${(props) =>
       props.theme.boxShadows.small("rgba(0, 0, 0, 0.5)")};
   `};
 
-  ${desktop`
+  ${(props) => props.theme.media.desktop`
     grid-column: span 3;
     ${(props) => props.gridRow && `grid-row: ${props.gridRow};`};
     margin-top: 0;
@@ -59,7 +67,7 @@ const CodeWrapper = styled.div`
 `;
 
 const StyledPreview = styled(LivePreview)`
-  ${mobileOnly`
+  ${(props) => props.theme.media.mobile`
     box-shadow: ${(props) =>
       props.theme.boxShadows.small("rgba(0, 0, 0, 0.5)")};
   `};
@@ -77,7 +85,7 @@ const StyledError = styled(LiveError)`
 `;
 
 const StyledEditor = styled(LiveEditor)`
-  ${mobileOnly`
+  ${(props) => props.theme.media.mobile`
     ${breakGrid};
     margin-top: ${(props) => props.theme.spacing(5)};
 
@@ -106,9 +114,7 @@ const Preview = ({ title, list, theme }) => {
           return (
             <React.Fragment key={`example-${index}`}>
               <TextWrapper isOdd={isOdd}>
-                <Title size="medium" color="lightPrimary">
-                  {example.title}
-                </Title>
+                <Subtitle>{example.title}</Subtitle>
                 {example.description ? (
                   <Section.Text>{example.description}</Section.Text>
                 ) : null}

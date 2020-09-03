@@ -3,12 +3,12 @@ import { Root, Routes } from "react-static";
 import { ThemeProvider } from "styled-components";
 
 import { GlobalStyles } from "formidable-oss-landers";
-import { theme } from "./styles/theme";
+import { guideTheme } from "./styles/theme";
 
 const App = () => {
   return (
     <Root>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={guideTheme}>
         <GlobalStyles />
         <Suspense fallback={<div>loading</div>}>
           <Routes />

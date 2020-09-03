@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Grid from "./Grid";
 import Section from "./Section";
 import Text from "./Text";
-import { linkStyles, tablet } from "../styles";
+import { linkStyles } from "../styles";
 
 import Logo from "../assets/formidable.svg";
 
@@ -19,7 +19,7 @@ const Wrapper = styled(Section).attrs({ padding: 10 })`
 const StyledGrid = styled(Grid)`
   grid-row-gap: ${(props) => props.theme.spacing(2)};
 
-  ${tablet`
+  ${(props) => props.theme.media.tablet`
     grid-template-columns: 1fr auto;
     grid-column-gap: ${(props) => props.theme.spacing(9)};
   `};
@@ -34,6 +34,8 @@ const LinksWrapper = styled.div`
 const StyledLogo = styled(Logo)`
   margin-right: ${(props) => props.theme.spacing(3)};
   width: 70px;
+
+  fill: ${(props) => props.theme.colors.white};
 `;
 
 const ListItem = styled.li`

@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import Button from "./Button";
 import Grid from "./Grid";
+import Link from "./Link";
 import Section from "./Section";
 
 const Wrapper = styled(Section).attrs({ color: "light" })``;
@@ -12,11 +13,10 @@ const ButtonWrapper = styled.div`
   margin-top: ${(props) => props.theme.spacing(4)};
 `;
 
-const GetStarted = ({ title, description, button, linkComponent }) => {
-  const Link = linkComponent;
+const GetStarted = ({ title, description, button }) => {
   const renderButton =
     button && button.label && button.href ? (
-      <Button as={Link} href={button.href}>
+      <Button as={Link} to={button.href}>
         {button.label}
       </Button>
     ) : null;
@@ -33,7 +33,6 @@ const GetStarted = ({ title, description, button, linkComponent }) => {
 };
 
 GetStarted.propTypes = {
-  linkComponent: PropTypes.any,
   /* Section title that defaults to "Get Started" */
   title: PropTypes.string,
   /* One sentence about how to get started using this thing.  */
