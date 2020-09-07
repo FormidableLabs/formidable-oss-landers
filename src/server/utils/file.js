@@ -110,6 +110,7 @@ export const getPages = async (dir, options = {}) => {
     mapPathToRoute = defaultMapPathToRoute,
     sort = defaultSortFn,
     name = defaultNameFn,
+    baseRoute = "",
   } = options;
   const filePaths = await getFiles(dir);
 
@@ -117,7 +118,7 @@ export const getPages = async (dir, options = {}) => {
     filePaths.map(async (filePath) => {
       const rawContent = await fs.readFile(filePath, { encoding: "utf8" });
       const { __content: content, ...metadata } = loadFront(rawContent);
-      const route = mapPathToRoute(dir, filePath);
+      const route = baseRoute + mapPathToRoute(dir, filePath);
       const parentRoute = route.split("/").slice(0, -1).join("/");
 
       const page = {
