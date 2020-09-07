@@ -2,13 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "./Router";
 
-function List({ items = [] }) {
+function List({ items = [], ...props }) {
   return (
-    <ul>
+    <ul {...props}>
       {items.map((item) => {
         return (
-          <li key={item.id}>
-            <Link to={item.link}>{item.name}</Link>
+          <li key={item.slug}>
+            <Link to={window.location.pathname + "#" + item.slug}>
+              {item.name}
+            </Link>
             {item.children.length > 0 && <List items={item.children} />}
           </li>
         );

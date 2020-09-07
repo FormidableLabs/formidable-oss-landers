@@ -18,48 +18,6 @@ export async function getFiles(dir, recursive = true) {
   return files.flat();
 }
 
-export async function processMdFile(dir, filePath) {
-  const pathKey = path
-    .relative(dir, path.dirname(filePath))
-    .split(path.sep)
-    .join("/");
-
-  const rawContent = await fs.readFile(filePath, { encoding: "utf8" });
-  const { __content: content, ...metadata } = loadFront(rawContent);
-  const fileName = path.parse(filePath).name;
-  const route = [pathKey, fileName].filter(Boolean).join("/");
-
-  return {
-    filePath,
-    fileName,
-    pathKey,
-    content,
-    metadata,
-    route,
-  };
-}
-
-const defaultPageSorter = (a, b) => {
-  if (a.pathKey === b.pathKey)
-    return Math.sign(a.metadata?.order - b.metadata?.order);
-
-  if (a.pathKey.startsWith(b.pathKey)) return -1;
-  if (b.pathKey.startsWith(a.pathKey)) return 1;
-
-  return 0;
-};
-
-export async function getMarkdownPages(dir, options = {}) {
-  const { sorter = defaultPageSorter } = options;
-  const files = await getFiles(dir);
-  const pages = await Promise.all(files.map((f) => processMdFile(dir, f)));
-
-  // Sort pages by pathKey and metadata order
-  pages.sort(sorter);
-
-  return pages;
-}
-
 const LINE_BREAK_REGEX = /[\r\n]+/;
 const HEADING_REGEX = /^(?<prefix>#{1,6})\s(?<name>.*)$/i;
 
@@ -80,28 +38,14 @@ const removeLinks = (node) => {
 };
 
 const defaultSlugify = (str) => slugify(str, { lower: true });
-const defaultCreateId = (slug, depth) => slug;
-const defaultCreateLink = (linkRoot, slug) => linkRoot + slug;
 
-export const createFileTOC = async (filePath, options = {}) => {
-  const {
-    name = path.parse(filePath).name,
-    linkRoot = "/",
-    createSlug = defaultSlugify,
-    maxDepth = 3,
-    id = defaultCreateId,
-    link = defaultCreateLink,
-  } = options;
+export const createPageTOC = async (filePath, options = {}) => {
+  const { createSlug = defaultSlugify, maxDepth = 3 } = options;
   const md = await fs.readFile(filePath, { encoding: "utf8" });
   const lines = md.split(LINE_BREAK_REGEX).map((line) => line.trim());
-  const slug = createSlug(name);
 
   const rootParent = {
-    id: id(slug, 0),
-    name,
     depth: 0,
-    slug,
-    link: link(linkRoot, slug),
     children: [],
     parent: null,
   };
@@ -124,11 +68,9 @@ export const createFileTOC = async (filePath, options = {}) => {
     const slug = createSlug(name);
 
     const next = {
-      id: id(slug, depth),
       name,
-      depth,
       slug,
-      link: rootParent.link + "#" + slug,
+      depth,
       parent: closestParent,
       children: [],
     };
@@ -141,15 +83,53 @@ export const createFileTOC = async (filePath, options = {}) => {
   // Clean up circular refs
   removeLinks(rootParent);
 
-  return rootParent;
+  return rootParent.children;
 };
 
-export const createTOC = (docs = [], getTocOptions = (doc, i) => ({})) => {
-  const filePaths = docs.map((doc) => doc.filePath);
+const defaultMapPathToRoute = (dir, filePath) =>
+  path.relative(dir, filePath).replace(/\.md$/i, "");
 
-  return Promise.all(
-    filePaths.map((filePath, i) =>
-      createFileTOC(filePath, getTocOptions(docs[i], i))
-    )
+const defaultSortFn = (a, b) => {
+  if (a.parentRoute === b.parentRoute)
+    return Math.sign(a.metadata?.order - b.metadata?.order);
+
+  if (a.parentRoute.startsWith(b.parentRoute)) return 1;
+
+  return 0;
+};
+
+const defaultNameFn = (page) => page.filePath;
+
+export const getPages = async (dir, options = {}) => {
+  const {
+    mapPathToRoute = defaultMapPathToRoute,
+    sort = defaultSortFn,
+    name = defaultNameFn,
+  } = options;
+  const filePaths = await getFiles(dir);
+
+  const pages = await Promise.all(
+    filePaths.map(async (filePath) => {
+      const rawContent = await fs.readFile(filePath, { encoding: "utf8" });
+      const { __content: content, ...metadata } = loadFront(rawContent);
+      const route = mapPathToRoute(dir, filePath);
+      const parentRoute = route.split("/").slice(0, -1).join("/");
+
+      const page = {
+        filePath,
+        route,
+        parentRoute,
+        content,
+        metadata,
+      };
+
+      page.name = name(page);
+
+      return page;
+    })
   );
+
+  pages.sort(sort);
+
+  return pages;
 };

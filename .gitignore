@@ -13,6 +13,7 @@ node_modules
 /lib
 /es
 /docs/dist
+/helpers-demo/dist
 /helpers-demo/tmp
 /helpers-demo/public
 /helpers-demo/artifacts

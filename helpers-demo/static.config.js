@@ -1,24 +1,24 @@
 import path from "path";
-import { getMarkdownPages, createTOC } from "formidable-oss-landers/lib/server";
+import { getPages, createPageTOC } from "formidable-oss-landers/lib/server";
 
 export default {
   getRoutes: async () => {
-    const docsPages = await getMarkdownPages("./src/content");
-    const TOC = await createTOC(docsPages, (doc, i) => ({
-      name: doc.fileName,
-      linkRoot: `/docs/${doc.pathKey}/`,
-      id: (slug, depth) => `${i}-${slug}`,
-      maxDepth: 2,
-    }));
+    const pages = await getPages("./src/content", {
+      name: (page) => page?.metadata?.title ?? page.route.split("/").pop(),
+    });
 
     return [
       {
         path: "/docs",
-        getData: () => ({ data: docsPages, TOC }),
-        children: docsPages.map((doc) => ({
+        getData: () => ({ pages }),
+        children: pages.map((doc) => ({
           path: doc.route,
           template: "src/containers/Doc",
-          getData: () => ({ doc }),
+          getData: async () => {
+            const toc = await createPageTOC(doc.filePath);
+
+            return { doc, toc };
+          },
         })),
       },
     ];

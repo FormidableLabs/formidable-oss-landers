@@ -1,18 +1,20 @@
 import React from "react";
-import List from "../components/List";
 import { useRouteData } from "react-static";
 
 export default function Docs() {
-  const { data, TOC } = useRouteData();
-
-  console.log(data);
-  console.log(TOC);
+  const { pages } = useRouteData();
 
   return (
     <div>
       <h1>It&rsquo;s the docs page!</h1>
 
-      {TOC.length > 0 && <List items={TOC} />}
+      <ul>
+        {pages.map((page, i) => (
+          <li key={i}>
+            <a href={"/docs/" + page.route}>{page.name}</a>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
