@@ -31,24 +31,33 @@ const findClosestParent = (depth, startingParent) => {
   return parent;
 };
 
-const removeLinks = (node) => {
-  delete node.parent;
-
-  node.children.forEach(removeLinks);
-};
-
 const defaultSlugify = (str) => slugify(str, { lower: true });
+
+class HeadingNode {
+  constructor(options) {
+    this.depth = options?.depth ?? 0;
+    this.name = options?.name ?? "";
+    this.slug = options?.slug ?? "";
+    this.children = options?.children ?? [];
+    this.parent = options?.parent ?? null;
+  }
+
+  toJSON() {
+    return {
+      depth: this.depth,
+      children: this.children,
+      name: this.name,
+      slug: this.slug,
+    };
+  }
+}
 
 export const createPageTOC = async (filePath, options = {}) => {
   const { createSlug = defaultSlugify, maxDepth = 3 } = options;
   const md = await fs.readFile(filePath, { encoding: "utf8" });
   const lines = md.split(LINE_BREAK_REGEX).map((line) => line.trim());
 
-  const rootParent = {
-    depth: 0,
-    children: [],
-    parent: null,
-  };
+  const rootParent = new HeadingNode();
 
   let parent = rootParent;
 
@@ -67,21 +76,17 @@ export const createPageTOC = async (filePath, options = {}) => {
 
     const slug = createSlug(name);
 
-    const next = {
+    const next = new HeadingNode({
       name,
       slug,
       depth,
       parent: closestParent,
-      children: [],
-    };
+    });
 
     closestParent.children.push(next);
 
     parent = next;
   }
-
-  // Clean up circular refs
-  removeLinks(rootParent);
 
   return rootParent.children;
 };
