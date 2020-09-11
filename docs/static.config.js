@@ -1,7 +1,6 @@
-import path from "path";
-
 import Document from "./src/html";
 import metadata from "./src/constants";
+import { getPages, createPageTOC } from "formidable-oss-landers/lib/server";
 
 export default {
   paths: {
@@ -13,20 +12,6 @@ export default {
     // public: "public", // The public directory (files copied to dist during build)
   },
   plugins: [
-    // [
-    //   "react-static-plugin-md-pages",
-    //   {
-    //     location: "./content",
-    //     template: "./src/pages/docs",
-    //     pathPrefix: "docs",
-    //   },
-    // ],
-    [
-      require.resolve("react-static-plugin-source-filesystem"),
-      {
-        location: path.resolve("./src/pages"),
-      },
-    ],
     require.resolve("react-static-plugin-styled-components"),
     require.resolve("react-static-plugin-sitemap"),
     require.resolve("react-static-plugin-react-router"),
@@ -35,4 +20,33 @@ export default {
   getSiteData: () => ({
     title: metadata.title,
   }),
+  getRoutes: async () => {
+    const pages = await getPages("./src/content", {
+      name: (page) => page?.metadata?.title ?? page.route.split("/").pop(),
+    });
+
+    return [
+      {
+        path: "/",
+        template: "src/pages/home",
+      },
+      {
+        path: "/preview",
+        template: "src/pages/preview",
+      },
+      {
+        path: "/docs",
+        template: "src/pages/docs",
+        getData: () => ({ pages }),
+        children: pages.map((doc) => ({
+          path: doc.route,
+          template: "src/pages/doc",
+          getData: async () => {
+            const toc = await createPageTOC(doc.filePath);
+            return { doc, toc };
+          },
+        })),
+      },
+    ];
+  },
 };
