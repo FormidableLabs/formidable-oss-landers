@@ -40,10 +40,10 @@ export default {
         getData: () => ({ pages }),
         children: pages.map((doc) => ({
           path: doc.route,
-          template: "src/pages/doc",
+          template: "src/pages/docs",
           getData: async () => {
             const toc = await createPageTOC(doc.filePath);
-            return { doc, toc };
+            return { doc, toc, pages };
           },
         })),
       },
