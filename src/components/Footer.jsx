@@ -13,6 +13,10 @@ const Wrapper = styled(Section).attrs({ padding: 10 })`
   color: ${(props) => props.theme.colors.white};
   text-align: left;
 
+  ${(props) => props.theme.media.desktop`
+    height: ${(props) => props.theme.layout.footerHeight};
+  `}
+
   ${linkStyles({ color: "white" })};
 `;
 

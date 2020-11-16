@@ -23,6 +23,7 @@ const boxShadows = (colors) => {
   return {
     small: (color) => `-5px 5px 0px 0px ${colors[color] || color}`,
     large: (color) => `-15px 15px 0px 0px ${colors[color] || color}`,
+    header: "0px 2px 7px 0px rgba(0, 0, 0, 0.14)",
   };
 };
 
@@ -41,6 +42,13 @@ const breakpoints = {
   desktop: 1200,
 };
 
+const layout = {
+  maxWidth: "80rem",
+  headerHeight: "3.6rem",
+  footerHeight: "18.6rem",
+  sidebarWidth: "14.6rem",
+};
+
 export const createTheme = (options = {}) => {
   const { colors = {}, ...rest } = options;
   const allColors = { ...universalColors, ...colors };
@@ -50,6 +58,7 @@ export const createTheme = (options = {}) => {
     colors: allColors,
     fonts,
     gradients: gradients(allColors),
+    layout,
     media: {
       mobile,
       tablet,

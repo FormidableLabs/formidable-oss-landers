@@ -4,6 +4,7 @@ export { default as GlobalStyles } from "./styles/global";
 export { default as Button } from "./components/Button";
 export { default as CopyText } from "./components/CopyText";
 export { default as CustomSection } from "./components/CustomSection";
+export { default as DocsPageTemplate } from "./components/DocsPageTemplate";
 export { default as FeaturedOSS } from "./components/FeaturedOSS";
 export { default as Features } from "./components/Features";
 export { default as Footer } from "./components/Footer";

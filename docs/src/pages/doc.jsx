@@ -58,10 +58,12 @@ List.propTypes = {
 
 export default function Doc() {
   const { doc, toc } = useRouteData();
+  if (!doc || !toc) {
+    return null;
+  }
   const compiled = compile(doc.content);
   return (
     <div>
-      <Link to="/docs/">{"<"} Back</Link>
       <List items={toc} />
       {compiled.tree}
     </div>
