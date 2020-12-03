@@ -5,12 +5,14 @@ import FormidableTextLogo from "../assets/formidableTextLogo";
 
 const HeaderContainer = styled.header`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   background: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.boxShadows.header};
   height: ${({ theme }) => theme.layout.headerHeight};
   padding-left: ${({ theme }) => theme.spacing(2)};
   padding-right: ${({ theme }) => theme.spacing(2)};
+  position: fixed;
+  width: calc(100% - ${({ theme }) => theme.layout.sidebarWidth});
 
   ${(props) => props.theme.media.desktop`
     padding-left: ${({ theme }) => theme.spacing(7.5)};
