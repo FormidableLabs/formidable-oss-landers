@@ -20,6 +20,17 @@ const ContentContainer = styled.div`
 
 const DocsPageContainer = styled.div`
   display: flex;
+  min-height: 100%;
+`;
+
+const DocContainer = styled.div`
+  padding: ${({ theme }) => theme.spacing(2)};
+  margin-top: ${({ theme }) => theme.layout.headerHeight};
+
+  ${(props) => props.theme.media.desktop`
+    padding: ${({ theme }) => theme.spacing(7.5)};
+    margin-top: ${({ theme }) => theme.layout.headerHeight};
+  `}
 `;
 
 export default function Docs() {
@@ -33,7 +44,9 @@ export default function Docs() {
           <Sidebar navLinks={pages} projectName={projectName} />
           <ContentContainer>
             <Header title={projectName} />
-            <Doc />
+            <DocContainer>
+              <Doc />
+            </DocContainer>
           </ContentContainer>
         </DocsPageContainer>
       </DocsPageTemplate>
