@@ -5,7 +5,7 @@ import FormidableTextLogo from "../assets/formidableTextLogo";
 
 const HeaderContainer = styled.header`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   background: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.boxShadows.header};
   height: ${({ theme }) => theme.layout.headerHeight};

@@ -15,7 +15,7 @@ import config from "../renature-config";
 const renatureTheme = createTheme({ colors: config.colors, type: "dark" });
 
 const ContentContainer = styled.div`
-  width: 100%;
+  max-width: ${({ theme }) => theme.layout.maxWidth};
 `;
 
 const DocsPageContainer = styled.div`
