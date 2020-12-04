@@ -11,12 +11,17 @@ import config from "../renature-config";
 const renatureTheme = createTheme({ colors: config.colors, type: "dark" });
 
 export default function Docs() {
-  const { pages } = useRouteData();
+  const { doc, toc, pages } = useRouteData();
   // Probably a better way to get project title, maybe from metadata?
   const projectName = config.header.title;
   return (
     <ThemeProvider theme={renatureTheme}>
-      <DocsPageTemplate projectName={projectName} pages={pages} />
+      <DocsPageTemplate
+        projectName={projectName}
+        doc={doc}
+        toc={toc}
+        pages={pages}
+      />
     </ThemeProvider>
   );
 }

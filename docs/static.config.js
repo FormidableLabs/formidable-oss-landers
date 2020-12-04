@@ -37,7 +37,11 @@ export default {
       {
         path: "/docs",
         template: "src/pages/docs",
-        getData: () => ({ pages }),
+        getData: async () => {
+          const doc = pages[0];
+          const toc = await createPageTOC(doc.filePath);
+          return { doc, toc, pages };
+        },
         children: pages.map((doc) => ({
           path: doc.route,
           template: "src/pages/docs",

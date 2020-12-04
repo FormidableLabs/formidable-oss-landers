@@ -30,7 +30,7 @@ const DocContainer = styled.div`
   `}
 `;
 
-function DocsPageTemplate({ projectName, pages }) {
+function DocsPageTemplate({ projectName, doc, toc, pages }) {
   return (
     <Wrapper>
       <DocsPageContainer>
@@ -38,7 +38,7 @@ function DocsPageTemplate({ projectName, pages }) {
         <ContentContainer>
           <Header title={projectName} />
           <DocContainer>
-            <Doc />
+            <Doc doc={doc} toc={toc} />
           </DocContainer>
         </ContentContainer>
       </DocsPageContainer>
@@ -47,7 +47,7 @@ function DocsPageTemplate({ projectName, pages }) {
   );
 }
 
-const Page = shape({
+const SingleDoc = shape({
   content: string.isRequired,
   filePath: string.isRequired,
   metadata: shape({
@@ -59,9 +59,24 @@ const Page = shape({
   route: string.isRequired,
 });
 
+const Toc = shape({
+  children: arrayOf(
+    shape({
+      depth: number.isRequired,
+      name: string.isRequired,
+      slug: string.isRequired,
+    })
+  ),
+  depth: number.isRequired,
+  name: string.isRequired,
+  slug: string.isRequired,
+});
+
 DocsPageTemplate.propTypes = {
   projectName: string.isRequired,
-  pages: arrayOf(Page).isRequired,
+  pages: arrayOf(SingleDoc).isRequired,
+  doc: SingleDoc.isRequired,
+  toc: arrayOf(Toc),
 };
 
 export default DocsPageTemplate;
