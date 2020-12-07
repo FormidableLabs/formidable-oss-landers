@@ -12,17 +12,21 @@ const Wrapper = styled.main`
 `;
 
 const ContentContainer = styled.div`
-  max-width: ${({ theme }) => theme.layout.maxWidth};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: ${({ theme }) => theme.layout.sidebarWidth};
 `;
 
 const DocsPageContainer = styled.div`
   display: flex;
-  min-height: 100%;
+  height: 100vh;
 `;
 
 const DocContainer = styled.div`
   padding: ${({ theme }) => theme.spacing(2)};
   margin-top: ${({ theme }) => theme.layout.headerHeight};
+  max-width: ${({ theme }) => theme.layout.maxWidth};
 
   ${(props) => props.theme.media.desktop`
     padding: ${({ theme }) => theme.spacing(7.5)};
@@ -40,9 +44,9 @@ function DocsPageTemplate({ projectName, doc, toc, pages }) {
           <DocContainer>
             <Doc doc={doc} toc={toc} />
           </DocContainer>
+          <Footer />
         </ContentContainer>
       </DocsPageContainer>
-      <Footer />
     </Wrapper>
   );
 }
