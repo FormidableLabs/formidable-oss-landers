@@ -8,18 +8,17 @@ const SidebarContainer = styled.aside`
   display: flex;
   flex-shrink: 0;
   width: ${({ theme }) => theme.layout.sidebarWidth};
-  min-height: 500px;
+  min-height: 100vh;
+  position: fixed;
   background: ${({ theme }) => theme.colors.darkerPrimary};
 `;
 
 const LighterStripe = styled.div`
-  height: 100%;
   width: 12px;
   background: ${({ theme }) => theme.colors.primary};
 `;
 
 const LightStripe = styled.div`
-  height: 100%;
   width: 12px;
   background: ${({ theme }) => theme.colors.darkPrimary};
 `;
