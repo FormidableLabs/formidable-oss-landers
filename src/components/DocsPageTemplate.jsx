@@ -26,6 +26,7 @@ const DocsPageContainer = styled.div`
 const DocContainer = styled.div`
   padding: ${({ theme }) => theme.spacing(2)};
   margin-top: ${({ theme }) => theme.layout.headerHeight};
+  max-width: ${({ theme }) => theme.layout.maxWidth};
 
   ${(props) => props.theme.media.desktop`
     padding: ${({ theme }) => theme.spacing(7.5)};
