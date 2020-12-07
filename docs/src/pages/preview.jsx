@@ -309,36 +309,6 @@ const DocsPage = () => {
           </ControlItem>
         </ControlList>
         <Content>
-          <Subtitle id="header">
-            <code>&lt;Header&gt;</code> Component
-          </Subtitle>
-        </Content>
-        <ComponentPreview
-          media={mediaClass}
-          width={width}
-          theme={theme}
-          code={`<Header
-  title="Example"
-  badge={
-    <ProjectBadge
-      isHoverable={false}
-      color={theme.colors.primary}
-      abbreviation="Ex"
-      description="Example"
-    />
-  }
-  description="Short description of the project goes here."
-  install="npm install example"
-  button={{ label: "Documentation", href: "#button" }}
-  nav={[
-    { label: "Docs", href: "#" }, 
-    { label: "Gallery", href: "#" },
-    { label: "Issues", href: "#" },
-    { label: "Github", href: "#" },
-  ]}
-/>`}
-        />
-        <Content>
           <Subtitle id="features">
             <code>&lt;Features&gt;</code> Component
           </Subtitle>

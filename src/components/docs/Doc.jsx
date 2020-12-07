@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useRouteData } from "react-static";
 import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
@@ -56,8 +55,7 @@ List.propTypes = {
   items: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
-export default function Doc() {
-  const { doc, toc } = useRouteData();
+export default function Doc({ doc, toc }) {
   if (!doc || !toc) {
     return null;
   }

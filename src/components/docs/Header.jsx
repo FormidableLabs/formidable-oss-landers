@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import FormidableTextLogo from "../assets/formidableTextLogo";
+import FormidableTextLogo from "../../assets/FormidableTextLogo";
 
 const HeaderContainer = styled.header`
   display: flex;
