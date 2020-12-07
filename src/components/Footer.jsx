@@ -12,7 +12,8 @@ const Wrapper = styled(Section).attrs({ padding: 10 })`
   background-color: ${(props) => props.theme.colors.darkerNeutral};
   color: ${(props) => props.theme.colors.white};
   text-align: left;
-  width: calc(100vw - ${({ theme }) => theme.layout.sidebarWidth});
+  width: ${({ theme, sidebarOpen }) =>
+    sidebarOpen ? `calc(100vw - ${theme.layout.sidebarWidth})` : `100vw`};
 
   ${(props) => props.theme.media.desktop`
     height: ${(props) => props.theme.layout.footerHeight};
@@ -56,10 +57,10 @@ const StyledText = styled(Text)`
   max-width: 60ch;
 `;
 
-const Footer = () => {
+const Footer = ({ sidebarOpen }) => {
   /* Let us take care of this for you */
   return (
-    <Wrapper>
+    <Wrapper sidebarOpen={sidebarOpen}>
       <StyledGrid>
         <LinksWrapper>
           <a
@@ -108,6 +109,10 @@ const Footer = () => {
       </StyledGrid>
     </Wrapper>
   );
+};
+
+Footer.propTypes = {
+  sidebarOpen: PropTypes.bool.isRequired,
 };
 
 export default Footer;

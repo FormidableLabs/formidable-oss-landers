@@ -12,7 +12,8 @@ const HeaderContainer = styled.header`
   padding-left: ${({ theme }) => theme.spacing(2)};
   padding-right: ${({ theme }) => theme.spacing(2)};
   position: fixed;
-  width: calc(100% - ${({ theme }) => theme.layout.sidebarWidth});
+  width: ${({ theme, sidebarOpen }) =>
+    sidebarOpen ? `calc(100% - ${theme.layout.sidebarWidth})` : `100vw`};
 
   ${(props) => props.theme.media.desktop`
     padding-left: ${({ theme }) => theme.spacing(7.5)};
@@ -52,27 +53,28 @@ const LeftSection = styled.div`
   align-items: baseline;
 `;
 
-const Header = ({ title, onMenuClick }) => {
-  return (
-    <HeaderContainer>
-      <InnerContainer>
-        <LeftSection>
+const Header = ({ title, onMenuClick, sidebarOpen }) => (
+  <HeaderContainer sidebarOpen={sidebarOpen}>
+    <InnerContainer>
+      <LeftSection>
+        {!sidebarOpen && (
           <MenuButton onClick={onMenuClick}>
             <BurgerIcon />
           </MenuButton>
-          <Title>{title}</Title>
-        </LeftSection>
-        <FormidableLogoWrapper>
-          <FormidableTextLogo />
-        </FormidableLogoWrapper>
-      </InnerContainer>
-    </HeaderContainer>
-  );
-};
+        )}
+        <Title>{title}</Title>
+      </LeftSection>
+      <FormidableLogoWrapper>
+        <FormidableTextLogo />
+      </FormidableLogoWrapper>
+    </InnerContainer>
+  </HeaderContainer>
+);
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
   onMenuClick: PropTypes.func.isRequired,
+  sidebarOpen: PropTypes.bool.isRequired,
 };
 
 export default Header;

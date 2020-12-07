@@ -15,7 +15,8 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-left: ${({ theme }) => theme.layout.sidebarWidth};
+  padding-left: ${({ theme, sidebarOpen }) =>
+    sidebarOpen ? theme.layout.sidebarWidth : "24px"};
 `;
 
 const DocsPageContainer = styled.div`
@@ -36,7 +37,6 @@ const DocContainer = styled.div`
 
 function DocsPageTemplate({ projectName, doc, toc, pages }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  console.log("sidebarOpen: ", sidebarOpen);
   return (
     <Wrapper>
       <DocsPageContainer>
@@ -46,15 +46,16 @@ function DocsPageTemplate({ projectName, doc, toc, pages }) {
           sidebarOpen={sidebarOpen}
           onCloseClick={() => setSidebarOpen(false)}
         />
-        <ContentContainer>
+        <ContentContainer sidebarOpen={sidebarOpen}>
           <Header
             title={projectName}
             onMenuClick={() => setSidebarOpen(true)}
+            sidebarOpen={sidebarOpen}
           />
           <DocContainer>
             <Doc doc={doc} toc={toc} />
           </DocContainer>
-          <Footer />
+          <Footer sidebarOpen={sidebarOpen} />
         </ContentContainer>
       </DocsPageContainer>
     </Wrapper>

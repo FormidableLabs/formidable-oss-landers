@@ -10,7 +10,6 @@ const SidebarContainer = styled.aside`
   width: ${({ theme }) => theme.layout.sidebarWidth};
   min-height: 100vh;
   position: fixed;
-  background: ${({ theme }) => theme.colors.darkerPrimary};
 `;
 
 const LighterStripe = styled.div`
@@ -29,6 +28,7 @@ const SidebarContent = styled.div`
   align-items: center;
   padding: ${({ theme }) => theme.spacing(3)} 0;
   width: 100%;
+  background: ${({ theme }) => theme.colors.darkerPrimary};
 `;
 
 const BadgeWrapper = styled.div`
