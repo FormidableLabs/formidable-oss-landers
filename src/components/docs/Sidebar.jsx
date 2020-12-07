@@ -52,26 +52,37 @@ const ListItemLink = styled(NavLink)`
   padding: 0 ${({ theme }) => theme.spacing(2.5)};
 `;
 
-const Sidebar = ({ navLinks, projectName }) => {
+const CloseButton = styled.button`
+  font-size: 2.2rem;
+  position: absolute;
+  right: 10px;
+  top: calc(10px - 0.2rem);
+  color: white;
+`;
+
+const Sidebar = ({ navLinks, projectName, onCloseClick, sidebarOpen }) => {
   console.log(navLinks);
   return (
     <SidebarContainer>
       <LighterStripe />
       <LightStripe />
-      <SidebarContent>
-        <BadgeWrapper>
-          <FeaturedBadge name={projectName} />
-        </BadgeWrapper>
-        <List>
-          {navLinks.map((page, i) => (
-            <ListItem key={i}>
-              <ListItemLink to={"/docs/" + page.route}>
-                {page.name}
-              </ListItemLink>
-            </ListItem>
-          ))}
-        </List>
-      </SidebarContent>
+      {sidebarOpen && (
+        <SidebarContent>
+          <CloseButton onClick={onCloseClick}>&times;</CloseButton>
+          <BadgeWrapper>
+            <FeaturedBadge name={projectName} />
+          </BadgeWrapper>
+          <List>
+            {navLinks.map((page, i) => (
+              <ListItem key={i}>
+                <ListItemLink to={"/docs/" + page.route}>
+                  {page.name}
+                </ListItemLink>
+              </ListItem>
+            ))}
+          </List>
+        </SidebarContent>
+      )}
     </SidebarContainer>
   );
 };
@@ -84,6 +95,8 @@ Sidebar.propTypes = {
     })
   ).isRequired,
   projectName: PropTypes.string.isRequired,
+  onCloseClick: PropTypes.func.isRequired,
+  sidebarOpen: PropTypes.bool.isRequired,
 };
 
 export default Sidebar;

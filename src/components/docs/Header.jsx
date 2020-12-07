@@ -43,11 +43,25 @@ const FormidableLogoWrapper = styled.div`
   `}
 `;
 
-const Header = ({ title }) => {
+const MenuButton = styled.button`
+  margin-right: 15px;
+`;
+
+const LeftSection = styled.div`
+  display: flex;
+  align-items: baseline;
+`;
+
+const Header = ({ title, onMenuClick }) => {
   return (
     <HeaderContainer>
       <InnerContainer>
-        <Title>{title}</Title>
+        <LeftSection>
+          <MenuButton onClick={onMenuClick}>
+            <BurgerIcon />
+          </MenuButton>
+          <Title>{title}</Title>
+        </LeftSection>
         <FormidableLogoWrapper>
           <FormidableTextLogo />
         </FormidableLogoWrapper>
@@ -58,6 +72,31 @@ const Header = ({ title }) => {
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
+  onMenuClick: PropTypes.func.isRequired,
 };
 
 export default Header;
+
+const BurgerIcon = () => (
+  <svg
+    width="20px"
+    height="16px"
+    viewBox="0 0 20 16"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g id="Page-2" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+      <g
+        id="Documentation-Desktop-Copy-2"
+        transform="translate(-20.000000, -30.000000)"
+        fill="#000"
+      >
+        <g id="Burger" transform="translate(20.000000, 30.000000)">
+          <rect id="Rectangle" x="0" y="7" width="20" height="2"></rect>
+          <rect id="Rectangle-Copy-2" x="0" y="0" width="20" height="2"></rect>
+          <rect id="Rectangle-Copy-3" x="0" y="14" width="20" height="2"></rect>
+        </g>
+      </g>
+    </g>
+  </svg>
+);

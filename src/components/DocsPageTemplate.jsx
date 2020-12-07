@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { arrayOf, string, number, shape } from "prop-types";
 import styled from "styled-components";
 import Footer from "./Footer";
@@ -35,12 +35,22 @@ const DocContainer = styled.div`
 `;
 
 function DocsPageTemplate({ projectName, doc, toc, pages }) {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  console.log("sidebarOpen: ", sidebarOpen);
   return (
     <Wrapper>
       <DocsPageContainer>
-        <Sidebar navLinks={pages} projectName={projectName} />
+        <Sidebar
+          navLinks={pages}
+          projectName={projectName}
+          sidebarOpen={sidebarOpen}
+          onCloseClick={() => setSidebarOpen(false)}
+        />
         <ContentContainer>
-          <Header title={projectName} />
+          <Header
+            title={projectName}
+            onMenuClick={() => setSidebarOpen(true)}
+          />
           <DocContainer>
             <Doc doc={doc} toc={toc} />
           </DocContainer>
