@@ -8,9 +8,8 @@ const SidebarContainer = styled.aside`
   display: flex;
   flex-shrink: 0;
   width: ${({ theme }) => theme.layout.sidebarWidth};
-  min-height: 100vh;
+  min-height: 100%;
   position: fixed;
-  background: ${({ theme }) => theme.colors.darkerPrimary};
 `;
 
 const LighterStripe = styled.div`
@@ -24,11 +23,16 @@ const LightStripe = styled.div`
 `;
 
 const SidebarContent = styled.div`
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   padding: ${({ theme }) => theme.spacing(3)} 0;
   width: 100%;
+  background: ${({ theme }) => theme.colors.darkerPrimary};
+
+  ${(props) => props.theme.media.desktop`
+    display: flex;
+  `}
 `;
 
 const BadgeWrapper = styled.div`

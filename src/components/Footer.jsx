@@ -12,9 +12,10 @@ const Wrapper = styled(Section).attrs({ padding: 10 })`
   background-color: ${(props) => props.theme.colors.darkerNeutral};
   color: ${(props) => props.theme.colors.white};
   text-align: left;
-  width: calc(100vw - ${({ theme }) => theme.layout.sidebarWidth});
+  width: 100%;
 
   ${(props) => props.theme.media.desktop`
+    width: calc(100vw - ${({ theme }) => theme.layout.sidebarWidth});
     height: ${(props) => props.theme.layout.footerHeight};
   `}
 

@@ -10,11 +10,12 @@ const HeaderContainer = styled.header`
   box-shadow: ${({ theme }) => theme.boxShadows.header};
   height: ${({ theme }) => theme.layout.headerHeight};
   padding-left: ${({ theme }) => theme.spacing(2)};
-  padding-right: ${({ theme }) => theme.spacing(2)};
+  padding-right: ${({ theme }) => theme.spacing(10)};
   position: fixed;
-  width: calc(100% - ${({ theme }) => theme.layout.sidebarWidth});
+  width: 100%;
 
   ${(props) => props.theme.media.desktop`
+    width: calc(100% - ${({ theme }) => theme.layout.sidebarWidth});
     padding-left: ${({ theme }) => theme.spacing(7.5)};
     padding-right: ${({ theme }) => theme.spacing(7.5)};
   `}
