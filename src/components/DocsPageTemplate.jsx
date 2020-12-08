@@ -15,7 +15,11 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-left: ${({ theme }) => theme.layout.sidebarWidth};
+  padding-left: 24px;
+
+  ${(props) => props.theme.media.desktop`
+    padding-left: ${({ theme }) => theme.layout.sidebarWidth};
+  `}
 `;
 
 const DocsPageContainer = styled.div`
