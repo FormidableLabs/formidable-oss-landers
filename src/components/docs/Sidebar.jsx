@@ -23,7 +23,8 @@ const LightStripe = styled.div`
 `;
 
 const SidebarContent = styled.div`
-  display: none;
+  display: ${({ sidebarOpen }) => (sidebarOpen ? "flex" : "none")};
+  z-index: ${({ sidebarOpen }) => (sidebarOpen ? "1" : "0")};
   flex-direction: column;
   align-items: center;
   padding: ${({ theme }) => theme.spacing(3)} 0;
@@ -56,13 +57,26 @@ const ListItemLink = styled(NavLink)`
   padding: 0 ${({ theme }) => theme.spacing(2.5)};
 `;
 
-const Sidebar = ({ navLinks, projectName }) => {
+const CloseButton = styled.button`
+  font-size: 2.2rem;
+  position: absolute;
+  right: 10px;
+  top: calc(10px - 0.2rem);
+  color: white;
+
+  ${(props) => props.theme.media.desktop`
+    display: none;
+  `}
+`;
+
+const Sidebar = ({ navLinks, projectName, sidebarOpen, onCloseClick }) => {
   console.log(navLinks);
   return (
     <SidebarContainer>
       <LighterStripe />
       <LightStripe />
-      <SidebarContent>
+      <SidebarContent sidebarOpen={sidebarOpen}>
+        <CloseButton onClick={onCloseClick}>&times;</CloseButton>
         <BadgeWrapper>
           <FeaturedBadge name={projectName} />
         </BadgeWrapper>
@@ -88,6 +102,8 @@ Sidebar.propTypes = {
     })
   ).isRequired,
   projectName: PropTypes.string.isRequired,
+  sidebarOpen: PropTypes.bool.isRequired,
+  onCloseClick: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

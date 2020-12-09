@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { arrayOf, string, number, shape } from "prop-types";
 import styled from "styled-components";
 import Footer from "./Footer";
@@ -16,6 +16,7 @@ const ContentContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding-left: 24px;
+  width: 100%;
 
   ${(props) => props.theme.media.desktop`
     padding-left: ${({ theme }) => theme.layout.sidebarWidth};
@@ -30,6 +31,7 @@ const DocsPageContainer = styled.div`
 const DocContainer = styled.div`
   padding: ${({ theme }) => theme.spacing(2)};
   margin-top: ${({ theme }) => theme.layout.headerHeight};
+  z-index: ${({ sidebarOpen }) => (sidebarOpen ? "-1" : "1")};
   max-width: ${({ theme }) => theme.layout.maxWidth};
 
   ${(props) => props.theme.media.desktop`
@@ -39,13 +41,45 @@ const DocContainer = styled.div`
 `;
 
 function DocsPageTemplate({ projectName, doc, toc, pages }) {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const ref = useRef();
+
+  const handleOutsideClick = (e) => {
+    if (
+      ref.current &&
+      !ref.current.contains(e.target) &&
+      sidebarOpen === true
+    ) {
+      setSidebarOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  });
+
   return (
     <Wrapper>
       <DocsPageContainer>
-        <Sidebar navLinks={pages} projectName={projectName} />
+        <div ref={ref}>
+          <Sidebar
+            navLinks={pages}
+            projectName={projectName}
+            sidebarOpen={sidebarOpen}
+            onCloseClick={() => setSidebarOpen(false)}
+          />
+        </div>
         <ContentContainer>
-          <Header title={projectName} />
-          <DocContainer>
+          <Header
+            title={projectName}
+            sidebarOpen={sidebarOpen}
+            onMenuClick={() => setSidebarOpen(true)}
+          />
+          <DocContainer sidebarOpen={sidebarOpen}>
             <Doc doc={doc} toc={toc} />
           </DocContainer>
           <Footer />
