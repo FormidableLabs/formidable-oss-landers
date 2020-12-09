@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { arrayOf, string, number, shape } from "prop-types";
 import styled from "styled-components";
 import Footer from "./Footer";
@@ -42,15 +42,37 @@ const DocContainer = styled.div`
 
 function DocsPageTemplate({ projectName, doc, toc, pages }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const ref = useRef();
+
+  const handleOutsideClick = (e) => {
+    if (
+      ref.current &&
+      !ref.current.contains(e.target) &&
+      sidebarOpen === true
+    ) {
+      setSidebarOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  });
+
   return (
     <Wrapper>
       <DocsPageContainer>
-        <Sidebar
-          navLinks={pages}
-          projectName={projectName}
-          sidebarOpen={sidebarOpen}
-          onCloseClick={() => setSidebarOpen(false)}
-        />
+        <div ref={ref}>
+          <Sidebar
+            navLinks={pages}
+            projectName={projectName}
+            sidebarOpen={sidebarOpen}
+            onCloseClick={() => setSidebarOpen(false)}
+          />
+        </div>
         <ContentContainer>
           <Header
             title={projectName}
