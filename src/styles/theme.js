@@ -46,7 +46,7 @@ const layout = {
   maxWidth: "80rem",
   headerHeight: "3.6rem",
   footerHeight: "18.6rem",
-  sidebarWidth: "14.6rem",
+  sidebarWidth: "15rem",
 };
 
 export const createTheme = (options = {}) => {
