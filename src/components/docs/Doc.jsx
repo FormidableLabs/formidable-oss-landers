@@ -1,69 +1,96 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
+import PropTypes, { shape, arrayOf, number, string } from "prop-types";
 
-/* eslint-disable react/prop-types */
-import marksy from "marksy";
-import slugify from "slugify";
+export function renderHeading(props) {
+  const { level, ...restProps } = props;
+  const children = React.Children.toArray(restProps.children);
 
-const slugifyChildren = (children = []) =>
-  slugify(children.join(" "), { lower: true });
+  const flatten = (text, child) => {
+    if (typeof child === "string") {
+      return `${text}${child}`;
+    }
+    return React.Children.toArray(child.props.children).reduce(flatten, text);
+  };
 
-// TODO: decide on which md parser to use, check other docs repos for prior work
-const compile = marksy({
-  createElement: React.createElement,
-  elements: {
-    h1({ id, children }) {
-      return <h1 id={slugifyChildren(children)}>{children}</h1>;
-    },
-    h2({ id, children }) {
-      return <h2 id={slugifyChildren(children)}>{children}</h2>;
-    },
-    h3({ id, children }) {
-      return <h3 id={slugifyChildren(children)}>{children}</h3>;
-    },
-    h4({ id, children }) {
-      return <h4 id={slugifyChildren(children)}>{children}</h4>;
-    },
-    h5({ id, children }) {
-      return <h5 id={slugifyChildren(children)}>{children}</h5>;
-    },
-    h6({ id, children }) {
-      return <h6 id={slugifyChildren(children)}>{children}</h6>;
-    },
-  },
-});
+  const text = children.reduce((txt, child) => {
+    if (typeof child === "string") {
+      return `${txt}${child}`;
+    }
+    return React.Children.toArray(child.props.children).reduce(flatten, txt);
+  }, "");
 
-const List = ({ items = [], ...props }) => {
-  return (
-    <ul {...props}>
-      {items.map((item) => {
-        return (
-          <li key={item.slug}>
-            <Link to={window.location.pathname + "#" + item.slug}>
-              {item.name}
-            </Link>
-            {item.children.length > 0 && <List items={item.children} />}
-          </li>
-        );
-      })}
-    </ul>
-  );
-};
+  const slug = text
+    .trim()
+    .toLowerCase()
+    .replace(/[^\w\- ]/g, "")
+    .replace(/\s+/g, "-");
 
-List.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.any).isRequired,
+  const html = `
+    <h${level}>
+      <a class="${
+        level > 1 ? "Anchor" : "hidden-anchor"
+      }" aria-hidden="true" id="${slug}" href="#${slug}">
+        <svg viewBox="0 0 16 16" version="1.1" width="16" height="16"
+              aria-hidden="true">
+          <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+        </svg>
+      </a> ${text}
+    </h${level}>
+`;
+  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+}
+
+renderHeading.propTypes = {
+  children: PropTypes.any,
+  level: PropTypes.number,
 };
 
 export default function Doc({ doc, toc }) {
   if (!doc || !toc) {
     return null;
   }
-  const compiled = compile(doc.content);
+
+  const renderers = { heading: renderHeading };
+
   return (
     <div>
-      <List items={toc} />
-      {compiled.tree}
+      <ReactMarkdown
+        renderers={renderers}
+        source={doc.content}
+        escapeHtml={false}
+      />
     </div>
   );
 }
+
+const SingleDoc = shape({
+  content: string.isRequired,
+  filePath: string.isRequired,
+  metadata: shape({
+    title: string.isRequired,
+    order: number.isRequired,
+  }),
+  name: string.isRequired,
+  parentRoute: string.isRequired,
+  route: string.isRequired,
+});
+
+const Toc = shape({
+  children: arrayOf(
+    shape({
+      depth: number.isRequired,
+      name: string.isRequired,
+      slug: string.isRequired,
+    })
+  ),
+  depth: number.isRequired,
+  name: string.isRequired,
+  slug: string.isRequired,
+});
+
+Doc.propTypes = {
+  doc: SingleDoc.isRequired,
+  toc: arrayOf(Toc),
+};

@@ -42,7 +42,7 @@ const breakpoints = {
   desktop: 1200,
 };
 
-const layout = {
+export const layout = {
   maxWidth: "80rem",
   headerHeight: "3.6rem",
   footerHeight: "18.6rem",

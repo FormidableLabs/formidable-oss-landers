@@ -38,7 +38,6 @@ const Title = styled.h1`
 `;
 
 const FormidableLogoWrapper = styled.div`
-  width: 9rem;
   display: none;
 
   ${(props) => props.theme.media.tablet`
@@ -53,7 +52,6 @@ const LeftContainer = styled.div`
 
 const MenuButton = styled.button`
   margin-right: 15px;
-  width: 1.5rem;
 
   ${(props) => props.theme.media.desktop`
     display: none;

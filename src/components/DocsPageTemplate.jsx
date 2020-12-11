@@ -63,7 +63,7 @@ function DocsPageTemplate({ projectName, doc, toc, pages }) {
   });
 
   return (
-    <Wrapper>
+    <Wrapper className="Page-content">
       <DocsPageContainer>
         <div ref={ref}>
           <Sidebar
