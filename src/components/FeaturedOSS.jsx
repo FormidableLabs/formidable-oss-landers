@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-
+import { FeaturedBadge, ProjectBadge } from "formidable-oss-badges";
 import Button from "./Button";
 import Grid from "./Grid";
 import Section from "./Section";
@@ -87,47 +87,82 @@ const ButtonWrapper = styled.div`
     text-align: center;
   `};
 `;
+const featuredOss = [
+  {
+    badge: <FeaturedBadge name="victory" />,
+    href: "https://formidable.com/open-source/victory",
+    title: "Victory",
+    description:
+      "An ecosystem of modular data visualization components for React. Friendly and flexible.",
+  },
+  {
+    badge: <FeaturedBadge name="urql" />,
+    href: "https://formidable.com/open-source/urql",
+    title: "urql",
+    description:
+      "Universal React Query Library is a blazing-fast GraphQL client, exposed as a set of ReactJS components.",
+  },
+  {
+    badge: <FeaturedBadge name="spectacle" />,
+    href: "https://formidable.com/open-source/spectacle",
+    title: "Spectacle",
+    description:
+      "A React.js based library for creating sleek presentations using JSX syntax that gives you the ability to live demo your code.",
+  },
+  {
+    badge: (
+      <ProjectBadge
+        isHoverable={false}
+        color="#80EAC7"
+        abbreviation="Rp"
+        description="Runpkg"
+      />
+    ),
+    href: "https://formidable.com/open-source/runpkg",
+    title: "Runpkg",
+    description:
+      "The online package explorer. Runpkg turns any npm package into an interactive and informative browsing experience.",
+  },
+];
 
-const FeaturedOSS = ({ title, list }) => {
-  return (
-    <Wrapper>
-      <Section.Title>{title}</Section.Title>
-      <StyledGrid>
-        {list.map((project, index) => {
-          return (
-            <ProjectLink
-              key={`project-${index}`}
-              href={project.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Project>
-                <BadgeWrapper>{project.badge}</BadgeWrapper>
-                <TextWrapper>
-                  <StyledTitle as="span">{project.title}</StyledTitle>
-                  {project.description ? (
-                    <Section.Text>{project.description}</Section.Text>
-                  ) : null}
-                </TextWrapper>
-              </Project>
-            </ProjectLink>
-          );
-        })}
-        <ButtonWrapper>
-          <Button
-            color="light"
-            as="a"
-            href="https://formidable.com/open-source/"
+const FeaturedOSS = () => (
+  <Wrapper>
+    <Section.Title>More Open Source from Formidable</Section.Title>
+    <StyledGrid>
+      {featuredOss.map((project, index) => {
+        return (
+          <ProjectLink
+            key={`project-${index}`}
+            href={project.href}
             target="_blank"
             rel="noopener noreferrer"
           >
-            View All
-          </Button>
-        </ButtonWrapper>
-      </StyledGrid>
-    </Wrapper>
-  );
-};
+            <Project>
+              <BadgeWrapper>{project.badge}</BadgeWrapper>
+              <TextWrapper>
+                <StyledTitle as="span">{project.title}</StyledTitle>
+                {project.description ? (
+                  <Section.Text>{project.description}</Section.Text>
+                ) : null}
+              </TextWrapper>
+            </Project>
+          </ProjectLink>
+        );
+      })}
+      <ButtonWrapper>
+        <Button
+          color="light"
+          as="a"
+          href="https://formidable.com/open-source/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View All
+        </Button>
+      </ButtonWrapper>
+    </StyledGrid>
+  </Wrapper>
+);
 
 FeaturedOSS.propTypes = {
   /* Section title */

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import PropTypes from "prop-types";
 import Grid from "./Grid";
 import Section from "./Section";
 import Text from "./Text";
@@ -13,10 +13,13 @@ const Wrapper = styled(Section).attrs({ padding: 10 })`
   color: ${(props) => props.theme.colors.white};
   text-align: left;
   width: 100%;
-
+  display: flex;
   ${(props) => props.theme.media.desktop`
-    width: calc(100vw - ${({ theme }) => theme.layout.sidebarWidth});
+    width: ${({ sidebar, theme }) =>
+      sidebar ? `calc(100vw - ${theme.layout.sidebarWidth})` : "100%"};
     height: ${(props) => props.theme.layout.footerHeight};
+    margin-left: ${({ theme, sidebar }) =>
+      sidebar ? theme.layout.sidebarWidth : "0"};
   `}
 
   ${linkStyles({ color: "white" })};
@@ -57,10 +60,10 @@ const StyledText = styled(Text)`
   max-width: 60ch;
 `;
 
-const Footer = () => {
+const Footer = ({ sidebar = false }) => {
   /* Let us take care of this for you */
   return (
-    <Wrapper>
+    <Wrapper sidebar={sidebar}>
       <StyledGrid>
         <LinksWrapper>
           <a
@@ -109,6 +112,10 @@ const Footer = () => {
       </StyledGrid>
     </Wrapper>
   );
+};
+
+Footer.propTypes = {
+  sidebar: PropTypes.bool,
 };
 
 export default Footer;
