@@ -24,7 +24,7 @@ function IndexPageTemplate({ config }) {
       {hasPreview ? <Preview {...config.preview} /> : null}
       {hasCustomSection ? <CustomSection {...config.customSection} /> : null}
       <GetStarted {...config.getStarted} />
-      <FeaturedOSS {...config.featuredOss} />
+      <FeaturedOSS />
       <Footer />
     </Wrapper>
   );
@@ -37,7 +37,6 @@ IndexPageTemplate.propTypes = {
     preview: PropTypes.shape({ ...Preview.propTypes }),
     customSection: PropTypes.shape({ ...CustomSection.propTypes }),
     getStarted: GetStarted.propTypes.isRequired,
-    featuredOss: FeaturedOSS.propTypes.isRequired,
   }),
 };
 

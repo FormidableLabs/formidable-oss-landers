@@ -14,7 +14,7 @@ const HeaderContainer = styled.header`
   padding-right: ${({ theme }) => theme.spacing(10)};
   position: fixed;
   width: 100%;
-  z-index: ${({ sidebarOpen }) => (sidebarOpen ? "-1" : "2")};
+  z-index: ${({ sidebarOpen }) => sidebarOpen && "0"};
 
   ${(props) => props.theme.media.desktop`
     width: calc(100% - ${({ theme }) => theme.layout.sidebarWidth});
@@ -35,9 +35,12 @@ const Title = styled.h1`
   font-size: 1.6rem;
   text-transform: uppercase;
   letter-spacing: 3.72px;
+  a {
+    color: black;
+  }
 `;
 
-const FormidableLogoWrapper = styled.div`
+const FormidableLogoWrapper = styled.a`
   display: none;
 
   ${(props) => props.theme.media.tablet`
@@ -66,9 +69,16 @@ const Header = ({ title, sidebarOpen, onMenuClick }) => {
           <MenuButton onClick={onMenuClick}>
             <BurgerIcon />
           </MenuButton>
-          <Title>{title}</Title>
+          <Title>
+            <a href="/">{title}</a>
+          </Title>
         </LeftContainer>
-        <FormidableLogoWrapper>
+        <FormidableLogoWrapper
+          href="https://formidable.com"
+          title="Formidable"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FormidableTextLogo />
         </FormidableLogoWrapper>
       </InnerContainer>

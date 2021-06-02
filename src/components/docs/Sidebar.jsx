@@ -10,6 +10,7 @@ const SidebarContainer = styled.aside`
   width: ${({ theme }) => theme.layout.sidebarWidth};
   min-height: 100%;
   position: fixed;
+  z-index: ${({ sidebarOpen }) => (sidebarOpen ? "2" : "0")};
 `;
 
 const LighterStripe = styled.div`
@@ -24,13 +25,11 @@ const LightStripe = styled.div`
 
 const SidebarContent = styled.div`
   display: ${({ sidebarOpen }) => (sidebarOpen ? "flex" : "none")};
-  z-index: ${({ sidebarOpen }) => (sidebarOpen ? "1" : "0")};
   flex-direction: column;
   align-items: center;
   padding: ${({ theme }) => theme.spacing(3)} 0;
   width: 100%;
   background: ${({ theme }) => theme.colors.darkerPrimary};
-
   ${(props) => props.theme.media.desktop`
     display: flex;
   `}
@@ -70,9 +69,8 @@ const CloseButton = styled.button`
 `;
 
 const Sidebar = ({ navLinks, projectName, sidebarOpen, onCloseClick }) => {
-  console.log(navLinks);
   return (
-    <SidebarContainer>
+    <SidebarContainer sidebarOpen={sidebarOpen}>
       <LighterStripe />
       <LightStripe />
       <SidebarContent sidebarOpen={sidebarOpen}>
@@ -83,7 +81,7 @@ const Sidebar = ({ navLinks, projectName, sidebarOpen, onCloseClick }) => {
         <List>
           {navLinks.map((page, i) => (
             <ListItem key={i}>
-              <ListItemLink to={"/docs/" + page.route}>
+              <ListItemLink onClick={onCloseClick} to={"/docs/" + page.route}>
                 {page.name}
               </ListItemLink>
             </ListItem>
