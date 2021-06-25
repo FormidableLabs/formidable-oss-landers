@@ -3,8 +3,6 @@ import React from "react";
 import { FeaturedBadge } from "formidable-oss-badges";
 import nightOwl from "prism-react-renderer/themes/nightOwl";
 
-import featureSvg from "./assets/feature.svg";
-
 const config = {
   colors: {
     lighterPrimary: "#F8F7FE",
@@ -36,28 +34,6 @@ const config = {
       {
         label: "Github",
         href: "https://github.com/FormidableLabs/renature",
-      },
-    ],
-  },
-  features: {
-    list: [
-      {
-        image: featureSvg,
-        title: "Declarative React hooks for animating with ease",
-        description:
-          "Tweak your physics parameters, set from and to values for your CSS properties, and let renature do the rest.",
-      },
-      {
-        image: featureSvg,
-        title: "Gravity, Friction, Fluid Resistance, and more",
-        description:
-          "Renature explores forces that other physics-based animation libraries typically leave out, giving your animations unique feeling and intuitive motion.",
-      },
-      {
-        image: featureSvg,
-        title: "An animation library for physics nerds",
-        description:
-          "Renature emphasizes mathematical precision and correctness, all backed by the type safety and speed of ReasonML.",
       },
     ],
   },
