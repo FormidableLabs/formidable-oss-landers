@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const Grid = styled.div`
   display: grid;
@@ -13,11 +13,6 @@ const Grid = styled.div`
   ${(props) => props.theme.media.desktop`    
     max-width: ${(props) => props.theme.spacing(131)};
   `}
-`;
-
-export const breakGrid = css`
-  margin-left: ${(props) => props.theme.spacing(-3)};
-  margin-right: ${(props) => props.theme.spacing(-3)};
 `;
 
 export default Grid;
