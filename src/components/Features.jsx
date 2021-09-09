@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-
 import Grid from "./Grid";
 import Section from "./Section";
 import Title from "./Title";
@@ -11,21 +10,16 @@ const Wrapper = styled(Section).attrs({ color: "light", padding: 5 })``;
 
 const StyledGrid = styled(Grid)`
   grid-template-columns: 1fr;
-
   ${(props) => props.theme.media.tablet`
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: ${(props) => props.theme.spacing(6)};
   `}
 `;
 
-const Feature = styled.div``;
-
 const Image = styled.img`
   margin: ${(props) => props.theme.spacing(5)} auto 0;
   max-width: ${(props) => props.theme.spacing(20)};
-
   ${boxShadow("lightNeutral")};
-
   ${(props) => props.theme.media.desktop`
     max-width: ${(props) => props.theme.spacing(35)};
   `};
@@ -33,7 +27,6 @@ const Image = styled.img`
 
 const StyledSubtitle = styled(Title)`
   margin-top: ${(props) => props.theme.spacing(3)};
-
   ${(props) => props.theme.media.desktop`
     margin-top: ${(props) => props.theme.spacing(6)};
   `};
@@ -44,15 +37,13 @@ const Features = ({ title, list }) => {
     <Wrapper>
       <Section.Title>{title}</Section.Title>
       <StyledGrid>
-        {list.map((feature, index) => {
-          return (
-            <Feature key={`feature-${index}`}>
-              {feature.image ? <Image src={feature.image} alt="" /> : null}
-              <StyledSubtitle size="medium">{feature.title}</StyledSubtitle>
-              <Section.Text>{feature.description}</Section.Text>
-            </Feature>
-          );
-        })}
+        {list.map((feature, index) => (
+          <div key={`feature-${index}`}>
+            {feature.image ? <Image src={feature.image} alt="" /> : null}
+            <StyledSubtitle size="medium">{feature.title}</StyledSubtitle>
+            <Section.Text>{feature.description}</Section.Text>
+          </div>
+        ))}
       </StyledGrid>
     </Wrapper>
   );
