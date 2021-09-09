@@ -1,7 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
-
+import { FeaturedBadge } from "formidable-oss-badges";
 import Grid from "./Grid";
 import HeaderInstall from "./HeaderInstall";
 import Link from "./Link";
@@ -132,7 +131,9 @@ const Header = ({
   return (
     <Wrapper bg={background}>
       <StyledGrid>
-        <Badge>{badge}</Badge>
+        <Badge>
+          <FeaturedBadge name={badge} />
+        </Badge>
         <Content>
           <Title size="xlarge" as="h1">
             {title}
@@ -161,7 +162,7 @@ Header.propTypes = {
   /* Optional background image for entire header */
   background: PropTypes.string,
   /* See: `formidable-oss-badges` repo */
-  badge: PropTypes.element,
+  badge: PropTypes.string,
   /* Name of OSS project */
   title: PropTypes.string,
   /* Short description of OSS Project */
