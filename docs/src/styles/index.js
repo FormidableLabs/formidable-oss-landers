@@ -1,4 +1,3 @@
-/* Mixins for styled-components */
 import { css } from "styled-components";
 
 /*

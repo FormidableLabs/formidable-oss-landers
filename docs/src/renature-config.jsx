@@ -1,7 +1,6 @@
 /* Example config for Renature OSS Lander */
 import React from "react";
 import { FeaturedBadge } from "formidable-oss-badges";
-import nightOwl from "prism-react-renderer/themes/nightOwl";
 
 const config = {
   colors: {
@@ -36,127 +35,6 @@ const config = {
         href: "https://github.com/FormidableLabs/renature",
       },
     ],
-  },
-  preview: {
-    title: "Beautiful, Simple Animations",
-    theme: nightOwl,
-    list: [
-      {
-        title: "Animate Intuitively, Animate With Joy",
-        description:
-          "UI animation should be intuitive, simple, and fun. Renature is all about returning joy and whimsy to your UI animations.",
-        props: {
-          code: `import React from 'react';
-
-class Counter extends React.Component {
-  constructor() {
-    super()
-    this.state = { count: 0 }
-  }
-
-  componentDidMount() {
-    this.interval = setInterval(() => {
-      this.setState(state => ({ count: state.count + 1 }))
-    }, 1000)
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval)
-  }
-
-  render() {
-    return (
-      <center>
-        <h3>
-          {this.state.count}
-        </h3>
-      </center>
-    )
-  }
-}
-`,
-          scope: ``,
-        },
-      },
-      {
-        title: "Responsive Animations",
-        description:
-          "Renature hooks respond directly to changes in their from, to, and config properties. Just update a value and your animation will begin running.",
-        props: {
-          code: `import React from 'react';
-
-class Counter extends React.Component {
-  constructor() {
-    super()
-    this.state = { count: 0 }
-  }
-
-  componentDidMount() {
-    this.interval = setInterval(() => {
-      this.setState(state => ({ count: state.count + 1 }))
-    }, 1000)
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval)
-  }
-
-  render() {
-    return (
-      <center>
-        <h3>
-          {this.state.count}
-        </h3>
-      </center>
-    )
-  }
-}
-`,
-        },
-      },
-      {
-        title: "Animate in Two Dimensions",
-        description:
-          "Renature uses two-dimensional vectors to back its physics, giving you the ability to build beautiful and accurate animations in Cartesian space.",
-        props: {
-          code: `import React from 'react';
-
-class Counter extends React.Component {
-  constructor() {
-    super()
-    this.state = { count: 0 }
-  }
-
-  componentDidMount() {
-    this.interval = setInterval(() => {
-      this.setState(state => ({ count: state.count + 1 }))
-    }, 1000)
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval)
-  }
-
-  render() {
-    return (
-      <center>
-        <h3>
-          {this.state.count}
-        </h3>
-      </center>
-    )
-  }
-}
-`,
-        },
-      },
-    ],
-  },
-  customSection: {
-    color: "dark",
-    title: "My custom section",
-    description: "I love custom sections!!",
-    components: [],
   },
   getStarted: {
     description:
